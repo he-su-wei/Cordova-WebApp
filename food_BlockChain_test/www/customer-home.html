@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/customer-home.css">
+  <link rel="stylesheet" href="icon/css/all.css">
+</head>
+<body>
+  <!--------------------------------------------------導航欄------------------------------------------------------------->
+  <nav class="nav_bar flex">
+    <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+    <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+    <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
+  </nav>
+
+  <!--------------------------------------------------清單內容------------------------------------------------------------->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="customer-home.html">首頁</a>
+    <a href="#">關於</a>
+    <a href="index.html">登出</a>
+  </div>
+
+  <!--------------------------------------------------body選擇紐------------------------------------------------------------->
+    <div class="search-container">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+  
+  <div id="stores" class="stores">
+        <button id="store" class="store">
+            <div id="photo" class="photo">
+                <img src="img/mcd-Logo.png" />
+            </div>
+            <div id="information" class="information">
+                <h3>店家名稱</h3>
+                <p>環境狀態:</p>
+                <p>營業狀態:</p>
+            </div>
+        </button>
+
+        <button id="store" class="store">
+          <div id="photo" class="photo">
+              <img src="img/KFC_Logo.jpg" />
+          </div>
+          <div id="information" class="information">
+              <h3>店家名稱</h3>
+              <p>環境狀態:</p>
+              <p>營業狀態:</p>
+          </div>
+      </button>
+
+
+  </div>
+
+ 
+
+  <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
+  <footer class="footer">
+    <a href="customer-home.html" class="footer__link footer__link--active">
+      <i class="fa fa-home nav__icon"></i>
+      <span >首頁</span>
+    </a>
+
+    </a>
+    <a href="#" class="footer__link">
+      <i class="far fa-user nav__icon"></i>
+      <span>我的帳號</span>
+    </a>
+
+  </nav>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+    <script src="js/customer-home.js"></script>
+
+
+
+
+
+
+</body>
+</html> 

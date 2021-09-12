@@ -1,0 +1,231 @@
+html, body{
+    background-color: #d4d4d4;
+    overflow: hidden;
+    margin: 0px;
+
+}
+/*------------------------------------導航欄------------------------------*/
+.nav_bar{
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 55px;
+    overflow: hidden;
+    position: sticky;
+    list-style-type: none;
+    color: rgb(255, 255, 255);
+    background-color: #70a9a1;
+    box-shadow: 0px 3px 8px 0px rgb(94, 94, 94);
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.item{
+    flex: 0.3;
+    margin-left: 15px;
+}
+
+.flex-2{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+/*-----------------------------Menu 選單------------------------------*/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #70a9a1;/* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+    /* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+    /* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+    /* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+s
+/*---------------------------------------------------------------------------------------*/
+.list-padding{
+    width: 100vw;
+}
+
+
+.list-padding ul {
+    background: #f1e3d3;
+    padding: 20px;
+
+
+}
+
+
+.list-padding ul li {
+    list-style: none;
+    padding: 10px 0px;
+    border-bottom: 1px solid rgb(0,0,0,0.05);
+
+    
+}
+.list-padding ul li a{
+    margin: auto 10px;
+    width: auto;
+    text-decoration: none;
+    color: rgba(0, 0, 0);
+
+}
+
+.list-padding ul li span{
+    margin: auto 10px;
+    width: auto;
+
+}
+
+/*-------------------------------------switch--------------------------------------------*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 25px;
+    left: 40vw;
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+ }
+  
+  input:checked + .slider {
+    background-color: #70a9a1;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #70a9a1;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+  }
+
+/*---------------------footer---------------------*/
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    display: flex;
+    overflow-x: auto;
+}
+
+.footer__link {
+    display: flex;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow:1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    background-color: #70a9a1;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.footer__link:hover {
+    background-color: #808080;
+}
+
+.footer__link--active {
+    color: #000000;
+}
+
+.nav__icon {
+    font-size: 18px;
+}
+
+

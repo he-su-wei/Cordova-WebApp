@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <title>app</title>
+    <meta charset="utf-8"></mata>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/choose_custormer.css">
+</head>
+<body>
+    <!-------------------------------------------------導航欄------------------------------------------------------------>
+    <nav class="nav_bar flex">
+        <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+        <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+        <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
+    </nav>
+    <!------------------------------------------------清單內容------------------------------------------------------------->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="store-login.html">店家登入</a>
+        <a href="customer-login.html">顧客登入</a>
+        <a href="signup.html">註冊</a>
+        <a href="#">訪客模式</a> 
+        <a href="#">關於</a>
+    </div>
+    <!---------------------------------------------------登入-------------------------------------------------------------->
+    <div class="Choose_position">
+        <div  class="divChoose_bg">
+            <button type="button" class="button" style="background: none;" class="" onclick="location.href='customer-login.html'">Log in</button>
+            <h2>or</h2>
+            <button type="button" class="button"style="background:none" class="" onclick="location.href='signup.html'">Sign up</button>
+        </div>
+    </div>
+    <!--------------------------------------------------footer------------------------------------------------------------->
+    <div class="ul_footer">
+        <h3>v1.0.1</h3>
+    </div>
+
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+          document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          document.body.style.backgroundColor = "rgb(223, 224, 207)";
+        }
+        </script>
+
+
+</body>
+</html>

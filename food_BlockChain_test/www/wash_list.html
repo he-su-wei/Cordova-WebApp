@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> <!--icon-->
+  <link rel="stylesheet" href="css/wash_list.css">
+  <link rel="stylesheet" href="icon/css/all.css">
+</head>
+<body onload="ShowTime()">
+  <!--------------------------------------------------導航欄------------------------------------------------------------->
+  <nav class="nav_bar flex">
+    <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+    <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+    <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
+  </nav>
+  <!--------------------------------------------------清單內容------------------------------------------------------------->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="main.html">首頁</a>
+    <a href="signup.html">清洗表</a>
+    <a href="#">關於</a>
+    <a href="index.html">登出</a>
+  </div>
+
+  <!--------------------------------------------------body選擇紐------------------------------------------------------------->
+  <div class="container-fluid">
+        <!-- <img src="img/icon1.png" class="rounded float-start" alt="..."> -->
+        <img src="img/icon1.png" class="img-fluid" style="float: left; margin: 30px" width="100">
+        <br><br>
+        <h2 class="rounded float-right">[ Store Name ]</h2>
+        <div id="showbox" style="font-size:20px;"></div>
+        <hr size="5px"  width="85%">
+    </div>
+    <div class="btn">
+        <div class="row">
+            <div class="col">
+                <button type="button" onclick="location.href='test.html';" style="background:none; border: none;"> 
+                    <div id="c2" class="fa-center">
+                        <i class="fas fa-utensils fa-2x"></i>
+                        <span style="margin: 8px 0px 0px 0px;">食材清洗</span>
+                    </div>
+                </button>
+                <button type="button" onclick="location.href='test.html';" style="background:none; border: none;"> 
+                    <div id="c4" class="fa-center">
+                        <i class="fas fa-broom fa-2x"></i>
+                        <span style="margin: 8px 0px 0px 0px;">環境清消</span>
+                    </div>
+                </button>
+                <button type="button" onclick="location.href='test.html';" style="background:none; border: none;"> 
+                    <div id="c6" class="fa-center">
+                        <i class="fas fa-hand-holding-water fa-2x"></i>
+                        <span style="margin: 8px 0px 0px 0px;">員工消毒</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button type="button" onclick="location.href='test.html';" style="background:none; border: none;"> 
+                    <div id="c3" class="fa-center">
+                        <i class="fas fa-user-edit fa-2x"></i>
+                        <span style="margin: 8px 0px 0px 0px;">客戶回饋</span>
+                    </div>
+                </button>
+                
+
+            </div>
+        </div>
+    </div>
+
+    
+ 
+
+  <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
+  <footer class="footer">
+    <a href="main.html" class="footer__link">
+      <i class="fa fa-home nav__icon"></i>
+      <span >首頁</span>
+    </a>
+    <a href="wash_list.html" class="footer__link footer__link--active">
+        <i class="fas fa-list-alt nav__icon"></i>
+        <span class="nav__text">清洗表</span>
+    </a>
+    </a>
+  </footer>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        function scan(){
+            cordova.plugins.barcodeScanner.scan(
+                function(result){
+                    if(!result.cancelled){
+                        if(result.format == "QR_CODE") {
+                            var value = result.text;
+                            alert('Your Code Is '+value);
+                        }
+                    }
+                },
+                function (error) {
+                    alert('Scanning Failed '+error);
+                }
+            );
+        }
+    </script>
+
+    <script language="JavaScript">
+        function ShowTime(){
+            var NowDate=new Date();
+            var m1=NowDate.getMonth()+1;
+            var d=NowDate.getDate();
+            var h=NowDate.getHours();
+            var m=NowDate.getMinutes();
+            var s=NowDate.getSeconds();　
+            document.getElementById('showbox').innerHTML = m1+' 月 '+d+' 號 '+h+' 時 '+m+' 分';
+            setTimeout('ShowTime()',1000);
+        }
+    </script>
+
+</body>
+</html> 

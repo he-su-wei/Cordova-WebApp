@@ -1,0 +1,210 @@
+body{
+    background-color: rgb(223, 224, 207);
+    margin: 0px;
+}
+/*------------------------------------導航欄------------------------------*/
+.nav_bar{
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height:60px ;
+    overflow: hidden;
+    position: fixed;
+    list-style-type: none;
+    color: rgb(255, 255, 255);
+    background-color: #70a9a1;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.item{
+    flex: 0.3;
+    margin-left: 15px;
+}
+
+.flex-2{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+/*-----------------------------Menu 選單------------------------------*/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #70a9a1;/* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+    /* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+    /* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+    /* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+/*----------------------------------------------畫面中心的登入視窗-----------------------------------------*/
+
+.divForm{
+    display: flex;
+    align-items: center;              /* 項目置中 */
+    justify-content: center;          /*水平對其置中*/
+    margin-top: 50%;                 /*位置在由上往下50%位置*/
+
+}
+
+.loginForm{
+    border-radius: 20px;                                         /* 登入區域圓角設定 */
+    background-color:#70a9a1 ;                       /* 設定背景為綠色*/
+    width:200px;                                                 /* 寬度200像素 */
+    height: 300px;                                               /* 高度度300像素 */
+    color: white;                                              /* 容器裡的文字為白色 */
+    padding: 45px;                                               /* 布局為45像素 */
+    box-shadow: 10px 10px 10px rgba(78, 128, 125, 0.616) ;     /* 設置陰影效果 顏色與背景相同 */
+    text-align: center;                                          /* 容器容器裡的文字置中 */
+    
+}
+
+/*----------------------------設置lologin裡的input屬性--------------*/
+.loginForm input{
+    display: block;                                               /* 格式強制換行 */
+    margin: 20px auto;                                            /* 上下間隔20像素 */
+    text-align: center;                                           /* 容器容器裡的文字置中 */
+    padding: 1px;                                                 /* input屬性 布局為1巷素 */
+    height: 36px;                                                 /* 輸入框高度為36像素 */
+    font-size: 15px;                                              /* 輸入框裡提示文字15像素 */
+    border-radius: 22px;                                          /* 輸入框圓角設置 */
+    outline: none;                                                /* 輸入框輪廓設置為無 */
+    color: white;                                               /* 輸入框裡的文字為白色 */
+    
+}
+
+/*------------------------設置login裡的input屬性_類別設定--------------*/
+
+.loginForm input[type="text"], .loginForm input[type="password"]{       /*針對類別 "text" "password" 設定*/
+    border: 2px solid #3498db;                                /*邊框顏色*/
+    width: 180px;                                               /*寬度*/
+    background:rgba(223, 224, 207, 0.486);                    /*背景顏色*/
+
+}
+
+.loginForm input[type="submit"]{                                    /*針對類別 "submit" 設定*/
+    width: 150px;
+    border: 2px solid #2ecc71;
+    background:none;
+}
+
+.loginForm input[type="text"]:focus, .loginForm input[type="password"]:focus{   /*針對類別 "text" "password" 設定 [聚焦時]*/
+    border-color: #cc2e2e ;                                           /*邊框設紅色*/
+    width: 200px;                                                       /*寬度加寬*/
+
+}
+
+.loginForm input[type="text"]:valid, .login input[type="password"]:valid{   /*針對類別 "text" "password" 設定 [條件達成時]*/
+    border-color: #2ecc71 ;                                           /*邊框會變綠色*/
+    width: 200px;                                                       /*寬度加寬*/
+}
+
+.loginForm input[type="submit"]:hover{                                      /*針對類別 "submit" 設定 [點擊]*/
+    background-color: #2ecc71;
+}
+
+
+@media screen and (max-width: 380px) {                                 /*寬度小於380像素 login 做調整*/
+    .loginForm {width: 175px;}
+    .loginForm input{font-size: 10px;}
+    .loginForm input[type="text"], .loginForm input[type="password"]{width: 150px;}
+    .loginForm input[type="submit"]{width: 120px;}
+    .loginForm input[type="text"]:focus, .loginForm input[type="password"]:focus{width: 175px;}
+    .loginForm input[type="text"]:valid, .loginForm input[type="password"]:valid{width: 175px;}
+}
+@media screen and (max-height: 700px) {
+    .loginForm {height: 275px}
+
+}
+
+
+/*---------------------footer---------------------*/
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    display: flex;
+    overflow-x: auto;
+}
+
+.footer__link {
+    display: flex;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow:1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    background-color: #70a9a1;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.footer__link:hover {
+    background-color: #808080;
+}
+
+.footer__link--active {
+    color: #000000;
+}
+
+.nav__icon {
+    font-size: 18px;
+}

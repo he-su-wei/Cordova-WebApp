@@ -1,0 +1,179 @@
+html,body{
+    background-color: #f1e3d3;
+    overflow: hidden;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+/*------------------------------------導航欄------------------------------*/
+.nav_bar{
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 55px;
+    overflow: hidden;
+    position: fixed;
+    list-style-type: none;
+    color: rgb(255, 255, 255);
+    background-color: #70a9a1;
+    box-shadow : 0px 3px 8px 0px rgb(94, 94, 94);
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.item{
+    flex: 0.3;
+    margin-left: 15px;
+}
+
+.flex-2{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+/*-----------------------------Menu 選單------------------------------*/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #70a9a1;/* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+    /* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+    /* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+    /* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+/*----------------------------------------------畫面中心的登入視窗-----------------------------------------*/
+
+.divForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    padding: 10%;
+}
+
+.horizontal-vertical-center{
+    display: block;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
+
+/*----------------------------設置lologin裡的input屬性--------------*/
+.horizontal-vertical-center input{
+    display: block;                                               /* 格式強制換行 */
+    margin: 25px auto;                                            /* 上下間隔20像素 */
+    text-align: center;                                           /* 容器容器裡的文字置中 */
+    height: 36px;                                                 /* 輸入框高度為36像素 */
+    width: 100%;
+    font-size: 15px;                                              /* 輸入框裡提示文字15像素 */
+    border-radius: 15px;                                          /* 輸入框圓角設置 */
+    outline: none;                                                /* 輸入框輪廓設置為無 */
+    color: rgb(0, 0, 0);                                               /* 輸入框裡的文字為白色 */   
+}
+button{
+    display: block;                                               /* 格式強制換行 */
+    margin:15% auto;                                            /* 上下間隔20像素 */
+    text-align: center;                                           /* 容器容器裡的文字置中 */
+    height: 36px;                                                 /* 輸入框高度為36像素 */
+    width: 100%;
+    font-size: 15px;                                              /* 輸入框裡提示文字15像素 */
+    border-radius: 20px; 
+}
+
+
+/*------------------------設置login裡的input屬性_類別設定--------------*/
+
+.horizontal-vertical-center  input[type="text"], .horizontal-vertical-center input[type="password"]{       /*針對類別 "text" "password" 設定*/
+    border: none;                              /*邊框顏色*/
+    width: 80%;                                               /*寬度*/
+    background:rgba(95, 158, 160, 0.486);                    /*背景顏色*/
+
+}
+
+.horizontal-vertical-center button{                                    /*針對類別 "submit" 設定*/
+    width: 70%;
+    background-color: rgb(95, 158, 160);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: none;
+}
+
+.horizontal-vertical-center input:focus{   /*針對類別 "text" "password" 設定 [聚焦時]*/
+    border-color: #cc2e2e ;                                           /*邊框設紅色*/
+    box-shadow: 0 4px 8px 0 rgba(158, 23, 23, 0.19), 0 6px 20px 0 rgba(158, 23, 23, 0.19);
+    width: 90%;                                                       /*寬度加寬*/
+
+}
+
+.horizontal-vertical-center  input[type="text"]:valid, .horizontal-vertical-center input[type="password"]:valid{   /*針對類別 "text" "password" 設定 [條件達成時]*/
+    box-shadow: 0 4px 8px 0 rgba(112, 169, 161, 0.19), 0 6px 20px 0 rgba(112, 169, 161, 0.19);
+    width: 80%;                                                       /*寬度加寬*/
+}
+
+
+/*---------------------footer---------------------*/
+
+.ul_footer{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(112, 169, 161) ;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+
+

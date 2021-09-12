@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/index1.css">
+    <title>app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body style="margin:0; background-color: rgb(238, 227, 206);">
+
+    <script src="https://kit.fontawesome.com/60f5620dc5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <!-- ============================= 導覽列 NavBar ============================= -->
+    
+    <nav class="nav_bar flex">
+        <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+        <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+        <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
+    </nav>  
+
+    <!--------------------------------------------------清單內容------------------------------------------------------------->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="store-login.html">店家登入</a>
+      <a href="customer-login.html">顧客登入</a>
+      <a href="#">訪客模式</a> 
+      <a href="#">關於</a>
+    </div> 
+
+    <!-- ========================== 店家登入 ===================================== -->
+    <div class='div-size'>
+        <div class="horizontal-vertical-center">
+            <form action="choose_store.html">
+                <input type="image" name="店家登入" src="img/store.png" width="135">
+            </form>
+            <div>
+                <h2 style="color: #70a9a1; font-weight:bold; font-family: 'Righteous', cursive;">店家登入</h2>
+            </div>
+             <!-- ========================== 顧客登入 ===================================== -->
+            <form action="choose_custormer.html">
+                <input type="image" name="訪客登入" src="img/customer.png" width="135">
+            </form>
+            <h2 style="color: #70a9a1; font-weight:bold; font-family: 'Righteous', cursive;">顧客登入</h2>
+        </div>
+    </div>
+
+    <!-- ============================= footer 訪客登入 ============================= -->
+
+    <div class="ul_footer">
+        <button style="border: none; background: none;height: 100%;width: 100%;" class="" onclick="location.href='customer-home.html'"><h3>訪客登入</h3></button>
+    </div>
+
+</div>
+<script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "rgb(223, 224, 207)";
+    }
+    </script>
+
+</body>
+</html>

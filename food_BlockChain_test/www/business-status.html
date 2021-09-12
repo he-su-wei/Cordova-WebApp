@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> <!--icon-->
+  <link rel="stylesheet" href="css/business-status.css">
+  <link rel="stylesheet" href="icon/css/all.css">
+</head>
+<body onload="ShowTime()">
+  <!--------------------------------------------------導航欄------------------------------------------------------------->
+  <nav class="nav_bar flex">
+    <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+    <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+    <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
+  </nav>
+  <!--------------------------------------------------清單內容------------------------------------------------------------->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="main.html">首頁</a>
+    <a href="wash_list.html">清洗表</a>
+    <a href="#">關於</a>
+    <a href="index.html">登出</a>
+  </div>
+
+  <!--------------------------------------------------body選擇紐------------------------------------------------------------->
+    <div id="stores" class="stores">
+        <button id="store" class="store">
+            <div id="photo" class="photo">
+                <img src="img/mcd-Logo.png" />
+            </div>
+            <div id="information" class="information">
+                <h2>店家名稱:</h2>
+                <div id="storeName" style="font-size:20px;"></div>
+                <h3>營業狀態:</h3>
+                <div id="status" style="font-size:20px;"></div>
+                <div id="showbox" style="font-size:20px;"></div>
+            </div>
+        </button>
+    </div>  
+    
+    <div id="div-status" class="div-status">
+        <div class="status-on">
+            <button type="button" style="background:none; border: none;" onclick="javascript:opening();">營業中</button>
+        </div>
+        <div class="status-off">
+            <button type="button" onclick="javascript:closed();" style="background:none; border: none;">打烊</button>
+        </div>
+    </div>
+
+   
+  <!--------------------------------------------------js------------------------------------------------------------->
+    <script>
+        function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        }
+        
+        function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        }
+
+        
+    </script>
+        
+
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    
+    <!-- <script>
+        var ws = new WebSocket("ws://192.168.68.53:6001");
+    
+        ws.onopen = function () {
+            console.log('open');
+            ws.send(6);
+            if(localStorage.status == "營業中"){
+                var str = "營業中";
+                genode(str, 'status');
+                function genode(str, id) {
+                    document.getElementById(id).innerHTML = str;
+                }
+            }
+            else if(localStorage.status == "已打烊"){
+                var str = "已打烊";
+                genode(str, 'status');
+                function genode(str, id) {
+                    document.getElementById(id).innerHTML = str;
+                }
+            }
+        };
+
+
+    
+        n = []
+        ws.onmessage = function (event) {
+            n.push(event.data)
+            if(n == "check"){
+                ws.send(localStorage.address);
+            }
+            var str = n[1];
+            genode(str, 'storeName');
+            function genode(str, id) {
+                document.getElementById(id).innerHTML = str;
+            }
+        };
+
+        function opening() {   
+            ws.send(localStorage.address);
+            ws.onmessage = function (event) {   
+                if(event.data == "True"){
+                    localStorage.status = "營業中"
+                    var str = "營業中";
+                    genode(str, 'status');
+                    function genode(str, id) {
+                        document.getElementById(id).innerHTML = str;
+                    }
+                }
+            }
+        };
+        
+        function closed(){
+            ws.send(localStorage.address);
+            ws.onmessage = function (event) {   
+                if(event.data == "False"){
+                    localStorage.status = "已打烊"
+                    var str = "已打烊";
+                    genode(str, 'status');
+                    function genode(str, id) {
+                        document.getElementById(id).innerHTML = str;
+                    }
+                }
+            }
+            
+        };
+    </script> -->
+
+    <script language="JavaScript">
+        function ShowTime(){
+            var NowDate=new Date();
+            var m1=NowDate.getMonth()+1;
+            var d=NowDate.getDate();
+            var h=NowDate.getHours();
+            var m=NowDate.getMinutes();
+            var s=NowDate.getSeconds();　
+            document.getElementById('showbox').innerHTML = `${m1} 月 ${d} 號 ${h}時 ${m}分`;
+            setTimeout('ShowTime()',1000);
+        }
+    </script>
+
+</body>
+</html> 

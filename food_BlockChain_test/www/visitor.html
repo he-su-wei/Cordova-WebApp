@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> <!--icon-->
+  <link rel="stylesheet" href="css/visitor.css">
+</head>
+<body>
+  <!--------------------------------------------------導航欄------------------------------------------------------------->
+  <nav class="nav_bar flex">
+    <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+    <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+    <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
+  </nav>
+  <!--------------------------------------------------清單內容------------------------------------------------------------->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">首頁</a>
+    <a href="login.html">店家登入</a>
+    <a href="signup.html">顧客註冊</a>
+    <a href="login.html">顧客登入</a>
+    <a href="#">關於</a>
+  </div>
+
+  <!--------------------------------------------------登入------------------------------------------------------------->
+  
+
+
+
+
+
+  <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
+  <footer class="footer">
+    <a href="visitor.html" class="footer__link footer__link--active" >
+      <i class="fa fa-home nav__icon"></i>
+      <span class="nav__text">首頁</span>
+    </a>
+    <a href="storeQRCode.html" class="footer__link">
+      <i class="fa fa-qrcode nav__icon"></i>
+      <span class="nav__text">QRCode</span>
+    </a>
+    <a href="#" class="footer__link">
+      <i class="fa fa-cog nav__icon"></i>
+      <span class="nav__text">設定</span>
+    </a>
+
+  </nav>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.body.style.backgroundColor = "rgb(223, 224, 207)";
+    }
+  </script>
+
+</body>
+</html> 

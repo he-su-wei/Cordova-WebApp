@@ -1,0 +1,134 @@
+body{
+    background-color: #f1e3d3;
+    margin: 0px;
+}
+/*------------------------------------導航欄------------------------------*/
+.nav_bar{
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 8%;
+    overflow: hidden;
+    position: sticky;
+    list-style-type: none;
+    color: rgb(255, 255, 255);
+    background-color: #70a9a1;
+    box-shadow: 0px 3px 8px 0px rgb(94, 94, 94);
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.item{
+    flex: 0.3;
+    text-align: center;
+}
+
+.flex-2{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+/*-----------------------------Menu 選單------------------------------*/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #70a9a1;/* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+    /* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+    /* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+    /* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+/*----------------------------------------------畫面中心的登入視窗-----------------------------------------*/
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 4vh;
+    background-color: rgb(187, 171, 171);
+    
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+/*---------------------footer---------------------*/
+
+.ul_footer{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#70a9a1 ;
+    position:sticky;
+    bottom: 0;
+    width: 100%;
+    height: 7%;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+

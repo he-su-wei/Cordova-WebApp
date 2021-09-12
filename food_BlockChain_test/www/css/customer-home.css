@@ -1,0 +1,210 @@
+body{
+    background-color: #f1e3d3;
+    margin: 0px;
+}
+/*------------------------------------導航欄------------------------------*/
+.nav_bar{
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height:60px ;
+    overflow: hidden;
+    position: fixed;
+    list-style-type: none;
+    color: rgb(255, 255, 255);
+    background-color: #70a9a1;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.item{
+    flex: 0.3;
+    margin-left: 15px;
+}
+
+.flex-2{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+/*-----------------------------Menu 選單------------------------------*/
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #70a9a1;/* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+    /* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+    /* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+    /* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+/*-------------------------------------------storeInfo----------------------------------------------*/
+
+.search-container{
+    padding: 5% ;
+    
+    
+}
+
+.search-container form{
+    display: flex;
+    
+}
+
+
+.search-container input{
+    width: 90%;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+}
+
+.search-container button {
+    float: right;
+    margin-top: 5px;
+    background:none;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+
+/*-------------------------------------------storeInfo----------------------------------------------*/
+
+.stores{
+    padding: 5%;
+    color: blanchedalmond;
+    
+}
+
+.store{
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: rgb(89, 165, 190);
+    width: 100%;
+    border: none;
+
+
+}
+
+/* background-color: rgb(200, 253, 251);---*/
+
+.photo {
+   
+    border-radius: 8PX;
+    padding: 5px;
+    float: left;
+    left: 20%;
+
+}
+
+.information{
+    color: black;
+    float: right;
+    width: 56%;
+    height: auto;
+    line-height: 20px;
+    text-align: left;
+}
+.information span{
+    width: 100vw;
+}
+
+.photo img{
+    width: 30vw;
+    height: 15vh;
+    border-radius: 8px;
+}
+
+
+/*---------------------footer---------------------*/
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    display: flex;
+    overflow-x: auto;
+}
+
+.footer__link {
+    display: flex;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow:1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    background-color: #70a9a1;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.footer__link:hover {
+    background-color: #808080;
+}
+
+.footer__link--active {
+    color: #000000;
+}
+
+.nav__icon {
+    font-size: 18px;
+}
+

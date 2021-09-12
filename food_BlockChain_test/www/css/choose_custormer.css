@@ -1,0 +1,145 @@
+body{
+    margin: 0px;
+    background-color: #f1e3d3;
+}
+/*------------------------------------導航欄------------------------------*/
+.nav_bar{
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 55px;
+    overflow: hidden;
+    position: fixed;
+    list-style-type: none;
+    color: rgb(255, 255, 255);
+    background-color: #70a9a1;
+    box-shadow: 0px 3px 8px 0px rgb(94, 94, 94);
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.item{
+    flex: 0.3;
+    margin-left: 15px;
+}
+
+.flex-2{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #70a9a1;/* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+    /* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+    /* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+    /* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+
+
+.divChoose_bg{
+    margin-top: 50%; 
+    background-color:#70a9a1 ;              
+    border-radius: 20px;
+    width:200px;
+    height: auto;
+    color: white;
+    padding: 45px;
+    box-shadow: 10px 10px 10px rgba(78, 128, 125, 0.616) ;
+
+}
+
+.Choose_position{
+    display: flex;
+    align-items: center;              /* 項目置中 */
+    justify-content: center; 
+}
+
+.divChoose_bg h2{
+    text-align: center;
+}
+
+
+.divChoose_bg button{
+    display: block;
+    margin: 30px auto;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 15px;
+    outline: none;
+    color: white;
+    width: 190px;
+    border: 2px solid #f1e3d3;
+}
+
+@media screen and (max-width: 380px) {                                 /*寬度小於380像素 login 做調整*/
+    .divChoose_bg {width: 175px;}
+}
+@media screen and (max-height: 730px) {
+    .loginForm {height: auto}
+
+}
+
+.ul_footer{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#70a9a1 ;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
