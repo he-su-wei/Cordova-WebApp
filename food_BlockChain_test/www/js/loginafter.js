@@ -3,15 +3,21 @@ window.addEventListener('load', function () {
    // console.log(n1)
    // n1.innerText = "麥當勞"
 
-
+   function appendzero(obj){
+      if (obj < 10) return "0" + obj;
+      else return obj;
+   }
    var NowDate=new Date();
-   var m1=NowDate.getMonth()+1;
-   var d=NowDate.getDate();
-   var h=NowDate.getHours();
-   var m=NowDate.getMinutes();
-   var s=NowDate.getSeconds();　
-   document.getElementById('takeDay').innerHTML = m1+' 月 '+d+' 號 '+h+' 時 '+m+' 分';
-
+   var year=NowDate.getFullYear();
+   var month=NowDate.getMonth()+1;
+   var date=NowDate.getDate();
+   var hour=NowDate.getHours();
+   var min=NowDate.getMinutes();
+   var s=NowDate.getSeconds();
+   let time = appendzero(hour) + ":" + appendzero(month)
+   let day = year + "-"　+appendzero(month)+ "-" +appendzero(date)
+   document.getElementById('takeTime').innerHTML = time ;
+   document.getElementById('takeDay').innerHTML =`<b>${day}</b>`  ;
 
 
    const btn =this.document.getElementById('login-home')
