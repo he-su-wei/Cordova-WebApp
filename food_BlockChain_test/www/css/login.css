@@ -122,7 +122,7 @@ html,body{
 }
 button{
     display: block;                                               /* 格式強制換行 */
-    margin:15% auto;                                            /* 上下間隔20像素 */
+    margin:15% auto 25%;                                            /* 上下間隔20像素 */
     text-align: center;                                           /* 容器容器裡的文字置中 */
     height: 36px;                                                 /* 輸入框高度為36像素 */
     width: 100%;
@@ -148,15 +148,22 @@ button{
 }
 
 .horizontal-vertical-center input:focus{   /*針對類別 "text" "password" 設定 [聚焦時]*/
-    border-color: #cc2e2e ;                                           /*邊框設紅色*/
+    font-size: large;                                   
     box-shadow: 0 4px 8px 0 rgba(158, 23, 23, 0.19), 0 6px 20px 0 rgba(158, 23, 23, 0.19);
-    width: 90%;                                                       /*寬度加寬*/
-
+    width: 90%;                                                    
 }
 
 .horizontal-vertical-center  input[type="text"]:valid, .horizontal-vertical-center input[type="password"]:valid{   /*針對類別 "text" "password" 設定 [條件達成時]*/
     box-shadow: 0 4px 8px 0 rgba(112, 169, 161, 0.19), 0 6px 20px 0 rgba(112, 169, 161, 0.19);
-    width: 80%;                                                       /*寬度加寬*/
+    width: 80%;                                           
+}
+
+.horizontal-vertical-center button:hover{                                    /*針對類別 "submit" 設定*/
+    width: 75%;
+    font-size: large;
+    background-color: rgb(95, 158, 160);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: none;
 }
 
 
