@@ -1,6 +1,7 @@
-body{
+html,body{
     margin: 0px;
     height: 100%;
+    overflow: hidden;
     background-color: #f1e3d3;
 }
 /*------------------------------------導航欄------------------------------*/
@@ -85,44 +86,41 @@ body{
     .sidenav a {font-size: 18px;}
 }
 
-
-
+/*---------------------------------------------------------*/
+.Choose_position{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .divChoose_bg{
-    
+    display:block;
+    justify-content: center;
+    text-align: center;
     background-color:#70a9a1 ;              
     border-radius: 20px;
-    height: auto;
-    width: auto;
+    height: 50%;
+    width: 80%;
     color: white;
-    padding: 45px;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 10px 10px 10px rgba(78, 128, 125, 0.616) ;
-
 }
 
-.Choose_position{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:50%;
-    width: 80%;
-}
 
 .divChoose_bg h2{
-    text-align: center;
+    margin: 0;
 }
-
-
 .divChoose_bg button{
-    display: block;
-    margin: 30px auto;
+    margin: 60px auto 35px;
     height: 60px;
     font-size: auto;
     border-radius: 15px;
     outline: none;
     color: white;
-    width: 100%;
+    width: 80%;
     border: 2px solid #f1e3d3;
 }
 
