@@ -1,6 +1,5 @@
 html,body{
     background-color: #f1e3d3;
-    overflow: hidden;
     margin: 0px;
     height: 100%;
     width: 100%;
@@ -94,7 +93,7 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 85%;
 
     padding: 10%;
 }
