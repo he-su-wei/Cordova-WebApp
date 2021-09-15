@@ -1,110 +1,108 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/business-status.css">
-  <link rel="stylesheet" href="icon/css/all.css">
-</head>
-<body>
-  <!--------------------------------------------------導航欄------------------------------------------------------------->
-  <nav class="nav_bar flex">
-    <div class="item"> <i class="fas fa-reply fa-2x" onclick="location.href='main.html'"></i> </div>
-    <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
-    <div class="item"><i class="fas fa-bars fa-2x" onclick="openNav()"></i> </div>
-  </nav>
-  <!--------------------------------------------------清單內容------------------------------------------------------------->
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="main.html">首頁</a>
-    <a href="wash_list.html">清洗表</a>
-    <a href="#">關於</a>
-    <a href="index.html">登出</a>
-  </div>
-
-  <!--------------------------------------------------body選擇紐------------------------------------------------------------->
-    <div class="status">
-        <h4 id="status"></h4>
-    </div>
-    <div id="div-status" class="div-status">
-        <div class="btn-status">
-            <button id="on" class="status-on" type="button" style="border: none;" onclick="javascript:opening();"><i class="fas fa-store-alt fa-3x"></i><p>營業中</p></button>
-            <button id="off" class="status-off" type="button" style=" border: none;" onclick="javascript:closed();" ><i class="fas fa-store-alt-slash fa-3x"></i><p>打烊</p></button>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/business-status.css">
+        <link rel="stylesheet" href="icon/css/all.css">
+    </head>
+    <body>
+    <!--------------------------------------------------導航欄------------------------------------------------------------->
+        <nav class="nav_bar flex">
+            <div class="item"> <i class="fas fa-reply fa-2x" onclick="location.href='main.html'"></i> </div>
+            <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+            <div class="item"><i class="fas fa-bars fa-2x" onclick="openNav()"></i> </div>
+        </nav>
+    <!--------------------------------------------------清單內容------------------------------------------------------------->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="main.html">首頁</a>
+            <a href="wash_list.html">清洗表</a>
+            <a href="#">關於</a>
+            <a href="index.html">登出</a>
         </div>
-    </div>
 
-   
-  <!--------------------------------------------------js------------------------------------------------------------->
-    <script src="cordova.js"></script>
-    <script src="js/business-status.js"></script>
-    <script src="js/index.js"></script>
-    
-    <!-- <script>
-        var ws = new WebSocket("ws://192.168.68.53:6001");
-    
-        ws.onopen = function () {
-            console.log('open');
-            ws.send(6);
-            if(localStorage.status == "營業中"){
-                var str = "營業中";
-                genode(str, 'status');
-                function genode(str, id) {
-                    document.getElementById(id).innerHTML = str;
-                }
-            }
-            else if(localStorage.status == "已打烊"){
-                var str = "已打烊";
-                genode(str, 'status');
-                function genode(str, id) {
-                    document.getElementById(id).innerHTML = str;
-                }
-            }
-        };
-
+    <!--------------------------------------------------body選擇紐------------------------------------------------------------->
+        <div class="status">
+            <h4 id="status"></h4>
+        </div>
+        <div id="div-status" class="div-status">
+            <div class="btn-status">
+                <button id="on" class="status-on" type="button" style="border: none;" onclick="javascript:opening();"><i class="fas fa-store-alt fa-3x"></i><p>營業中</p></button>
+                <button id="off" class="status-off" type="button" style=" border: none;" onclick="javascript:closed();" ><i class="fas fa-store-alt-slash fa-3x"></i><p>打烊</p></button>
+            </div>
+        </div>
 
     
-        n = []
-        ws.onmessage = function (event) {
-            n.push(event.data)
-            if(n == "check"){
-                ws.send(localStorage.address);
-            }
-            var str = n[1];
-            genode(str, 'storeName');
-            function genode(str, id) {
-                document.getElementById(id).innerHTML = str;
-            }
-        };
-
-        function opening() {   
-            ws.send(localStorage.address);
-            ws.onmessage = function (event) {   
-                if(event.data == "True"){
-                    localStorage.status = "營業中"
+    <!--------------------------------------------------js------------------------------------------------------------->
+        <script src="cordova.js"></script>
+        <script src="js/business-status.js"></script>
+        <script src="js/index.js"></script>
+        
+        <!-- <script>
+            var ws = new WebSocket("ws://192.168.68.53:6001");
+        
+            ws.onopen = function () {
+                console.log('open');
+                ws.send(6);
+                if(localStorage.status == "營業中"){
                     var str = "營業中";
                     genode(str, 'status');
                     function genode(str, id) {
                         document.getElementById(id).innerHTML = str;
                     }
                 }
-            }
-        };
-        
-        function closed(){
-            ws.send(localStorage.address);
-            ws.onmessage = function (event) {   
-                if(event.data == "False"){
-                    localStorage.status = "已打烊"
+                else if(localStorage.status == "已打烊"){
                     var str = "已打烊";
                     genode(str, 'status');
                     function genode(str, id) {
                         document.getElementById(id).innerHTML = str;
                     }
                 }
-            }
-            
-        };
-    </script> -->
-    
+            };
 
-</body>
+
+        
+            n = []
+            ws.onmessage = function (event) {
+                n.push(event.data)
+                if(n == "check"){
+                    ws.send(localStorage.address);
+                }
+                var str = n[1];
+                genode(str, 'storeName');
+                function genode(str, id) {
+                    document.getElementById(id).innerHTML = str;
+                }
+            };
+
+            function opening() {   
+                ws.send(localStorage.address);
+                ws.onmessage = function (event) {   
+                    if(event.data == "True"){
+                        localStorage.status = "營業中"
+                        var str = "營業中";
+                        genode(str, 'status');
+                        function genode(str, id) {
+                            document.getElementById(id).innerHTML = str;
+                        }
+                    }
+                }
+            };
+            
+            function closed(){
+                ws.send(localStorage.address);
+                ws.onmessage = function (event) {   
+                    if(event.data == "False"){
+                        localStorage.status = "已打烊"
+                        var str = "已打烊";
+                        genode(str, 'status');
+                        function genode(str, id) {
+                            document.getElementById(id).innerHTML = str;
+                        }
+                    }
+                }
+                
+            };
+        </script> -->
+    </body>
 </html> 
