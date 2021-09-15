@@ -105,27 +105,28 @@
 
     <script src="cordova.js"></script>
     <script src="js/index.js"></script>
-    webSocket connect
-    <script>
+
+    <!-- webSocket connect -->
+    <!-- <script>
         var ws = new WebSocket("ws://192.168.68.53:6001");
 
         ws.onopen = function () {
             console.log('open');
             ws.send(2);
-            // if(localStorage.status == "營業中"){
-            //     var str = "營業中";
-            //     genode(str, 'status');
-            //     function genode(str, id) {
-            //         document.getElementById(id).innerHTML = str;
-            //     }
-            // }
-            // else if(localStorage.status == "已打烊"){
-            //     var str = "已打烊";
-            //     genode(str, 'status');
-            //     function genode(str, id) {
-            //         document.getElementById(id).innerHTML = str;
-            //     }
-            // }
+            if(localStorage.status == "營業中"){
+                var str = "營業中";
+                genode(str, 'status');
+                function genode(str, id) {
+                    document.getElementById(id).innerHTML = str;
+                }
+            }
+            else if(localStorage.status == "已打烊"){
+                var str = "已打烊";
+                genode(str, 'status');
+                function genode(str, id) {
+                    document.getElementById(id).innerHTML = str;
+                }
+            }
         };
 
         n = [];
@@ -142,25 +143,26 @@
             }
         };
 
-        // ws.onerror = function (e) {
-        //     console.log(e);
-        //     // document.getElementById('dataID').value = 'error';
-        // };
+        ws.onerror = function (e) {
+            console.log(e);
+            document.getElementById('dataID').value = 'error';
+        };
 
-        // ws.onclose = function (event) {
-        //     console.log('close code=' + event.code);
-        // };
-    </script>
+        ws.onclose = function (event) {
+            console.log('close code=' + event.code);
+        };
+    </script> -->
 
     <!-- QR Code -->
-    <!-- <script>
+    <script>
         function scan(){
             cordova.plugins.barcodeScanner.scan(
                 function(result){
                     if(!result.cancelled){
                         if(result.format == "QR_CODE") {
                             var value = result.text;
-                            ws.send(value);  
+                            alert("You Code: " + value);
+                            // ws.send(value);  
                         }
                     }
                 },
@@ -169,21 +171,21 @@
                 }
             );
         }
-    </script> -->
+    </script>
 
-    <script>
+    <!-- <script>
         function setTime(){
-            var value = "Beef005";
+            var value = "Beef004";
             ws.send(value);  
             ws.send(localStorage.address);
         }
-    </script>
+    </script> -->
 
-    <script>
+    <!-- <script>
         function kit(){
             ws.send(localStorage.address);
         }
-    </script>
+    </script> -->
 
     <script language="JavaScript">
         function ShowTime(){
