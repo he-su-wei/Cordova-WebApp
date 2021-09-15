@@ -14,7 +14,7 @@ window.addEventListener('load', function () {
    var hour=NowDate.getHours();
    var min=NowDate.getMinutes();
    var s=NowDate.getSeconds();
-   let time = appendzero(hour) + ":" + appendzero(month)
+   let time = appendzero(hour) + ":" + appendzero(min)
    let day = year + "-"　+appendzero(month)+ "-" +appendzero(date)
    document.getElementById('takeTime').innerHTML = time ;
    document.getElementById('takeDay').innerHTML =`<b>${day}</b>`  ;
