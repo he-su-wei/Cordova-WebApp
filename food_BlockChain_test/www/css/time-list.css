@@ -2,23 +2,35 @@ html,body{
     background-color: #f1e3d3;
     height: 100%;
     width: 100%;
-    overflow: hidden;
     margin: 0px;
 }
 /*------------------------------------導航欄------------------------------*/
-.nav_bar{
-    top: 0;
-    margin: 0;
-    padding: 0;
+.nav-box{
+    height: 7%;
     width: 100%;
-    height: 8%;
-    overflow: hidden;
-    position: sticky;
-    list-style-type: none;
-    color: rgb(255, 255, 255);
-    background-color: #70a9a1;
-    box-shadow: 0px 3px 8px 0px rgb(94, 94, 94);
 }
+
+.nav_bar{
+    height: 100%;
+    list-style-type: none;
+    background-color: #70a9a1;/*--#70a2a9---*/
+}
+.nav-btn{
+    overflow: hidden;
+    justify-content: space-around;
+    background-color: #70a2a9;
+    border-radius: 0px 0px 15px 15px;
+    height:6% ;
+}
+#nav-btn a.active {
+    color: rgb(46, 46, 46);
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
 
 .flex{
     display: flex;
@@ -29,6 +41,7 @@ html,body{
 .item{
     flex: 0.3;
     text-align: center;
+    color: rgb(255, 255, 255);
 }
 
 .flex-2{
@@ -104,61 +117,26 @@ html,body{
     justify-content: center;
 }
 
-.col {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    margin: 10px 5px;
+/*----------------------------------------------body table1表格-----------------------------------------*/
+.food-status{
+    height: auto;
+    padding: 0px 2% 20%;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 }
   
-  /* Remove extra left and right margins, due to padding */
-.row {
-    margin: 50px 1px;
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
   
-/*----------------------------------------------body選擇紐風格-----------------------------------------*/
-
-#c2{
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    text-align: center;
-    border: 3px solid #333D51;
-    /* padding: 20px;   */
-    border-radius: 10px;
-    background-color: #da627d;
-    /* background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
-} 
-
-
-
-#c4{
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    text-align: center;
-    border: 3px solid #333D51;
-    /* padding: 20px;   */
-    border-radius: 10px;
-    background-color:#ead2ac ;
-    /* background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
-} 
-
-
-
-#c6{
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    text-align: center;
-    border: 3px solid #333D51;
-    /* padding: 20px;   */
-    border-radius: 10px;
-    background-color: #4986ac;
-    /* background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
-} 
-
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 
 .fa-center {
     display: inline-flex;
@@ -175,7 +153,22 @@ html,body{
     transition: background-color 0.1s ease-in-out;
 }
 
+
 /*---------------------footer---------------------*/
 
-
+.ul_footer{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    align-items: center;
+    background-color:#70a2a9 ;
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    height: 6%;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+}
 
