@@ -10,7 +10,7 @@
     <nav class="nav_bar flex">
         <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
         <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
-        <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
+        <div class="item"><i class="fas fa-bars fa-2x" onclick="openNav()"></i> </div>
     </nav>
     <!------------------------------------------------清單內容------------------------------------------------------------->
     <div id="mySidenav" class="sidenav">
@@ -37,12 +37,10 @@
     <script>
         function openNav() {
           document.getElementById("mySidenav").style.width = "250px";
-          document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
         }
         
         function closeNav() {
           document.getElementById("mySidenav").style.width = "0";
-          document.body.style.backgroundColor = "rgb(223, 224, 207)";
         }
         </script>
 

@@ -25,10 +25,10 @@ class TestNetWorkContract:
          self.temp_abi = json.load(f)
       
       # 設定合約位址
-      self.contract_addr = self.w3.toChecksumAddress('0x82584E3DEf6f4a0a9464062e65898D4b5dB07eeE')
+      self.contract_addr = self.w3.toChecksumAddress('0xd50cB67436Dc0C909c8a29d4DA78c973C2eDaAFf')
       self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
       # 設定帳號位址
-      self.account = self.w3.toChecksumAddress('0x9ac947be54588E3857fe580630a83e4B60a2294F')
+      self.account = self.w3.toChecksumAddress('0x9C5C9028f3C0137E688f58B6647C3501A8C8A942')
    
    # def Store(self,x):
    #    if(isinstance(x, int)==False):
@@ -56,7 +56,7 @@ class TestNetWorkContract:
    #       return "Success"
       
    # 設定食材進貨時間
-   def setDeliverTime(self, id, address):
+   def setDeliverTime(self, id, address, key):
       address = self.w3.toChecksumAddress(address)
       estimate_gas = self.contract.functions.setDeliverTime(id, address).estimateGas()
       nonce = self.w3.eth.getTransactionCount(self.account)
@@ -68,7 +68,7 @@ class TestNetWorkContract:
          })
       # Sign the transaction.
       #設定私鑰
-      signed_txn = self.w3.eth.account.signTransaction(txn, private_key='fb8ad9e391a3665f9b56cdb1d1623517f7f3239d3987ce0ce51150b8fcbdcb08')
+      signed_txn = self.w3.eth.account.signTransaction(txn, private_key=key)
       
       # with open(r'D:\BlockChain\node1\keystore\UTC--2021-01-28T08-33-08.903281600Z--62abb714ae2eedd6d3329a658bb49f78b5eb98bb') as keyfile:
       #    encrypted_key = keyfile.read()
@@ -78,7 +78,7 @@ class TestNetWorkContract:
       return "Success"
 
    # 設定食物清理時間
-   def setFoodCleanTime(self, id, address):
+   def setFoodCleanTime(self, id, address, key):
       address = self.w3.toChecksumAddress(address)
       estimate_gas = self.contract.functions.setFoodCleanTime(id, address).estimateGas()
       nonce = self.w3.eth.getTransactionCount(self.account)
@@ -90,7 +90,7 @@ class TestNetWorkContract:
          })
       # Sign the transaction.
       #設定私鑰
-      signed_txn = self.w3.eth.account.signTransaction(txn, private_key='fb8ad9e391a3665f9b56cdb1d1623517f7f3239d3987ce0ce51150b8fcbdcb08')
+      signed_txn = self.w3.eth.account.signTransaction(txn, private_key=key)
       
       # with open(r'D:\BlockChain\node1\keystore\UTC--2021-01-28T08-33-08.903281600Z--62abb714ae2eedd6d3329a658bb49f78b5eb98bb') as keyfile:
       #    encrypted_key = keyfile.read()
@@ -100,7 +100,7 @@ class TestNetWorkContract:
       return "Success"
 
    # 刪除食物進貨時間跟清理時間
-   def deleteFood(self, id, address):
+   def deleteFood(self, id, address, key):
       address = self.w3.toChecksumAddress(address)
       estimate_gas = self.contract.functions.deleteFood(id, address).estimateGas()
       nonce = self.w3.eth.getTransactionCount(self.account)
@@ -112,7 +112,7 @@ class TestNetWorkContract:
          })
       # Sign the transaction.
       #設定私鑰
-      signed_txn = self.w3.eth.account.signTransaction(txn, private_key='fb8ad9e391a3665f9b56cdb1d1623517f7f3239d3987ce0ce51150b8fcbdcb08')
+      signed_txn = self.w3.eth.account.signTransaction(txn, private_key=key)
       
       # with open(r'D:\BlockChain\node1\keystore\UTC--2021-01-28T08-33-08.903281600Z--62abb714ae2eedd6d3329a658bb49f78b5eb98bb') as keyfile:
       #    encrypted_key = keyfile.read()
@@ -122,7 +122,7 @@ class TestNetWorkContract:
       return "Success"
 
    # 設定環境清理時間
-   def setlocationTime(self, address):
+   def setlocationTime(self, address, key):
       address = self.w3.toChecksumAddress(address)
       estimate_gas = self.contract.functions.setlocationTime(address).estimateGas()
       nonce = self.w3.eth.getTransactionCount(self.account)
@@ -134,7 +134,7 @@ class TestNetWorkContract:
          })
       # Sign the transaction.
       #設定私鑰
-      signed_txn = self.w3.eth.account.signTransaction(txn, private_key='fb8ad9e391a3665f9b56cdb1d1623517f7f3239d3987ce0ce51150b8fcbdcb08')
+      signed_txn = self.w3.eth.account.signTransaction(txn, private_key=key)
       
       # with open(r'D:\BlockChain\node1\keystore\UTC--2021-01-28T08-33-08.903281600Z--62abb714ae2eedd6d3329a658bb49f78b5eb98bb') as keyfile:
       #    encrypted_key = keyfile.read()
@@ -144,7 +144,7 @@ class TestNetWorkContract:
       return "Success"
 
    # 重製環境清理
-   def refresh(self, address):
+   def refresh(self, address, key):
       address = self.w3.toChecksumAddress(address)
       estimate_gas = self.contract.functions.refresh(address).estimateGas()
       nonce = self.w3.eth.getTransactionCount(self.account)
@@ -156,7 +156,7 @@ class TestNetWorkContract:
          })
       # Sign the transaction.
       #設定私鑰
-      signed_txn = self.w3.eth.account.signTransaction(txn, private_key='fb8ad9e391a3665f9b56cdb1d1623517f7f3239d3987ce0ce51150b8fcbdcb08')
+      signed_txn = self.w3.eth.account.signTransaction(txn, private_key=key)
       
       # with open(r'D:\BlockChain\node1\keystore\UTC--2021-01-28T08-33-08.903281600Z--62abb714ae2eedd6d3329a658bb49f78b5eb98bb') as keyfile:
       #    encrypted_key = keyfile.read()
@@ -166,7 +166,7 @@ class TestNetWorkContract:
       return "Success"
 
    # 開始營業
-   def setStoreOpen(self, address):
+   def setStoreOpen(self, address, key):
       address = self.w3.toChecksumAddress(address)
       estimate_gas = self.contract.functions.setStoreOpen(address).estimateGas()
       nonce = self.w3.eth.getTransactionCount(self.account)
@@ -178,7 +178,7 @@ class TestNetWorkContract:
          })
       # Sign the transaction.
       #設定私鑰
-      signed_txn = self.w3.eth.account.signTransaction(txn, private_key='fb8ad9e391a3665f9b56cdb1d1623517f7f3239d3987ce0ce51150b8fcbdcb08')
+      signed_txn = self.w3.eth.account.signTransaction(txn, private_key=key)
       
       # with open(r'D:\BlockChain\node1\keystore\UTC--2021-01-28T08-33-08.903281600Z--62abb714ae2eedd6d3329a658bb49f78b5eb98bb') as keyfile:
       #    encrypted_key = keyfile.read()
@@ -188,7 +188,7 @@ class TestNetWorkContract:
       return "Success"
 
    # 關閉營業
-   def setStoreClose(self, address):
+   def setStoreClose(self, address, key):
       address = self.w3.toChecksumAddress(address)
       estimate_gas = self.contract.functions.setStoreClose(address).estimateGas()
       nonce = self.w3.eth.getTransactionCount(self.account)
@@ -200,7 +200,7 @@ class TestNetWorkContract:
          })
       # Sign the transaction.
       #設定私鑰
-      signed_txn = self.w3.eth.account.signTransaction(txn, private_key='fb8ad9e391a3665f9b56cdb1d1623517f7f3239d3987ce0ce51150b8fcbdcb08')
+      signed_txn = self.w3.eth.account.signTransaction(txn, private_key=key)
       
       # with open(r'D:\BlockChain\node1\keystore\UTC--2021-01-28T08-33-08.903281600Z--62abb714ae2eedd6d3329a658bb49f78b5eb98bb') as keyfile:
       #    encrypted_key = keyfile.read()
@@ -208,6 +208,12 @@ class TestNetWorkContract:
       tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
       # print('0x'+bytes.hex(tx_hash))
       return "Success"
+
+   # def CreateAccount(self, password):
+   #    acct = self.w3.eth.account.create()
+   #    print(acct)
+   #    print(acct.address)
+   #    print(bytes.hex(acct.privateKey))
       
    def getDeliverTime(self, id, address):
       address = self.w3.toChecksumAddress(address)
@@ -248,9 +254,13 @@ class TestNetWorkContract:
       address = self.w3.toChecksumAddress(address)
       return self.contract.functions.getlocationStatus(address).call()
 
-   def getStoreOpen(self, address):
+   def getStoreStatus(self, address):
       address = self.w3.toChecksumAddress(address)
-      return self.contract.functions.getStoreOpen(address).call()
+      return self.contract.functions.getStoreStatus(address).call()
+
+   def getKey(self, address):
+      address = self.w3.toChecksumAddress(address)
+      return self.contract.functions.getKey(address).call()
       
    
 
@@ -264,9 +274,13 @@ class TestNetWorkContract:
 contract = TestNetWorkContract()
 # contract.GetAllFunc()
 
+# a = "asdasd"
+# contract.CreateAccount(a)
+
 import asyncio
 import websockets
 import json
+import time
 
 connected = set()
 
@@ -294,10 +308,30 @@ async def echo(websocket, path):
       elif n=="1":
          await websocket.send("check")
          address = await websocket.recv()
+         # print(address)
          # 重製清理時間
-         # contract.refresh(address)
-         storeName = contract.getStoreName(address)
-         await websocket.send(str(storeName))
+         key = contract.getKey(address)
+
+         locationTime = contract.getlocationTime(address)
+         # print(locationTime)
+         # #現在unixTime
+         nowTime = int(time.time()) 
+         if locationTime!=0 and nowTime >= locationTime+6480:
+            storeName = contract.getStoreName(address)
+            await websocket.send(str(storeName))
+            contract.refresh(address, key)
+            
+         elif locationTime==0:
+            storeName = contract.getStoreName(address)
+            # print(storeName)
+            await websocket.send(str(storeName))  
+
+         else:
+            storeName = contract.getStoreName(address)
+            # print(storeName)
+            await websocket.send(str(storeName))  
+
+         
       # main.html
       elif n=="2":
          await websocket.send("check")
@@ -309,27 +343,34 @@ async def echo(websocket, path):
          async for message in websocket:
             n = f"{message}"
             lis.append(n)
-            print(n)
+            # print(n)
             if len(lis)==2:
                id = lis[0]
                address = lis[1]
+               key = contract.getKey(address)
+               print(key)
+
+             
                # 設定進貨時間
-               if contract.getDeliverTime(id, address) == 0:
-                  contract.setDeliverTime(id, address) 
+               if contract.getDeliverTime(id, address)==0:
+                  print("0")
+                  contract.setDeliverTime(id, address, key) 
                   lis.clear()
                # 設定清洗時間
-               elif contract.getDeliverTime(id, address) != 0:
-                  if contract.getFoodCleanTime(id, address)==0 and contract.getFoodState(id, address)==1:
-                     contract.setFoodCleanTime(id, address)
-                     lis.clear()
+               elif contract.getDeliverTime(id, address)!=0 and contract.getFoodState(id, address)==1 and contract.getFoodCleanTime(id, address)==0:
+                  print("1")
+                  contract.setFoodCleanTime(id, address, key)
+                  lis.clear()
                # 刪除食物時間
-               elif contract.getDeliverTime(id, address) != 0 and contract.getFoodState(id, address)==1 and contract.getFoodCleanTime(id, address)!=0:
-                  contract.deleteFood(id, address)
+               elif contract.getFoodState(id, address)==1 and contract.getFoodCleanTime(id, address)!=0:
+                  print("2")
+                  contract.deleteFood(id, address, key)
                   lis.clear()
             # 環境清理
             elif len(lis)==1 and len(lis[0])==42:
                address = lis[0]
-               contract.setlocationTime(address)
+               key = contract.getKey(address)
+               contract.setlocationTime(address, key)
                lis.clear()
       # 食材進貨時間表
       elif n=="3":
@@ -368,22 +409,24 @@ async def echo(websocket, path):
          locationStatus = contract.getlocationStatus(address)
          await websocket.send(json.dumps(locationStatus))
          print(json.dumps(json.dumps(locationStatus)))
-      # elif n=="6":
-      #    await websocket.send("check")
-      #    address = await websocket.recv()
-      #    storeName = contract.getStoreName(address)
-      #    await websocket.send(str(storeName))
-      #    # print(address)
+      elif n=="6":
+         await websocket.send("check")
+         address = await websocket.recv()
+         storeName = contract.getStoreName(address)
+         await websocket.send(str(storeName))
+         # print(address)
 
-      #    async for message in websocket:
-      #       n = f"{message}"
-      #       address = n 
-      #       if contract.getStoreOpen(address) == False:
-      #          contract.setStoreOpen(address)
-      #          await websocket.send(str(contract.getStoreOpen(address)))
-      #       elif contract.getStoreOpen(address) == True:
-      #          contract.setStoreClose(address)
-      #          await websocket.send(str(contract.getStoreOpen(address)))
+         async for message in websocket:
+            n = f"{message}"
+            address = n 
+            if contract.getStoreStatus(address) == False:
+               key = contract.getKey(address)
+               contract.setStoreOpen(address, key)
+               await websocket.send(str(contract.getStoreStatus(address)))
+            elif contract.getStoreStatus(address) == True:
+               key = contract.getKey(address)
+               contract.setStoreClose(address, key)
+               await websocket.send(str(contract.getStoreStatus(address)))
                
 
                      
@@ -394,7 +437,15 @@ async def echo(websocket, path):
       connected.remove(websocket)
 
 
-start_server = websockets.serve(echo, "192.168.68.53", 6001)
+start_server = websockets.serve(echo, "192.168.50.78", 6001)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
+
+
+
+
+
+
+
+

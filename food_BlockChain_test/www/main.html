@@ -107,8 +107,8 @@
     <script src="js/index.js"></script>
 
     <!-- webSocket connect -->
-    <!-- <script>
-        var ws = new WebSocket("ws://192.168.68.53:6001");
+    <script>
+        var ws = new WebSocket("ws://192.168.50.78:6001");
 
         ws.onopen = function () {
             console.log('open');
@@ -143,26 +143,26 @@
             }
         };
 
-        ws.onerror = function (e) {
-            console.log(e);
-            document.getElementById('dataID').value = 'error';
-        };
+        // ws.onerror = function (e) {
+        //     console.log(e);
+        //     document.getElementById('dataID').value = 'error';
+        // };
 
-        ws.onclose = function (event) {
-            console.log('close code=' + event.code);
-        };
-    </script> -->
+        // ws.onclose = function (event) {
+        //     console.log('close code=' + event.code);
+        // };
+    </script>
 
     <!-- QR Code -->
-    <script>
+    <!-- <script>
         function scan(){
             cordova.plugins.barcodeScanner.scan(
                 function(result){
                     if(!result.cancelled){
                         if(result.format == "QR_CODE") {
                             var value = result.text;
-                            alert("You Code: " + value);
-                            // ws.send(value);  
+                            ws.send(value);  
+                            ws.send(localStorage.address);
                         }
                     }
                 },
@@ -171,21 +171,21 @@
                 }
             );
         }
-    </script>
+    </script> -->
 
-    <!-- <script>
+    <script>
         function setTime(){
-            var value = "Beef004";
+            var value = "Beef001";
             ws.send(value);  
             ws.send(localStorage.address);
         }
     </script> -->
 
-    <!-- <script>
+    <script>
         function kit(){
             ws.send(localStorage.address);
         }
-    </script> -->
+    </script>
 
     <script language="JavaScript">
         function ShowTime(){

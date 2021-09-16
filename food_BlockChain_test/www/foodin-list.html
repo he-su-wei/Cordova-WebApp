@@ -27,148 +27,6 @@
         <td>日期時間</td>
         <td>狀態</td>
       </tr>
-
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-            <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
-      <tr>
-        <td>食材</td>
-        <td>日期時間</td>
-        <td>狀態</td>
-      </tr>
       
     </table>
   </div>
@@ -231,7 +89,7 @@
 
   <!-- webSocket connect -->
   <script>
-    var ws = new WebSocket("ws://192.168.68.53:6001");
+    var ws = new WebSocket("ws://192.168.50.78:6001");
 
     ws.onopen = function () {
         console.log('open');
@@ -275,20 +133,38 @@
             for (var i=0; i<words.length; i++) { 
                 var tr = document.createElement('tr');
                 tbody.appendChild(tr);
-                //<td>id</td>
-                var td = document.createElement('td');
-                td.innerHTML = words2[i];
-                tr.appendChild(td);
-                //unixTime 轉換
-                //<td>unixTime</td>
-                var td2 = document.createElement('td');
-                var date = new Date(parseInt(words[i])*1000);
-                td2.innerHTML = date.toLocaleString();
-                tr.appendChild(td2);
-                //<td>狀態</td>
-                var td3 = document.createElement('td');
-                td3.innerHTML = "進貨";
-                tr.appendChild(td3);
+
+                if(words[i] == ""){
+                  //<td>id</td>
+                  var td = document.createElement('td');
+                  td.innerHTML = "無資料";
+                  tr.appendChild(td);
+                  //unixTime 轉換
+                  //<td>unixTime</td>
+                  var td2 = document.createElement('td');
+                  td2.innerHTML = "無資料";
+                  tr.appendChild(td2);
+                  //<td>狀態</td>
+                  var td3 = document.createElement('td');
+                  td3.innerHTML = "無資料";
+                  tr.appendChild(td3);
+                }
+                else{
+                  //<td>id</td>
+                  var td = document.createElement('td');
+                  td.innerHTML = words2[i];
+                  tr.appendChild(td);
+                  //unixTime 轉換
+                  //<td>unixTime</td>
+                  var td2 = document.createElement('td');
+                  var date = new Date(parseInt(words[i])*1000);
+                  td2.innerHTML = date.toLocaleString();
+                  tr.appendChild(td2);
+                  //<td>狀態</td>
+                  var td3 = document.createElement('td');
+                  td3.innerHTML = "進貨";
+                  tr.appendChild(td3);
+                }
             }
         }
         

@@ -101,7 +101,7 @@ html,body{
     text-align: center;
     background-color:#70a9a1 ;              
     border-radius: 20px;
-    height: 50%;
+    height:auto;
     width: 70%;
     color: white;
     margin-left: auto;
@@ -114,7 +114,7 @@ html,body{
     margin: 0;
 }
 .divChoose_bg button{
-    margin: 60px auto 35px;
+    margin: 35px auto;
     height: 60px;
     font-size: auto;
     border-radius: 15px;
