@@ -18,6 +18,13 @@ ws.onmessage = function (event) {
     function genode(str, id) {
         document.getElementById(id).innerHTML = str;
     }
+    
+};
+ws.onclose = function(event) {
+    setImg()
 };
 
-// console.log(localStorage.address)
+function setImg(){
+    let tmp = '<img class="img-size" src="img/'+n[2]+'" /></div>'
+    $('#stores').append(tmp);
+}

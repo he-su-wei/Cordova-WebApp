@@ -10,7 +10,6 @@ var data = [];
 var words = [];
 function onload(){
     ws.onmessage = function (event) {
-    
         datas.push(event.data);
         // console.log(datas);
         for (var i = 0; i < datas.length; i++) {
@@ -34,10 +33,7 @@ function onload(){
     ws.onclose = function(evt) {
         setInfo();
     };
-
 }
-
-
 
 function setInfo(){
     for(let i=0;i<words.length;i++) {
