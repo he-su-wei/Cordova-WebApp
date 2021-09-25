@@ -6,25 +6,25 @@
     <link rel="stylesheet" href="css/sigup.css">
 </head>
 <body>
-  <!--------------------------------------------------導航欄------------------------------------------------------------->
-  <nav class="nav_bar flex">
-    <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
-    <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
-    <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
-  </nav>
+    <!--------------------------------------------------導航欄------------------------------------------------------------->
+    <nav class="nav_bar flex">
+        <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+        <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+        <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
+    </nav>
 
-  <!--------------------------------------------------清單內容------------------------------------------------------------->
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="index.html">首頁</a>
-    <a href="signup.html">註冊</a>
-    <a href="customer-login.html">顧客登入</a>
-    <a href="store-login.html">店家登入</a>
-    <a href="#">訪客模式</a> 
-    <a href="#">關於</a>
-  </div>
+    <!--------------------------------------------------清單內容------------------------------------------------------------->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">首頁</a>
+        <a href="signup.html">註冊</a>
+        <a href="customer-login.html">顧客登入</a>
+        <a href="store-login.html">店家登入</a>
+        <a href="#">訪客模式</a> 
+        <a href="#">關於</a>
+    </div>
 
-  <!--------------------------------------------------登入------------------------------------------------------------->
+    <!--------------------------------------------------登入------------------------------------------------------------->
     <div  class="divForm">
         <div action="login.py" class="loginForm">
             <h1>Sign up 註冊</h1>
@@ -35,20 +35,17 @@
             <button type="button" style="background: none;" class="" onclick="location.href='#'">Submit 提交</button>
         </div>
     </div>
-
-    <!----------------------------------------------footer------------------------------------------------------------->
-
-
-    <script>
+    
+     <!----------------------------------------------footer------------------------------------------------------------->
+     <script>
         function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
-          
+            document.getElementById("mySidenav").style.width = "250px";
         }
         
         function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-      
+            document.getElementById("mySidenav").style.width = "0";
         }
     </script>
+
 </body>
 </html>

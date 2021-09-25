@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="js/business-status.js">
         <link rel="stylesheet" href="css/business-status.css">
         <link rel="stylesheet" href="icon/css/all.css">
     </head>
@@ -34,67 +35,9 @@
 
     
     <!--------------------------------------------------js------------------------------------------------------------->
-    <script src="cordova.js"></script>
-    <script src="js/business-status.js"></script>
-    <script src="js/index.js"></script>
-    
-    <script>
-        var ws = new WebSocket("ws://192.168.50.78:6001");
-    
-        ws.onopen = function () {
-            console.log('open');
-            console.log(localStorage.status);
-            ws.send(6);
-            if(localStorage.status == "營業中"){
-                var str = "營業中";
-                genode(str, 'status');
-                function genode(str, id) {
-                    document.getElementById(id).innerHTML = str;
-                }
-            }
-            else if(localStorage.status == "已打烊"){
-                var str = "已打烊";
-                genode(str, 'status');
-                function genode(str, id) {
-                    document.getElementById(id).innerHTML = str;
-                }
-            }
-        };
-    
-        ws.onmessage = function (event) {
-            n = event.data;
-            if(n == "check"){
-                ws.send(localStorage.address);
-            }
-        };
-        function opening() {   
-            ws.send(localStorage.address);
-            ws.onmessage = function (event) {   
-                if(event.data == "True"){
-                    localStorage.status = "營業中"
-                    var str = "營業中";
-                    genode(str, 'status');
-                    function genode(str, id) {
-                        document.getElementById(id).innerHTML = str;
-                    }
-                }
-            }
-        };
-        
-        function closed(){
-            ws.send(localStorage.address);
-            ws.onmessage = function (event) {   
-                if(event.data == "False"){
-                    localStorage.status = "已打烊"
-                    var str = "已打烊";
-                    genode(str, 'status');
-                    function genode(str, id) {
-                        document.getElementById(id).innerHTML = str;
-                    }
-                }
-            }
-            
-        };
-    </script>
+        <script src="cordova.js"></script>
+        <script src="js/business-status.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/business-status_conn.js"></script>
     </body>
 </html> 

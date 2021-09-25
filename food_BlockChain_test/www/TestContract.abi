@@ -25,6 +25,42 @@
 		"inputs": [
 			{
 				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "allStoreInfos",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "storeName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "iconName",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "isOpen",
+				"type": "bool"
+			},
+			{
+				"internalType": "bool",
+				"name": "isClear",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "address",
 				"name": "_storeAddress",
 				"type": "address"
 			},
@@ -162,6 +198,21 @@
 	},
 	{
 		"constant": true,
+		"inputs": [],
+		"name": "getAllStore",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [
 			{
 				"internalType": "string",
@@ -240,23 +291,19 @@
 	},
 	{
 		"constant": true,
-		"inputs": [],
-		"name": "getMealsInfos",
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "getKey",
 		"outputs": [
 			{
-				"internalType": "string[]",
+				"internalType": "string",
 				"name": "",
-				"type": "string[]"
-			},
-			{
-				"internalType": "string[]",
-				"name": "",
-				"type": "string[]"
-			},
-			{
-				"internalType": "string[]",
-				"name": "",
-				"type": "string[]"
+				"type": "string"
 			}
 		],
 		"payable": false,
@@ -293,7 +340,7 @@
 				"type": "address"
 			}
 		],
-		"name": "getStoreOpen",
+		"name": "getStoreState",
 		"outputs": [
 			{
 				"internalType": "bool",
@@ -349,63 +396,6 @@
 	},
 	{
 		"constant": true,
-		"inputs": [],
-		"name": "i",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "imgs",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "infos",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
 		"inputs": [
 			{
 				"internalType": "address",
@@ -434,27 +424,6 @@
 				"internalType": "bool",
 				"name": "status",
 				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "names",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
 			}
 		],
 		"payable": false,
@@ -526,33 +495,8 @@
 			},
 			{
 				"internalType": "string",
-				"name": "_storeName",
+				"name": "_private_key",
 				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_userName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_mealsInfo",
-				"type": "string"
-			}
-		],
-		"name": "setMealsInfo",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
 			},
 			{
 				"internalType": "string",
@@ -567,6 +511,11 @@
 			{
 				"internalType": "string",
 				"name": "_passWd",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_iconName",
 				"type": "string"
 			}
 		],
@@ -645,37 +594,39 @@
 		"constant": true,
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
 			}
 		],
-		"name": "storeDatas",
+		"name": "storeInfoForUser",
 		"outputs": [
 			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "storeAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "storeName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "userName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "mealsInfo",
-				"type": "string"
+				"components": [
+					{
+						"internalType": "string",
+						"name": "storeName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "iconName",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isOpen",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isClear",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct foodChain.allStoreInfo",
+				"name": "",
+				"type": "tuple"
 			}
 		],
 		"payable": false,
@@ -697,6 +648,11 @@
 				"internalType": "address",
 				"name": "storeAddress",
 				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "private_key",
+				"type": "string"
 			},
 			{
 				"internalType": "string",

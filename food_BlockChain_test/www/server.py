@@ -25,10 +25,10 @@ class TestNetWorkContract:
          self.temp_abi = json.load(f)
       
       # 設定合約位址
-      self.contract_addr = self.w3.toChecksumAddress('0xd50cB67436Dc0C909c8a29d4DA78c973C2eDaAFf')
+      self.contract_addr = self.w3.toChecksumAddress('0x2784487Af3a2e29E32c5b9fB2F2f1e510AcE3046')
       self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
       # 設定帳號位址
-      self.account = self.w3.toChecksumAddress('0x9C5C9028f3C0137E688f58B6647C3501A8C8A942')
+      self.account = self.w3.toChecksumAddress('0xcbB8d3F355920d5aF500E992401Ed405cb76461A')
    
    # def Store(self,x):
    #    if(isinstance(x, int)==False):
@@ -254,14 +254,25 @@ class TestNetWorkContract:
       address = self.w3.toChecksumAddress(address)
       return self.contract.functions.getlocationStatus(address).call()
 
-   def getStoreStatus(self, address):
+   def getStoreState(self, address):
       address = self.w3.toChecksumAddress(address)
-      return self.contract.functions.getStoreStatus(address).call()
+      return self.contract.functions.getStoreState(address).call()
 
    def getKey(self, address):
       address = self.w3.toChecksumAddress(address)
       return self.contract.functions.getKey(address).call()
-      
+
+   
+   def getAllStore(self):
+      return self.contract.functions.getAllStore().call()
+
+   def storeInfoForUser(self, address):
+      address = self.w3.toChecksumAddress(address)
+      return self.contract.functions.storeInfoForUser(address).call()
+
+   def getStoreIconName(self, address):
+      address = self.w3.toChecksumAddress(address)
+      return self.contract.functions.getStoreIconName(address).call()
    
 
 
@@ -288,6 +299,7 @@ async def echo(websocket, path):
    connected.add(websocket)
    try:
       n = await websocket.recv()
+      print(n)
       # 登入
       if n=="0":
          check = []
@@ -295,6 +307,25 @@ async def echo(websocket, path):
             n = f"{message}"    
             check.append(n)
             # print(check)
+            if len(check)==3:
+               checkStore = contract.checkStore(check[0], check[1], check[2])
+               print(checkStore)  
+               if(checkStore==True):
+                  await websocket.send(json.dumps(checkStore))
+                  check.clear()
+               elif(checkStore==False):
+                  await websocket.send(json.dumps(checkStore))
+                  check.clear()
+      elif n=="8":
+         await websocket.send("check")
+         address = await websocket.recv()
+         storeName = contract.getStoreName(address)
+         await websocket.send(str(storeName))
+         check = []
+         async for message in websocket:
+            n = f"{message}"    
+            check.append(n)
+            print(check)
             if len(check)==3:
                checkStore = contract.checkStore(check[0], check[1], check[2])
                # print(checkStore)  
@@ -311,25 +342,34 @@ async def echo(websocket, path):
          # print(address)
          # 重製清理時間
          key = contract.getKey(address)
-
          locationTime = contract.getlocationTime(address)
          # print(locationTime)
          # #現在unixTime
          nowTime = int(time.time()) 
+         
          if locationTime!=0 and nowTime >= locationTime+6480:
+
             storeName = contract.getStoreName(address)
             await websocket.send(str(storeName))
+
+            icon = contract.getStoreIconName(address)  
+            await websocket.send(str(icon))
+
             contract.refresh(address, key)
             
          elif locationTime==0:
             storeName = contract.getStoreName(address)
             # print(storeName)
             await websocket.send(str(storeName))  
+            icon = contract.getStoreIconName(address)  
+            await websocket.send(str(icon))
 
          else:
             storeName = contract.getStoreName(address)
             # print(storeName)
-            await websocket.send(str(storeName))  
+            await websocket.send(str(storeName))
+            icon = contract.getStoreIconName(address)  
+            await websocket.send(str(icon))
 
          
       # main.html
@@ -338,7 +378,7 @@ async def echo(websocket, path):
          address = await websocket.recv()
          storeName = contract.getStoreName(address)
          await websocket.send(str(storeName))
-
+         
          lis = []
          async for message in websocket:
             n = f"{message}"
@@ -349,8 +389,6 @@ async def echo(websocket, path):
                address = lis[1]
                key = contract.getKey(address)
                print(key)
-
-             
                # 設定進貨時間
                if contract.getDeliverTime(id, address)==0:
                   print("0")
@@ -376,7 +414,7 @@ async def echo(websocket, path):
       elif n=="3":
          await websocket.send("check")
          address = await websocket.recv()
-         print(address)
+         # print(address)
          dliverTime = contract.getAllDeliverTime(address)
          await websocket.send(json.dumps(dliverTime))
          print(json.dumps(dliverTime))
@@ -388,7 +426,7 @@ async def echo(websocket, path):
       elif n=="4":
          await websocket.send("check")
          address = await websocket.recv()
-         print(address)
+         # print(address)
 
          CleanTime = contract.getAllCleanTime(address)
          await websocket.send(json.dumps(CleanTime))
@@ -412,21 +450,35 @@ async def echo(websocket, path):
       elif n=="6":
          await websocket.send("check")
          address = await websocket.recv()
-         storeName = contract.getStoreName(address)
-         await websocket.send(str(storeName))
+         # await websocket.send(str(contract.getStoreState(address)))
+         # print(str(contract.getStoreState(address)))
          # print(address)
-
          async for message in websocket:
             n = f"{message}"
             address = n 
-            if contract.getStoreStatus(address) == False:
+            print(n)
+            if contract.getStoreState(address) == False:
+               # print("n")
                key = contract.getKey(address)
+               # print(address)
                contract.setStoreOpen(address, key)
-               await websocket.send(str(contract.getStoreStatus(address)))
-            elif contract.getStoreStatus(address) == True:
+               await websocket.send(str(contract.getStoreState(address)))
+            elif contract.getStoreState(address) == True:
+               # print("y")
                key = contract.getKey(address)
                contract.setStoreClose(address, key)
-               await websocket.send(str(contract.getStoreStatus(address)))
+               await websocket.send(str(contract.getStoreState(address)))
+      elif n=="7":
+         allAddress = contract.getAllStore()
+         for i in range(len(allAddress)):
+            sum = contract.storeInfoForUser(allAddress[i])
+            await websocket.send(str(sum))
+      elif n=="9":
+         await websocket.send("check")
+         address = await websocket.recv()
+
+         sum = contract.storeInfoForUser(address)
+         await websocket.send(str(sum))
                
 
                      
@@ -437,7 +489,7 @@ async def echo(websocket, path):
       connected.remove(websocket)
 
 
-start_server = websockets.serve(echo, "192.168.50.78", 6001)
+start_server = websockets.serve(echo, "192.168.68.50", 6001)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

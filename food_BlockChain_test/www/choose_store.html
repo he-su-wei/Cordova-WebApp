@@ -4,13 +4,14 @@
     <meta charset="utf-8"></mata>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/choose_store.css">
+    <link rel="stylesheet" href="icon/css/all.css">
 </head>
 <body>
     <!-------------------------------------------------導航欄------------------------------------------------------------>
     <nav class="nav_bar flex">
         <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
         <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
-        <div class="item"> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> </div>
+        <div class="item"><i class="fas fa-bars fa-2x" onclick="openNav()"></i> </div>
     </nav>
     <!------------------------------------------------清單內容------------------------------------------------------------->
     <div id="mySidenav" class="sidenav">
@@ -36,14 +37,15 @@
 
     <script>
         function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("mySidenav").style.width = "250px";
         }
         
         function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("mySidenav").style.width = "0";
         }
     </script>
 
+    <script src="js/choose_store_conn.js"></script>
 
 </body>
 </html>

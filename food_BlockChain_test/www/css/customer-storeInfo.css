@@ -1,6 +1,6 @@
 html, body{
     background-color: #f1e3d3;
-
+    overflow: hidden;
     height: 100%;
     margin: 0px;
 }
@@ -35,7 +35,7 @@ html, body{
     flex-basis: 0%;
 }
 
-/*-----------------------------Menu 選單------------------------------*/
+/*-----------------------------Menu 動態選單------------------------------*/
 
 .sidenav {
     height: 100%; /* 100% Full-height */
@@ -86,73 +86,74 @@ html, body{
     .sidenav a {font-size: 18px;}
 }
 
-/*-------------------------------------------storeInfo----------------------------------------------*/
-
-.stores{
+/*-------------------------------------------body storeInfo----------------------------------------------*/
+.test-div{
     padding: 5%;
-    color: blanchedalmond;
-    
+
 }
 
-.store{
-    padding: 10px 0px 10px 10px;
+.test1{
     margin-bottom: 15px;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: rgb(89, 165, 190);
     width: 100%;
     border: none;
-
-
 }
 
-.photo {
-    background-color: rgb(200, 253, 251);
-    border-radius: 8PX;
-    padding: 5px;
-    float: left;
-    left: 20%;
-
+.div-btn{
+    margin-bottom: 15px;
+    border-radius: 0px 0px 20px 20px;
+    background-color: rgb(89, 165, 190);
+    width: 100%;
+    border: none;
 }
 
-.information{
+.test1 img{
+
+    border-radius: 20px 20px 0px 0px;
+    height: 100%;
+    width: 100%;
+}
+.test1 h2 {
+    padding: 0px 0px 0px 20px;
+    flex-grow: 0.9;
+    flex-shrink: 0;
+    flex-basis: 20%;
+}
+.lef{
+    display: flex;
+    align-items: center;
+}
+
+
+.dropbtn{
+    width: 25%;
+    height: 20px;
+}
+
+br{
     color: black;
-    float: right;
-    width: 56%;
-    height: auto;
-    line-height: 20px;
-    text-align: left;
-}
-.information span{
-    width: 100vw;
-}
-
-.photo img{
-    width: 30vw;
-    height: 15vh;
 }
 
 /*-------------------------------------------storeInfo btn----------------------------------------------*/
 .rowbtn{
     display: flex;
-    justify-content: center;
+    justify-content:space-between;
     padding: 5%;
 
 }
 .colbtn-left{
- 
+    width:32%;
     height: 15vh;
-    width: 100%;
 }
 .colbtn-center{
-    padding: 0px 5px 0px;
+    width: 32%;
     height: 15vh;
-    width: 100%;
 }
 
 .colbtn-right{
-
+    width: 32%;
     height: 15vh;
-    width: 100%;
 }
 
 button{
@@ -211,64 +212,11 @@ button{
 }
 
 
-
-
-
-.test-div{
-    padding: 5%;
-
-}
-
-.test1{
-    margin-bottom: 15px;
-    border-radius: 20px;
-    background-color: rgb(89, 165, 190);
-    width: 100%;
-    border: none;
-}
-
-.div-btn{
-    margin-bottom: 15px;
-    border-radius: 0px 0px 20px 20px;
-    background-color: rgb(89, 165, 190);
-    width: 100%;
-    border: none;
-}
-
-.test1 img{
-
-    border-radius: 20px 20px 0px 0px;
-    height: 100%;
-    width: 100%;
-}
-.test1 h2 {
-    padding: 0px 0px 0px 20px;
-    flex-grow: 0.9;
-    flex-shrink: 0;
-    flex-basis: 20%;
-}
-.lef{
-    display: flex;
-    align-items: center;
-}
-
-
-.dropbtn{
-    width: 25%;
-    height: 20px;
-
-
-}
-
-br{
-    color: black;
-}
-
 #panel, #flip {
     text-align: center;
    
 }
   
-  #panel {
+#panel {
     display: none;
 }

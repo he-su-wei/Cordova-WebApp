@@ -1,69 +1,77 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JQuery/jquery-3.6.0.min.js"></script>
     <script> 
-      $(document).ready(function(){
-        $("#flip").click(function(){
-          $("#panel").slideToggle("slow");
+        $(document).ready(function(){
+            $("#flip").click(function(){
+                $("#panel").slideToggle("slow");
+            });
         });
-      });
-      </script>
+    </script>
 
     <link rel="stylesheet" href="css/customer-storeInfo.css">
     <link rel="stylesheet" href="icon/css/all.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <!--------------------------------------------------導航欄------------------------------------------------------------->
     <nav class="nav_bar flex">
-      <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
-      <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
-      <div class="item">         
-        <a href="customer-home.html">
-          <i class="fas fa-arrow-left fa-2x icon_color"></i></a></div>
+        <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+        <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+        <div class="item">         
+            <a href="customer-home.html">
+            <i class="fas fa-arrow-left fa-2x icon_color"></i></a>
+        </div>
     </nav>
 
-  <!--------------------------------------------------body選擇紐------------------------------------------------------------->
+    <!--------------------------------------------------body選擇紐------------------------------------------------------------->
     <div class="test-div">
-      <div class="test1">
-        <img src="img/mcd.jpg" />
-        <div class="lef">
-          <h2>麥當勞</h2>
-          <button id="flip" onclick="" class="dropbtn">Dropdown</button>
-        </div>
-        
-        <div id="panel" class="div-btn">
-          <hr style="width: 85%; border: 0.1px solid rgb(124, 124, 124); "/>
-          <p><b>五星好評</b></p>
-          <div id='rowbtn' class='rowbtn '>
-            <div id='colbtn-left' class='colbtn-center'>
-              <button id='btn' class='btn'><h3>食安查詢</h3></button>
+        <div class="test1">
+            <img src="store_img/mcd.jpg" />
+            <div class="lef">
+                <h2>麥當勞</h2>
+                <button id="flip" onclick="" class="dropbtn">Dropdown</button>
             </div>
-            <div id='colbtn-center' class='colbtn-center'>
-              <button id='btn' class='btn'><h3>評論</h3></button>
-            </div>
-            <div id='colbtn-right' class='colbtn-right'>
-              <button id='btn' class='btn'><h3>菜單查詢</h3> </button>
+          
+            <div id="panel" class="div-btn">
+                <hr style="width: 85%; border: 0.1px solid rgb(124, 124, 124); "/>
+                <p><b>五星好評</b></p>
+
+                <div id='rowbtn' class='rowbtn '>
+
+                    <div id='colbtn-left' class='colbtn-center'>
+                        <button id='btn' class='btn'><h3>食安查詢</h3></button>
+                    </div>
+
+                    <div id='colbtn-center' class='colbtn-center'>
+                        <button id='btn' class='btn'><h3>評論</h3></button>
+                    </div>
+
+                    <div id='colbtn-right' class='colbtn-right'>
+                        <button id='btn' class='btn'><h3>菜單查詢</h3> </button>
+                    </div>
+
+                </div>
+
             </div>
             
-          </div>
-      
         </div>
-      </div>
     </div>
 
-  <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
+    <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
     <footer class="footer">
-      <a href="customer-home.html" class="footer__link footer__link--active">
-        <i class="fa fa-home nav__icon"></i>
-        <span >首頁</span>
-      </a>
+        <a href="customer-home.html" class="footer__link footer__link--active">
+            <i class="fa fa-home nav__icon"></i>
+            <span >首頁</span>
+        </a>
+  
+        <a href="custormer-info.html" class="footer__link">
+            <i class="far fa-user nav__icon"></i>
+            <span>我的帳號</span>
+        </a>
 
-      <a href="#" class="footer__link">
-        <i class="far fa-user nav__icon"></i>
-        <span>我的帳號</span>
-      </a>
-
-  </body>
-</html> 
+    </footer>
+  
+</body>
+</html>

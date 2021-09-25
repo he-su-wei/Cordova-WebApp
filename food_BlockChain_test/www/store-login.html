@@ -1,46 +1,48 @@
 <!DOCTYPE html>
-<html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/login.css">
-  <link rel="stylesheet" href="icon/css/all.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="icon/css/all.css">
 </head>
 <body>
-  <!--------------------------------------------------導航欄------------------------------------------------------------->
-  <nav class="nav_bar flex">
-    <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
-    <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
-    <div class="item"> <i class="fas fa-bars fa-2x" onclick="openNav()"></i> </div>
-  </nav>
-  <!--------------------------------------------------清單內容------------------------------------------------------------->
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="signup.html">註冊</a>
-    <a href="store-login.html">店家登入</a>
-    <a href="customer-login.html">顧客登入</a>
-    <a href="#">訪客模式</a> 
-    <a href="#">關於</a>
-  </div>
-  <!--------------------------------------------------登入------------------------------------------------------------->
-  <div class="divForm">
-    <div class="horizontal-vertical-center">
-          <h1 style="margin: 0px auto 20%;";">Login</h1>
-          <input id="Account" type="text" placeholder="Account 帳號" required pattern="[0-9a-zA-Z]{4,12}"/>    
-          <input id="Password" type="password" placeholder="Password 密碼"required pattern="[0-9a-zA-Z]{8,}"/>
-          <button type="button" class="" onclick="location.href='loginafter.html'">Enter</button>
-      </div>
-    </div>
-  </div>
+    <!--------------------------------------------------導航欄------------------------------------------------------------->
+    <nav class="nav_bar flex">
+        <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+        <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+        <div class="item"> <i class="fas fa-bars fa-2x" onclick="openNav()"></i> </div>
+    </nav>
 
-  <script>
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-    }
+    <!--------------------------------------------------清單內容------------------------------------------------------------->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="signup.html">註冊</a>
+        <a href="store-login.html">店家登入</a>
+        <a href="customer-login.html">顧客登入</a>
+        <a href="#">訪客模式</a> 
+        <a href="#">關於</a>
+    </div>
     
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-    }
+    <!--------------------------------------------------登入------------------------------------------------------------->
+    <div class="divForm">
+        <div class="horizontal-vertical-center">
+            <h1 style="margin: 0px auto 20%;";">Login</h1>
+            <input id="Account" type="text" placeholder="Account 帳號" required pattern="[0-9a-zA-Z]{4,12}"/>    
+            <input id="Password" type="password" placeholder="Password 密碼"required pattern="[0-9a-zA-Z]{8,}"/>
+            <button type="button" class="" onclick="location.href='loginafter.html'">Enter</button>
+        </div>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+        
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
     </script>
 
+    <script src="js/store-login_conn.js"></script>
+
 </body>
-</html> 
+</html>
