@@ -11,10 +11,13 @@
     </script>
 
     <link rel="stylesheet" href="css/customer-storeInfo.css">
+    <link rel="stylesheet" href="css/menu-bar.css">
+    <link rel="stylesheet" href="css/nav-bar.css">
     <link rel="stylesheet" href="icon/css/all.css">
 </head>
 
-<body>
+<body onload = "onload();">
+    <script src="js/customer-storeInfo_conn.js"></script>
     <!--------------------------------------------------導航欄------------------------------------------------------------->
     <nav class="nav_bar flex">
         <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
@@ -28,8 +31,8 @@
     <!--------------------------------------------------body選擇紐------------------------------------------------------------->
     <div class="test-div">
         <div class="test1">
-            <img src="store_img/mcd.jpg" />
-            <div class="lef">
+            <img id="storeImg" src="store_img/KFC_Logo.jpg" />
+            <div class="lef" id="storeName">
                 <h2>麥當勞</h2>
                 <button id="flip" onclick="" class="dropbtn">Dropdown</button>
             </div>
@@ -41,15 +44,15 @@
                 <div id='rowbtn' class='rowbtn '>
 
                     <div id='colbtn-left' class='colbtn-center'>
-                        <button id='btn' class='btn'><h3>食安查詢</h3></button>
+                        <button id='foodSafety' class='btn'><h3>食安查詢</h3></button>
                     </div>
 
                     <div id='colbtn-center' class='colbtn-center'>
-                        <button id='btn' class='btn'><h3>評論</h3></button>
+                        <button id='comment' class='btn'><h3>評論</h3></button>
                     </div>
 
                     <div id='colbtn-right' class='colbtn-right'>
-                        <button id='btn' class='btn'><h3>菜單查詢</h3> </button>
+                        <button id='menu' class='btn'><h3>菜單查詢</h3> </button>
                     </div>
 
                 </div>
@@ -70,6 +73,15 @@
             <i class="far fa-user nav__icon"></i>
             <span>我的帳號</span>
         </a>
+
+        <script> 
+            function opened(){
+              $("#panel").slideToggle("slow");
+              // $("#flip").click(function(){
+              //   $("#panel").slideToggle("slow");
+              // });
+            }
+        </script>
 
     </footer>
   

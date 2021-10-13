@@ -1,3 +1,4 @@
+
 var datas = [];
 var data = [];
 var words = [];
@@ -50,10 +51,14 @@ function onload(){
 }
 
 function setInfo() {
-    $('#storeImg').attr('src','img/'+words[0][2]+'');
-    $('#storeName').html('<h2>'+words[0][1]+'</h2><a id="flip" onclick="" class="dropbtn">Dropdown</a>');
-    
+    $('#storeImg').attr('src','store_img/'+words[0][2]+'');
+    $('#storeName').html('<h2>'+words[0][1]+'</h2><button id="flip" onclick="javascript:opened();" class="dropbtn">Dropdown</button>');
+    $('#foodSafety').attr('onclick','javascript:window.location.href = \"customer-foodin-list.html?'+words[0][0]+'\"');
     // $('#foodSafety').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');
     // $('#comment').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');
     // $('#menu').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');
 }
+
+// function nextPage(){
+    
+// }

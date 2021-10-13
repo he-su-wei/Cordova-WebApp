@@ -2,11 +2,12 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> <!--icon-->
+  <link rel="stylesheet" href="css/nav-bar.css">
+  <link rel="stylesheet" href="css/menu-bar.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="icon/css/all.css">
 </head>
-<body onload="ShowTime()">
+<body onload="ShowTime(), onload()";>
     <!--------------------------------------------------導航欄------------------------------------------------------------->
     <nav class="nav_bar flex">
         <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
@@ -40,7 +41,7 @@
         <div class="btn">
             <div class="updiv">
                 <div class="butto1">
-                    <button type="button" onclick="javascript:scan();" style="background:none; border: none;"> 
+                    <button type="button" onclick="javascript:setTime();" style="background:none; border: none;"> 
                         <div id="c2" class="fa-center">
                             <i class="fas fa-truck fa-2x"></i>
                             <span style="margin: 8px 0px 0px 0px;">食材進貨</span>

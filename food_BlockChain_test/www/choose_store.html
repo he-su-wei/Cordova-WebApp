@@ -3,10 +3,12 @@
     <title>app</title>
     <meta charset="utf-8"></mata>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/nav-bar.css">
+    <link rel="stylesheet" href="css/menu-bar.css">
     <link rel="stylesheet" href="css/choose_store.css">
     <link rel="stylesheet" href="icon/css/all.css">
 </head>
-<body>
+<body onload = "onload();">
     <!-------------------------------------------------導航欄------------------------------------------------------------>
     <nav class="nav_bar flex">
         <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
@@ -25,7 +27,7 @@
     <!---------------------------------------------------登入-------------------------------------------------------------->
     <div class="Choose_position">
         <div  class="divChoose_bg">
-            <button type="button" class="button" style="background: none;" class="" onclick="location.href='firstone-login.html'">登入</button>
+            <button type="button" class="button" style="background: none;" class="" onclick="javascript:check();">登入</button>
             <h2>or</h2>
             <button type="button" class="button"style="background:none" class="" onclick="location.href='signup.html'">商家註冊聯絡客服</button>  
         </div>

@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="JQuery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="icon/css/all.css">
     <link rel="stylesheet" href="css/time-list.css">
 </head>
-<body onload="ShowTime(), onload()";>
+
+<body onload="onloaded()">
     <!--------------------------------------------------導航欄------------------------------------------------------------->
     <div class="nav-box">
         <nav class="nav_bar flex">
-            <div class="item"> <i class="fas fa-reply fa-2x" onclick="location.href='main.html'"></i> </div>
-            <div class="item flex-2"> <h3>食材進貨管理</h3> </div>
+          <div class="item"> <i class="fas fa-reply fa-2x" id="backPage" onclick="setPage()"></i> </div>
+            <div class="item flex-2"> <h3>食材清洗管理</h3> </div>
             <div class="item"><i class="fas fa-redo-alt fa-2x" onclick="location.reload()"></i></div>
         </nav>
     </div>
     <div id="nav-btn" class="nav-btn flex">
-        <a class="active item" href="javascript:void(0)"><i class="fas fa-truck fa-1x"></i></a>
-        <a class="item" href="javascript:void(0)"><i class="fas fa-utensils fa-1x" onclick="location.href='food-list.html'"></i></a>
-        <a class="item" href="javascript:void(0)"><i class="fas fa-broom fa-1x" onclick="location.href='kitchen-list.html'"></i></a>
+          <a class="item" href="javascript:void(0)"><i class="fas fa-truck fa-1x" id="foodIn" onclick="setPage()"></i></a>
+          <a class="active item" href="javascript:void(0)"><i class="fas fa-utensils fa-1x"></i></a>
+          <a class="item" href="javascript:void(0)"><i class="fas fa-broom fa-1x" id="kitchenClean" onclick="setPage()"></i></a>
     </div>
 
+    <!-------------------------------------------------body table-------------------------------------------------------->
     <div id="food-status" class="food-status">
         <table>
             <tr>
@@ -26,6 +29,7 @@
                 <td>日期時間</td>
                 <td>狀態</td>
             </tr>
+          
         </table>
     </div>
 
@@ -35,7 +39,6 @@
     </div>
 
     <!--------------------------------------------------time javascript------------------------------------------------------------>
-
     <script language="JavaScript">
         var NowDate=new Date();
         var year=NowDate.getFullYear();
@@ -55,8 +58,8 @@
             document.getElementById('showbox').innerHTML = `更新時間:  ${time}`;
         }
     </script>
-        
-  <!--------------------------------------------------nav-btn javascript------------------------------------------------------------>
+
+    <!--------------------------------------------------nav-btn javascript------------------------------------------------------------>
     <script>
         window.onscroll = function() {myFunction()};
         
@@ -70,8 +73,9 @@
                 navbar.classList.remove("sticky");
             }
         }
-    </script>
-  <!--------------------------------------------------script------------------------------------------------------------->
+      </script>
+
+      <!--------------------------------------------------script------------------------------------------------------------->
     <script>
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
@@ -86,7 +90,7 @@
     <script src="js/index.js"></script>
 
     <!-- webSocket connect -->
-    <script src="js/foodin-list_conn.js"></script>
+    <script src="js/customer-food-list_conn.js"></script>
 
 </body>
 </html>
