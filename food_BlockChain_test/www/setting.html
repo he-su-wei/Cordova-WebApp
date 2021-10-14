@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> <!--icon-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/setting.css">
+    <link rel="stylesheet" href="icon/css/all.css">
+</head>
+<body>
+    <!--------------------------------------------------導航欄------------------------------------------------------------->
+    <nav class="nav_bar flex">
+        <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
+        <div class="item flex-2"> <h3>食安與健康飲食</h3> </div>
+        <div class="item"><i class="fas fa-bars fa-2x" onclick="openNav()"></i> </div>
+    </nav>
+
+    <!--------------------------------------------------清單內容------------------------------------------------------------->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="main.html">首頁</a>
+        <a href="wash_list.html">清洗表</a>
+        <a href="setting.html">設定</a>
+        <a href="#">關於</a>
+        <a href="index.html">登出</a>
+    </div>
+
+    <!--------------------------------------------------------------------------------------------------------------->
+    <div class="list-padding">
+        <ul>
+            <li>
+                <i class="fas fa-store fa-1x" ></i>
+                <span>營業狀態</span>
+                <label class="switch" for="store-State">
+                    <input id="store-State" type="checkbox"  onclick ="OnChangeCheckbox (this)">
+                    <span class="slider round"></span>
+                </label>
+            </li>
+            <li><i class="fas fa-broom fa-1x"></i><a href="#">Tea</a></li>
+            <li><i class="fas fa-info-circle fa-1x"></i><a href="#">版本資訊</a></li>
+        </ul>
+
+        <ul>
+            <li><i class="fas fa-store fa-1x"></i><span>營業狀態</span></li>
+            <li><i class="fas fa-broom fa-1x"></i><span>Tea</span></li>
+            <li><i class="fas fa-info-circle fa-1x"></i><span>版本資訊</span></li>
+        </ul>
+        <ul>
+            <li><i class="fas fa-store fa-1x"></i><span>營業狀態</span></li>
+            <li><i class="fas fa-broom fa-1x"></i><span>Tea</span></li>
+            <li><i class="fas fa-info-circle fa-1x"></i><span>版本資訊</span></li>
+        </ul>
+
+    </div>
+
+    <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
+    <footer class="footer">
+        <a href="main.html" class="footer__link ">
+            <i class="fa fa-home nav__icon"></i>
+            <span >首頁</span>
+        </a>
+        <a href="wash_list.html" class="footer__link">
+            <i class="far fa-list-alt nav__icon"></i>
+            <span>清洗表</span>
+        </a>
+        <a href="setting.html" class="footer__link footer__link--active">
+            <i class="fa fa-cog nav__icon"></i>
+            <span>設定</span>
+        </a>
+    </footer>
+
+    <!-------------------------------------------------------JavaScript----------------------------------------------------------->
+    <script src="js/setting.js"></script>
+
+</body>
+</html>

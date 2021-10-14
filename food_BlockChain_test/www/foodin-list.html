@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="icon/css/all.css">
     <link rel="stylesheet" href="css/time-list.css">
 </head>
-<body onload="ShowTime(), onload()";>
+<body onload="onload()">
     <!--------------------------------------------------導航欄------------------------------------------------------------->
     <div class="nav-box">
         <nav class="nav_bar flex">
@@ -36,7 +36,7 @@
 
     <!--------------------------------------------------time javascript------------------------------------------------------------>
 
-    <script language="JavaScript">
+    <!-- <script language="JavaScript">
         var NowDate=new Date();
         var year=NowDate.getFullYear();
         var month=NowDate.getMonth()+1;
@@ -54,7 +54,7 @@
             let time = appendzero(month)+ "-" +appendzero(date) + " " + appendzero(hour) + ":" + appendzero(min)
             document.getElementById('showbox').innerHTML = `更新時間:  ${time}`;
         }
-    </script>
+    </script> -->
         
   <!--------------------------------------------------nav-btn javascript------------------------------------------------------------>
     <script>
