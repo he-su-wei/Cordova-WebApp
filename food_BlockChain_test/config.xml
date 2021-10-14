@@ -15,11 +15,22 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <!-- locking the screen -->
+    <preference name="orientation" value="portrait" />
+    
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
+    
+    <!-- for iOS -->
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <feature name="Toast">
+        <param name="ios-package" value="Toast" />
+    </feature>
 </widget>

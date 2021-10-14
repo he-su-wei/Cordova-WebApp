@@ -8,7 +8,7 @@ body{
     display: flex;
     align-items: center;              /* 項目置中 */
     justify-content: center;          /*水平對其置中*/
-    margin-top: 50%;                /*向下平移130px*/
+    margin-top: 40%;                /*向下平移130px*/
 }
 
 
