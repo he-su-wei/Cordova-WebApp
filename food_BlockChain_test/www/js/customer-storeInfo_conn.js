@@ -1,17 +1,18 @@
-
 var datas = [];
-var data = [];
-var words = [];
+let sendData = new Object();
 function onload(){
     let url = location.href;
     let storeAddress = url.split("?")[1];
     console.log(url);
     console.log(storeAddress);
 
-    var ws = new WebSocket("ws://192.168.68.50:6001"); 
+    var ws = new WebSocket("ws://192.168.68.52:6001"); 
     ws.onopen = function () {
         console.log('open');
-        ws.send(9);
+        sendData["Main"] = "storeContract";
+        sendData["Type"] = "storeInfoForUser";
+        let jsonData = JSON.stringify(sendData);
+        ws.send(jsonData);
     };
     ws.onmessage = function (event) {
         
@@ -20,26 +21,9 @@ function onload(){
         if(n=="check"){
             ws.send(storeAddress);
             ws.onmessage = function (event) {
-                datas.push(event.data);
+                datas.push(JSON.parse(event.data));
                 console.log(datas);
 
-                for (var i = 0; i < datas.length; i++) {
-                    if(data == ""){
-                        data.push(datas[i].toString());
-                    }
-                    else if(datas[i] == data[i]){
-                        continue;
-                    }
-                    else{
-                        data.push(datas[i].toString());
-                    }
-                    var sData = data[i].replace("(", "");
-                }
-                var sData2 = sData.replace(/\'/g, "");
-                var sData3 = sData2.replace(")", "");
-                words.push(sData3.split(', '));
-    
-                console.log(words);
             };
             
         }
@@ -51,14 +35,11 @@ function onload(){
 }
 
 function setInfo() {
-    $('#storeImg').attr('src','store_img/'+words[0][2]+'');
-    $('#storeName').html('<h2>'+words[0][1]+'</h2><button id="flip" onclick="javascript:opened();" class="dropbtn">Dropdown</button>');
-    $('#foodSafety').attr('onclick','javascript:window.location.href = \"customer-foodin-list.html?'+words[0][0]+'\"');
+    $('#storeImg').attr('src','store_img/'+datas[0][2]+'');
+    $('#storeName').html('<h2>'+datas[0][1]+'</h2><button id="flip" onclick="javascript:opened();" class="dropbtn">Dropdown</button>');
+    $('#foodSafety').attr('onclick','javascript:window.location.href = \"customer-foodin-list.html?'+datas[0][0]+'\"');
     // $('#foodSafety').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');
     // $('#comment').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');
     // $('#menu').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');
 }
 
-// function nextPage(){
-    
-// }

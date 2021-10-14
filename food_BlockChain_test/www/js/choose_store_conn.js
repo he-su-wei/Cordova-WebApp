@@ -1,4 +1,3 @@
-
 console.log(localStorage.address);
 function check(){
     if(localStorage.address==undefined){

@@ -1,28 +1,34 @@
-var ws = new WebSocket("ws://192.168.68.50:6001");
+let sendData = new Object();
+var ws;
+function onload() {
+    ws = new WebSocket("ws://192.168.68.52:6001")
+    ws.onopen = function () {
+        console.log('open');
+        sendData["Main"] = "storeContract";
+        sendData["Type"] = "storeLogin";
+        let jsonData = JSON.stringify(sendData);
+        ws.send(jsonData);
 
-ws.onopen = function () {
-    console.log('open');
-    console.log(localStorage.address);
-    ws.send(8);
-};
+        console.log(localStorage.address);
+    };
 
-n = [];
-ws.onmessage = function (event) {
-    // console.log(event.data);
-    n.push(event.data);
-    console.log(n);
-    if(n[0]=="check"){
-        ws.send(localStorage.address);
-    }
-    // console.log(localStorage.address);
-    var str = n[1];
-    genode(str, 'storeName');
-    function genode(str, id) {
-        document.getElementById(id).innerHTML = str;
-    }
-    
-};
-
+    n = [];
+    ws.onmessage = function (event) {
+        // console.log(event.data);
+        n.push(event.data);
+        console.log(n);
+        if(n[0]=="check"){
+            ws.send(localStorage.address);
+        }
+        // console.log(localStorage.address);
+        var str = JSON.parse(n[1]);
+        genode(str, 'storeName');
+        function genode(str, id) {
+            document.getElementById(id).innerHTML = str;
+        }
+        
+    };
+}
 
 function check(){
     var account = document.getElementById('account').value;
@@ -34,7 +40,7 @@ function check(){
     ws.send(password);
     
     ws.onmessage = function (event) {
-    console.log(event.data)
+        // console.log(event.data)
         var check = event.data;
         if (check=="true"){
             alert('登入成功');

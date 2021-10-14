@@ -1,5 +1,5 @@
 
-
+let sendData = new Object();
 let storeAddress;
 function onloaded(){
 
@@ -20,11 +20,16 @@ function onloaded(){
     console.log(url);
     console.log(storeAddress);
 
-    var ws = new WebSocket("ws://192.168.68.50:6001");
+    var ws = new WebSocket("ws://192.168.68.52:6001");
 
     ws.onopen = function () {
         console.log('open');
-        ws.send(11);
+        sendData["Main"] = "storeContract";
+        sendData["Type"] = "customerFoodlist";
+        let jsonData = JSON.stringify(sendData);
+        ws.send(jsonData);
+
+        console.log(localStorage.address);
     };
     
     var datas = [];
