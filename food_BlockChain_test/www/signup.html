@@ -3,9 +3,8 @@
     <title>app</title>
     <meta charset="utf-8"></mata>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- 
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="css/menu-bar.css">
     <link rel="stylesheet" href="css/nav-bar.css">
@@ -17,7 +16,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="onload();">
     <!--------------------------------------------------導航欄------------------------------------------------------------->
     <nav class="nav_bar flex">
         <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
@@ -38,7 +37,7 @@
 
     <!--------------------------------------------------登入------------------------------------------------------------->
     <div class="divForm">
-        <div class="loginForm">
+        <form class="loginForm">
             <!-- <h1>Sign up 註冊</h1> -->
             <img src="store_img/mcd-Logo.png" class="img" id="preview" style="border-radius: 50%; margin-top: -50%; border: 2px #60b3a8 solid;" width="120" height="120" alt="">
             <div class="image-upload" style="margin-top: -25%; margin-right: -50%; height: 15%;">
@@ -47,38 +46,23 @@
                 </label>
                 <input id="file-input" type="file" accept="image/*"/>
             </div>
-            <input type="text" id="name" placeholder="Name 使用者名字" required pattern="[0-9a-zA-Z]{4,12}"/>
-            <input type="text" id="account" placeholder="Account 帳號" required pattern="[0-9a-zA-Z]{4,12}"/>
-            <input type="password" id="password" placeholder="Password 密碼"required pattern="[0-9a-zA-Z]{8,}"/>
-            <input type="password" id="rePassword" placeholder="RepetPassword 密碼"required pattern="[0-9a-zA-Z]{8,}"/>
-            <button type="button" style="background: none;" class="" onclick="javascript:check();">Submit 提交</button>
-        </div>
+            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+            <datalist id="datalistOptions">
+              <option value="Store 店家註冊">
+              <option value="Client 顧客註冊">
+            </datalist>
+            <input type="text" id="name" class="inputText" placeholder="Store/User Name 姓名" required pattern="[0-9a-zA-Z]{4,12}"/>
+            <input type="text" id="account" class="inputText" placeholder="Account 帳號" required pattern="[0-9a-zA-Z]{4,12}"/>
+            <input type="password" id="password" class="inputText" placeholder="Password 密碼" required pattern="[0-9a-zA-Z]{8,}"/>
+            <input type="password" id="rePassword" class="inputText" placeholder="RepeatPassword 密碼" required pattern="[0-9a-zA-Z]{8,}" onkeyup="checkText(this.value);"/>
+            <button type="button" class="" onclick="javascript:getFlag();">Submit 提交</button>
+        </form>
     </div>
-    
-     <!----------------------------------------------footer------------------------------------------------------------->
-     <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
-        
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-
-        $('input[type="file"]').change(function(e) {
-            let fileName = e.target.files[0].name;
-            $("#preview").attr("alt", fileName);
-            
-            let reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById("preview").src = e.target.result;
-            };
-            // read the image file as a data URL.
-            reader.readAsDataURL(this.files[0]);
-        });
-    </script>
+    <!----------------------------------------------footer------------------------------------------------------------->
 
     <!-- webSocket connect -->
+    <!-- <script type="text/javascript" src="js/Toast.js"></script> -->
+    <script src="js/signup.js"></script>
     <script src="js/signup_conn.js"></script>
 
 </body>

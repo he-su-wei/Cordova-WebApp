@@ -1,25 +1,26 @@
 let sendData = new Object();
-var ws = new WebSocket("ws://192.168.68.52:6001");
+function onload() {
+    var ws = new WebSocket("ws://192.168.68.52:6001");
 
-ws.onopen = function () {
-    console.log('open');
-    sendData["Main"] = "clientContract";
-    sendData["Type"] = "signup";
-    let jsonData = JSON.stringify(sendData);
-    ws.send(jsonData);
+    ws.onopen = function () {
+        console.log('open');
+        sendData["Main"] = "clientContract";
+        sendData["Type"] = "signup";
+        let jsonData = JSON.stringify(sendData);
+        ws.send(jsonData);
+    };
 
-};
-
-// ws.onmessage = function (event) {
-//   // console.log(event.data)
-//   var str = event.data;
-//   document.getElementById('bool').value = str;
-// };
+    // ws.onmessage = function (event) {
+    //   // console.log(event.data)
+    //   var str = event.data;
+    //   document.getElementById('bool').value = str;
+    // };
+}
 function check(){
-    var name = document.getElementById('name').value;
-    var account = document.getElementById('account').value;
-    var password = document.getElementById('password').value;
-    var rePassword = document.getElementById('rePassword').value;
+    var name = $('#name').val();
+    var account = $('#account').val();
+    var password = $('#password').val();
+    var rePassword = $('#rePassword').val();
 
 
     if(password == rePassword){
