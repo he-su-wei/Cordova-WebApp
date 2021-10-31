@@ -1,17 +1,17 @@
 let sendData = new Object();
-var ws = new WebSocket("ws://192.168.68.52:6001");
+function onload() {
+    var ws = new WebSocket("ws://192.168.68.52:6001");
 
-ws.onopen = function () {
-    console.log('open');
-    sendData["Main"] = "clientContract";
-    sendData["Type"] = "customerLogin";
-    let jsonData = JSON.stringify(sendData);
-    ws.send(jsonData);
-};
-
+    ws.onopen = function () {
+        console.log('open');
+        sendData["Main"] = "clientContract";
+        sendData["Type"] = "customerLogin";
+        let jsonData = JSON.stringify(sendData);
+        ws.send(jsonData);
+    };
+}
 
 function check(){
-
     var account = document.getElementById('account').value;
     var password = document.getElementById('password').value;
 

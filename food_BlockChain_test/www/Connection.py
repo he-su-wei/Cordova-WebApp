@@ -6,7 +6,8 @@ import time
 
 allName = {
     'storeContract': cf.storeContract,
-    'clientContract': cf.clientContract
+    'clientContract': cf.clientContract,
+    'asiaToken': cf.asiaToken
 }
 async def echo(websocket, path):
     connected = set()
@@ -294,6 +295,23 @@ async def echo(websocket, path):
                     elif(checkUser==False):
                         await websocket.send(JSON.dumps(checkUser))
                         check.clear()
+        # custormer-info.js - 顧客資訊
+        elif str["Type"] == "getBalance":
+            # await websocket.send("check")
+            address = await websocket.recv()
+            print(address)
+
+            balance = contract.balanceOf(address)
+            await websocket.send(JSON.dumps(balance))
+            print(JSON.dumps(balance))
+        # custormer-info.js - 顧客資訊
+        elif str["Type"] == "transfer":
+            await websocket.send("check")
+            address = await websocket.recv()
+            print(address)
+
+            contract.transfer(address)
+            await websocket.send(JSON.dumps("Transfer success"))
     finally:
         connected.remove(websocket)
 

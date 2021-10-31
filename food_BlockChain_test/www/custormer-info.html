@@ -5,12 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/custormer-info.css">
         <link rel="stylesheet" href="icon/css/all.css">
+        <script src="JQuery/jquery-3.6.0.min.js"></script>
     </head>
     <body>
     <!--------------------------------------------------導航欄------------------------------------------------------------->
-        <nav class="nav_bar ">
+        <nav class="nav_bar">
             <div class="flex">
-            
                 <div class="item"> <h3>User:</h3> </div>
                 <div class="item"><i class="fas fa-bars fa-2x" onclick="openNav()"></i> </div>
             </div>
@@ -25,10 +25,10 @@
 
     <!--------------------------------------------------------------------------------------------------------------->
         <div class="list-padding">
-
             <ul>
-                <li><i class="fab fa-autoprefixer fa-1x"></i><span>亞大幣(Asia point)</span><span style="float: right; font-weight: bold;">50</span>
+                <li><i class="fab fa-autoprefixer fa-1x"></i><span>亞大幣(Asia point)</span><span id="balanceText" style="float: right; font-weight: bold;">50</span>
                 <li><i class="fas fa-info-circle fa-1x"></i><a href="#">版本資訊</a></li>
+                <li><i class="fab fa-get-pocket"></i><a href="javascript:getCoin();">取得10$(測試用)</a></li>
             </ul>
 
         </div>
@@ -45,11 +45,8 @@
             </a>
 
         </nav>
-
             <!-------------------------------------------------------JavaScript----------------------------------------------------------->
             <script src="js/setting.js"></script>
-
-
-
+            <script src="js/custormer-info.js"></script>
     </body>
 </html> 
