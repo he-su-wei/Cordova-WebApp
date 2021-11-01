@@ -1,6 +1,8 @@
-body{
-    background-color: #f1e3d3;
+html, body{
+    background-color: #d4d4d4;
+    overflow: hidden;
     margin: 0px;
+
 }
 /*------------------------------------導航欄------------------------------*/
 .nav_bar{
@@ -8,12 +10,13 @@ body{
     margin: 0;
     padding: 0;
     width: 100%;
-    height:60px ;
+    height: 55px;
     overflow: hidden;
     position: sticky;
     list-style-type: none;
     color: rgb(255, 255, 255);
     background-color: #70a9a1;
+    box-shadow: 0px 3px 8px 0px rgb(94, 94, 94);
 }
 
 .flex{
@@ -83,80 +86,103 @@ body{
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
-
-
-/*-------------------------------------------storeInfo----------------------------------------------*/
-
-.search-container{
-    padding: 5% ;
-    display: flex;
-}
-
-.search-container input{
-    width: 90%;
-    border-radius: 20px;
-    border: none;
-    padding: 10px;
-}
-
-.search-container button {
-    float: right;
-    margin-top: 5px;
-    background:none;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-  }
-
-/*-------------------------------------------storeInfo----------------------------------------------*/
-
-.stores{
-    padding: 5%;
-    color: blanchedalmond;
-    margin: auto auto 10%;
-    
-}
-
-.store{
-    padding: 10px 0px 10px 10px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    background-color: rgb(89, 165, 190);
-    width: 100%;
-    border: none;
-
-
-}
-
-/* background-color: rgb(200, 253, 251);---*/
-
-.photo {
-   
-    border-radius: 8PX;
-    padding: 5px;
-    float: left;
-    left: 20%;
-
-}
-
-.information{
-    color: black;
-    float: right;
-    width: 56%;
-    height: auto;
-    line-height: 20px;
-    text-align: left;
-}
-.information span{
+s
+/*---------------------------------------------------------------------------------------*/
+.list-padding{
     width: 100vw;
 }
 
-.photo img{
-    width: 30vw;
-    height: 15vh;
-    border-radius: 8px;
+
+.list-padding ul {
+    background: #f1e3d3;
+    padding: 20px;
+
+
 }
 
+
+.list-padding ul li {
+    list-style: none;
+    padding: 10px 0px;
+    border-bottom: 1px solid rgb(0,0,0,0.05);
+
+    
+}
+.list-padding ul li a{
+    margin: auto 10px;
+    width: auto;
+    text-decoration: none;
+    color: rgba(0, 0, 0);
+
+}
+
+.list-padding ul li span{
+    margin: auto 10px;
+    width: auto;
+
+}
+
+/*-------------------------------------switch--------------------------------------------*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 25px;
+    left: 40vw;
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+ }
+  
+  input:checked + .slider {
+    background-color: #70a9a1;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #70a9a1;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+  }
 
 /*---------------------footer---------------------*/
 
@@ -201,4 +227,5 @@ body{
 .nav__icon {
     font-size: 18px;
 }
+
 

@@ -71,8 +71,6 @@ function onloaded(){
                 tbody.appendChild(tr);
                 //<td>id</td>
                 
-    
-    
                 if(words[i] == ""){
                     //<td>id</td>
                     var td = document.createElement('td');

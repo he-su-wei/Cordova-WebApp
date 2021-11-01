@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="icon/css/all.css">
         <script src="JQuery/jquery-3.6.0.min.js"></script>
     </head>
-    <body>
+    <body onload="onload()">
     <!--------------------------------------------------導航欄------------------------------------------------------------->
         <nav class="nav_bar">
             <div class="flex">
@@ -26,7 +26,7 @@
     <!--------------------------------------------------------------------------------------------------------------->
         <div class="list-padding">
             <ul>
-                <li><i class="fab fa-autoprefixer fa-1x"></i><span>亞大幣(Asia point)</span><span id="balanceText" style="float: right; font-weight: bold;">50</span>
+                <li><i class="fab fa-autoprefixer fa-1x"></i><span>亞大幣(Asia point)</span><span id="balanceText" style="float: right; font-weight: bold;">...</span>
                 <li><i class="fas fa-info-circle fa-1x"></i><a href="#">版本資訊</a></li>
                 <li><i class="fab fa-get-pocket"></i><a href="javascript:getCoin();">取得10$(測試用)</a></li>
             </ul>
@@ -46,7 +46,8 @@
 
         </nav>
             <!-------------------------------------------------------JavaScript----------------------------------------------------------->
-            <script src="js/setting.js"></script>
             <script src="js/custormer-info.js"></script>
+            <script src="js/setting.js"></script>
+            
     </body>
 </html> 

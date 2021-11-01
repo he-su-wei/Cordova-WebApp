@@ -2,6 +2,7 @@ from web3 import  HTTPProvider,Web3
 import json as JSON
 from datetime import datetime
 import os
+import numpy as np
 
 class storeContract:
     def __init__(self):
@@ -12,10 +13,10 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x8C94F9f1b8826443F348BeD11D199de5CBAEf51F')
+        self.contract_addr = self.w3.toChecksumAddress('0x009961353fc4433F812dc43a6130c3442c585Aba')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0x330DB07fE912FA21c7F0F23259F72a9F97c6c0e7')
+        self.account = self.w3.toChecksumAddress('0xB5B5A2F58A46d1c3813f853d844e2E8e0C2D3baF')
 
     # 設定食材進貨時間
     def setDeliverTime(self, id, address, password):
@@ -285,10 +286,10 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x4Ca42B0322E32acaFF79FD242552acc77978DB69')
+        self.contract_addr = self.w3.toChecksumAddress('0xAa142BC9aA429FCef7416362c1ba86C72bCB8210')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0x330DB07fE912FA21c7F0F23259F72a9F97c6c0e7')
+        self.account = self.w3.toChecksumAddress('0xB5B5A2F58A46d1c3813f853d844e2E8e0C2D3baF')
 
     # 使用者註冊
     def setUser(self, name, account, password):
@@ -303,9 +304,9 @@ class clientContract:
             })
         
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0x330db07fe912fa21c7f0f23259f72a9f97c6c0e7') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, 'password')
+            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
             print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)
@@ -316,7 +317,7 @@ class clientContract:
 
     # 取得所有使用者帳號
     def getAllAccount(self):
-        return self.contract.functions.getAllAccount().call()
+      return self.contract.functions.getAllAccount().call()
 
     def checkUser(self, account, password):
         return self.contract.functions.checkUser(account, password).call()
@@ -336,33 +337,65 @@ class asiaToken:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x4Ca42B0322E32acaFF79FD242552acc77978DB69')
+        self.contract_addr = self.w3.toChecksumAddress('0x43634FEfED329907cC710B2C1b3d97A0e3321B14')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0x330DB07fE912FA21c7F0F23259F72a9F97c6c0e7')
+        self.account = self.w3.toChecksumAddress('0xB5B5A2F58A46d1c3813f853d844e2E8e0C2D3baF')
     #取得餘額
     def balanceOf(self, address):
         return self.contract.functions.balanceOf(address).call()
 
-    #發送測試幣
-    def transfer(self, address):
-        estimate_gas = self.contract.functions.transfer(address, 10).estimateGas()
+    #approve
+    def approve(self, address):
+        # print(self.contract.functions.totalSupply().call())
+        # mainAddress = self.w3.toChecksumAddress(mainAddress)
+        address = self.w3.toChecksumAddress(address)
+        # print(type(address))
+        estimate_gas = self.contract.functions.approve(address, 10).estimateGas()
+        # print(estimate_gas)
         nonce = self.w3.eth.getTransactionCount(self.account)
-        txn = self.contract.functions.transfer(address, 10).buildTransaction({
+        # print(nonce)
+        txn = self.contract.functions.approve(address, 10).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
-            'gasPrice': self.w3.toWei('1', 'gwei'),
+            'gasPrice': self.w3.toWei('1', 'wei'),
             'nonce': nonce
             })
-        
+        # print(txn)
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0x330db07fe912fa21c7f0f23259f72a9f97c6c0e7') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, 'password')
-            print(bytes.hex(private_key))
+            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
+            # print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)
             
         tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
-        # print('0x'+bytes.hex(tx_hash))
+        print('0x'+bytes.hex(tx_hash))
+        return "Success"
+
+    #發送測試幣
+    def transfer(self, address):
+        # print(self.contract.functions.totalSupply().call())
+        address = self.w3.toChecksumAddress(address)
+        # estimate_gas = self.contract.functions.transfer(address, 10).estimateGas({'from': address})
+        nonce = self.w3.eth.getTransactionCount(self.account)
+        print(nonce)
+        txn = self.contract.functions.transfer(address, 10).buildTransaction({
+            'chainId': 428,
+            'gas': 5000000,
+            'gasPrice': self.w3.toWei('1', 'gwei'),
+            'nonce': nonce
+            })
+        # print(txn)
+        #設定私鑰
+        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
+            encrypted_key = keyfile.read()
+            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
+            # print(bytes.hex(private_key))
+            key = bytes.hex(private_key)
+            signed_txn = self.w3.eth.account.signTransaction(txn, key)
+            
+        tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
+        print('0x'+bytes.hex(tx_hash))
         return "Success"

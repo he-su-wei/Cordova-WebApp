@@ -34,9 +34,11 @@ function onloaded(){
     var datas = [];
     ws.onmessage = function (event) {
         datas.push(event.data);
+
         if(datas[0] == "check"){
             ws.send(storeAddress);
         }
+        
         console.log(datas)
         //從python傳進來的值會長 --> [1630734778, 1630734813]
         //放入datas arr裡後 --> ['[1630734778, 1630734813]']

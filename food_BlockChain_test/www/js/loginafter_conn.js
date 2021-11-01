@@ -12,14 +12,14 @@ function onload() {
 
     
     ws.onmessage = function (event) {
-        n.push(event.data);
+        n.push(JSON.parse(event.data));
         console.log(n)
         if(n[0]=="check"){
             ws.send(localStorage.address);
             ws.send(localStorage.pwd);
         }
         console.log(localStorage.address);
-        var str = JSON.parse(n[1]);
+        var str = n[1];
         genode(str, 'storeName');
         function genode(str, id) {
             document.getElementById(id).innerHTML = str;
@@ -32,6 +32,6 @@ function onload() {
 }
 
 function setImg(){
-    let tmp = '<img class="img-size" src="img/'+n[2]+'" /></div>'
+    let tmp = '<img class="img-size" src="store_img/'+n[2]+'" /></div>'
     $('#stores').append(tmp);
 }

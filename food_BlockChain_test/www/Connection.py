@@ -61,7 +61,7 @@ async def echo(websocket, path):
                         check.clear()
         # loginafter_conn.js
         elif str["Type"] == "refresh":
-            await websocket.send("check")
+            await websocket.send(JSON.dumps("check"))
             ap = []
             ap.append(await websocket.recv())
             ap.append(await websocket.recv())
@@ -96,7 +96,7 @@ async def echo(websocket, path):
                     await websocket.send(JSON.dumps(icon))
         # main_conn.js
         elif str["Type"] == "setTime":
-            await websocket.send("check")
+            await websocket.send(JSON.dumps("check"))
             
             ap = []
             ap.append(await websocket.recv())
@@ -258,7 +258,7 @@ async def echo(websocket, path):
             async for message in websocket:
                 n = f"{message}"    
                 check.append(n)
-                # print(check)
+                print(check)
                 if len(check)==3:
                     # 取得所有使用者帳號
                     # ex: ['a', 'b']
@@ -299,17 +299,18 @@ async def echo(websocket, path):
         elif str["Type"] == "getBalance":
             # await websocket.send("check")
             address = await websocket.recv()
-            print(address)
+            # print(address)
 
             balance = contract.balanceOf(address)
             await websocket.send(JSON.dumps(balance))
-            print(JSON.dumps(balance))
+            # print(JSON.dumps(balance))
         # custormer-info.js - 顧客資訊
         elif str["Type"] == "transfer":
-            await websocket.send("check")
+            # await websocket.send("check")
             address = await websocket.recv()
-            print(address)
-
+            # print(address)
+            
+            # contract.approve(address)
             contract.transfer(address)
             await websocket.send(JSON.dumps("Transfer success"))
     finally:

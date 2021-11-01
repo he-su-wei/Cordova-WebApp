@@ -1,6 +1,6 @@
 let sendData = new Object();
+var ws = new WebSocket("ws://192.168.68.52:6001");
 function onload() {
-    var ws = new WebSocket("ws://192.168.68.52:6001");
 
     ws.onopen = function () {
         console.log('open');
@@ -17,11 +17,12 @@ function onload() {
     // };
 }
 function check(){
-    var name = $('#name').val();
-    var account = $('#account').val();
-    var password = $('#password').val();
-    var rePassword = $('#rePassword').val();
+    var name = document.getElementById('name').value;
+    var account = document.getElementById('account').value;
+    var password = document.getElementById('password').value;
+    var rePassword = document.getElementById('rePassword').value;
 
+    console.log(name);
 
     if(password == rePassword){
         ws.send(name);
