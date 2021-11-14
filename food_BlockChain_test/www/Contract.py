@@ -13,7 +13,7 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x009961353fc4433F812dc43a6130c3442c585Aba')
+        self.contract_addr = self.w3.toChecksumAddress('0x6E64661Cbe6b4190fe746280A9f37CBab32c46e9')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0xB5B5A2F58A46d1c3813f853d844e2E8e0C2D3baF')
@@ -286,7 +286,7 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0xAa142BC9aA429FCef7416362c1ba86C72bCB8210')
+        self.contract_addr = self.w3.toChecksumAddress('0x3C11125A7E2cAcDA531074a9Dc8297734f79121f')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0xB5B5A2F58A46d1c3813f853d844e2E8e0C2D3baF')
@@ -337,7 +337,7 @@ class asiaToken:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x43634FEfED329907cC710B2C1b3d97A0e3321B14')
+        self.contract_addr = self.w3.toChecksumAddress('0x9417E30527442614E74C1b40531B5484EBbDb575')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0xB5B5A2F58A46d1c3813f853d844e2E8e0C2D3baF')

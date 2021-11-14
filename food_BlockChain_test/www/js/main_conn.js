@@ -2,14 +2,22 @@ let sendData = new Object();
 var ws
 function onload() {
 
+    function appendzero(obj){
+        if (obj < 10) return "0" + obj;
+        else return obj;
+    }
     var NowDate=new Date();
-    var m1=NowDate.getMonth()+1;
-    var d=NowDate.getDate();
-    var h=NowDate.getHours();
-    var m=NowDate.getMinutes();
-    var s=NowDate.getSeconds();　
-    document.getElementById('showbox').innerHTML = `${m1} 月 ${d} 號 ${h} 時${m}分`;
-    // setTimeout('ShowTime()',1000);
+    var year=NowDate.getFullYear();
+    var month=NowDate.getMonth()+1;
+    var date=NowDate.getDate();
+    var hour=NowDate.getHours();
+    var min=NowDate.getMinutes();
+    var s=NowDate.getSeconds();
+    let time = appendzero(hour) + ":" + appendzero(min)
+    let day = year + "-"　+appendzero(month)+ "-" +appendzero(date)
+    document.getElementById('takeTime').innerHTML = time ;
+    document.getElementById('takeDay').innerHTML =`<b>${day}</b>`  ;
+  
 
 
     ws = new WebSocket("ws://192.168.68.52:6001");
