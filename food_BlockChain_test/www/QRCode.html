@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/QRCode.css">
+    <link rel="stylesheet" href="icon/css/all.css">
+    <script type="text/javascript" src="QRCode_js/qrscanner-settting.js"></script>
+</head>
+
+<body style="background:transparent;">
+    <div class="qrscanner">
+        <div class="qrscanner-area">
+        </div>
+        <div class="through-line"></div>
+        <div class="button-bottom">
+            <button id="btn1" onclick="QRScanner.prepare(onDone)" class="btn btn-primary">
+                開啟鏡頭
+            </button>
+            <button id="btn2" class="btn btn-info">
+                切換攝像頭
+            </button>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <a href="customer-home.html" class="footer__link ">
+            <i class="fa fa-home nav__icon"></i>
+            <span >首頁</span>
+        </a>
+
+        <a href="QRCode.html" class="footer__link footer__link--active">
+            <i class="fas fa-dollar-sign nav__icon"></i>
+            <span>付款</span>
+        </a>
+
+        <a href="custormer-info.html" class="footer__link">
+            <i class="far fa-user nav__icon"></i>
+            <span>我的帳號</span>
+        </a>
+
+    </footer>
+
+    
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="QRCode_js/deviceReady.js"></script>
+
+    <script type="text/javascript" src="QRCode_js/QRCode.js"></script>
+    
+</body>
