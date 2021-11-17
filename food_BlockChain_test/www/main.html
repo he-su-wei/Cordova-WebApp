@@ -18,30 +18,32 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="main.html">首頁</a>
-        <a href="wash_list.html">清洗表</a>
+        <a href="QRCode.html">付款</a>
+        <a href="store-info.html">店家資訊</a>
         <a href="#">關於</a>
         <a href="index.html">登出</a>
     </div>
 
   <!--------------------------------------------------body選擇紐------------------------------------------------------------->
-  <!-- <h1 id="takeTime" style="margin: 5px auto auto;">現在時間</h1>
-  <p id="takeDay" style="margin: 0px auto; font-size: 70%;"></p> -->
-  <div class="container-fluid">
+    <div class="time">
+        <h1 id="takeTime" style="margin: 5% auto auto;">現在時間</h1>
+        <p id="takeDay" style="margin: 5px auto; font-size: 70%;"></p>
+    </div>
+    <div class="container-fluid">
         <div class="user">
             <!-- <img src="img/icon1.png" class="rounded float-start" alt="..."> -->
-            <img src="img/icon1.png" class="img-fluid" style="float: left; margin: 10px;width: 40%;" width="100">
+            <img src="img/icon1.png" class="img-fluid" style="float: left; margin: 10px 5px;width: 40%;">
             <div class="information">
+                <button type="button" class="storeInfo-btn" onclick="location.href='store-info.html'">店家資訊 </button>
                 <!-- <h2 class="rounded float-right">[ Store Name ]</h2> -->
-                <div id="storeName" style="font-size:20px;margin: 15px 0px;"></div>
-                <h3>營業狀態:</h3>
-                <div id="status" style="font-size:20px;"></div>
-
-                <i class="fab fa-autoprefixer fa-1x"></i>
-                <div id="balanceText" style="float: right; font-weight: bold;">...</div>
-
+                <div id="storeName" style="font-size:20px;margin: 15px 0px;">肯德基</div>
+                <h3>營業狀態:  <span id="status" style="font-size:20px;"> 已打烊</span> </h3>
+                
             </div>
         </div>
     </div>
+
+
     
     <div class="btn">
         <div class="updiv">
