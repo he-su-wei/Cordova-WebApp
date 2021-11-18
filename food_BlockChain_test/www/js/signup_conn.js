@@ -1,5 +1,6 @@
 let sendData = new Object();
-var ws = new WebSocket("ws://192.168.68.52:6001");
+
+var ws = new WebSocket("ws://192.168.0.105:6012");
 function onload() {
 
     ws.onopen = function () {
@@ -20,32 +21,20 @@ function check(){
     var name = document.getElementById('name').value;
     var account = document.getElementById('account').value;
     var password = document.getElementById('password').value;
-    var rePassword = document.getElementById('rePassword').value;
-
     console.log(name);
 
-    if(password == rePassword){
-        ws.send(name);
-        ws.send(account);
-        ws.send(password);
-        ws.onmessage = function (event) {
-            console.log(event.data)
-            var check = JSON.parse(event.data);
-            if (check=="帳號重複"){
-                alert("使用者帳號已經有人使用!");
-            }
-            if (check=="註冊成功"){
-                alert('註冊成功');
-                window.location.href='customer-login.html';
-            }
-        };
-
-    }
-    else if(password != rePassword){
-        alert('兩次密碼不一樣!');
-    }
-    
-    
-    
-    
+    ws.send(name);
+    ws.send(account);
+    ws.send(password);
+    ws.onmessage = function (event) {
+        console.log(event.data)
+        var check = JSON.parse(event.data);
+        if (check=="帳號重複"){
+            alert("使用者帳號已經有人使用!");
+        }else{
+            alert('註冊成功');
+            localStorage.address=check;
+            window.location.href='customer-login.html';
+        }
+    };
 };

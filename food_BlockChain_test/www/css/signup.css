@@ -2,103 +2,21 @@ body{
     margin: 0px;
     background-color: #f1e3d3;
 }
-/*------------------------------------導航欄------------------------------*/
-.nav_bar{
-    top: 0;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 55px ;
-    overflow: hidden;
-    position: fixed;
-    list-style-type: none;
-    color: rgb(255, 255, 255);
-    background-color: #70a9a1;
-    box-shadow: 0px 3px 8px 0px rgb(97, 97, 97);
 
-}
-
-.flex{
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
-
-.item{
-    flex: 0.3;
-    margin-left: 15px;
-}
-
-.flex-2{
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
-}
-
-/*-----------------------------Menu 選單------------------------------*/
-
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #70a9a1;/* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
-
-    /* The navigation menu links */
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #ffffff;
-    display: block;
-    transition: 0.3s;
-}
-
-    /* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-    /* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-    transition: margin-left .5s;
-    padding: 20px;
-}
-
-    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
 
 .divForm{
     display: flex;
     align-items: center;              /* 項目置中 */
     justify-content: center;          /*水平對其置中*/
-    margin-top: 50%;                /*向下平移130px*/
+    margin-top: 40%;                /*向下平移130px*/
 }
 
 
 .loginForm{
     border-radius: 20px;
     background-color:#70a9a1 ;
-    width:200px;
-    height: 320px;
+    width: 75vw;
+    height: 55vh;
     color: white;
     padding: 45px;
     box-shadow: 10px 10px 10px rgba(78, 128, 125, 0.616) ;
@@ -112,40 +30,48 @@ body{
     
 }
 
-.loginForm input,button{
+.loginForm button, .inputText{
     display: block;
     margin: 20px auto;
     text-align: center;
     padding: 1px;
-    height: 36px;
-    font-size: 15px;
-    border-radius: 22px;
-    outline: none;
-    color: white;
+    height: 4.5vh;
+    width: 20vw;
+    font-size: 1rem;
 }
 
 .loginForm input[type="text"], .loginForm input[type="password"]{
     border: 2px solid #3498db;
-    width: 180px;
-    background:rgba(223, 224, 207, 0.486);
+    width: 100%;
+    background:rgba(245, 245, 237, 0.53);
 
+    color: white;
+    border-radius: 22px;
+    outline: none;
+}
+
+#exampleDataList{
+    border: 2px solid #576873;
+    text-align: center;
+    margin-top: 10% ;
+    background: rgba(245, 245, 237, 0.53);
+    border-radius: 22px;
 }
 
 .loginForm button{
-    width: 150px;
-    border: 2px solid #2ecc71;
-    background:none;
+    width: 80%;
+    margin-top: 2.5rem;
+    border: 1.5px solid #44988d;
+    background-color:#ffffff;
+    /* background: none; */
 }
 
 .loginForm input[type="text"]:focus, .loginForm input[type="password"]:focus{
-    border-color: #cc2e2e ;
-    width: 200px;
-
+    border-color: #cc952e;
 }
 
 .loginForm input[type="text"]:valid, .loginForm input[type="password"]:valid{
-    border-color: #2ecc71 ;
-    width: 200px;
+    border-color: #2ecc71;
 }
 
 .loginForm button:hover{
@@ -180,5 +106,3 @@ body{
     color: rgb(255, 255, 255);
    
 }
-
-

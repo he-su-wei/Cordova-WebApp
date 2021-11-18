@@ -275,7 +275,9 @@ async def echo(websocket, path):
                         lst.clear()
                     elif(len(set_lst)==len(lst)):
                         contract.setUser(check[0], check[1], check[2])
-                        await websocket.send(JSON.dumps("註冊成功"))
+                        # await websocket.send(JSON.dumps("註冊成功"))
+                        address = await websocket.recv()
+                        await websocket.send(JSON.dumps(address))
                         lst.clear()
 
         # customer-login_conn.js
@@ -317,7 +319,7 @@ async def echo(websocket, path):
         connected.remove(websocket)
 
 async def main():
-    async with websockets.serve(echo, "192.168.68.52", 6001):
+    async with websockets.serve(echo, "192.168.0.105", 6012):
         await asyncio.Future()  # run forever
 
 if __name__ == "__main__":

@@ -13,10 +13,10 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x6E64661Cbe6b4190fe746280A9f37CBab32c46e9')
+        self.contract_addr = self.w3.toChecksumAddress('0x213efdA6a908367A8a9EA312c88435089a76629E')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0xB5B5A2F58A46d1c3813f853d844e2E8e0C2D3baF')
+        self.account = self.w3.toChecksumAddress('0x841505D2dCf63793434DE0780347D5F00168Eddf')
 
     # 設定食材進貨時間
     def setDeliverTime(self, id, address, password):
@@ -286,17 +286,21 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x3C11125A7E2cAcDA531074a9Dc8297734f79121f')
+        self.contract_addr = self.w3.toChecksumAddress('0x0909A471E67d05D952fb07b264A23c321c432D2e')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0xB5B5A2F58A46d1c3813f853d844e2E8e0C2D3baF')
+        self.account = self.w3.toChecksumAddress('0x841505D2dCf63793434DE0780347D5F00168Eddf')
 
     # 使用者註冊
-    def setUser(self, name, account, password):
+    def setUser(self, name, account, pw):
+        newAccount = self.w3.geth.personal.new_account(account)
+        # newAddress = self.w3.geth.personal.list_accounts()
+        print('address is : {}'.format(newAccount))
+        
         # address = self.w3.toChecksumAddress(address)
-        estimate_gas = self.contract.functions.setUser(name, account, password).estimateGas()
+        estimate_gas = self.contract.functions.setUser(name, account, pw).estimateGas()
         nonce = self.w3.eth.getTransactionCount(self.account)
-        txn = self.contract.functions.setUser(name, account, password).buildTransaction({
+        txn = self.contract.functions.setUser(name, account, pw).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
             'gasPrice': self.w3.toWei('1', 'gwei'),
@@ -304,16 +308,17 @@ class clientContract:
             })
         
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\841505d2dcf63793434de0780347d5f00168eddf') as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
+            private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
             print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)
             
         tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
         # print('0x'+bytes.hex(tx_hash))
-        return "Success"
+        # return "Success"
+        return newAccount
 
     # 取得所有使用者帳號
     def getAllAccount(self):
