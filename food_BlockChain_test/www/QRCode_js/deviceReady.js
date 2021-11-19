@@ -1,6 +1,11 @@
 //----------在deviceReady 事件中繫結-------------//
 
-QRScanner.prepare(onDone); // show the prompt
+if (typeof (QRScanner) != 'undefined') {
+    //初始化檢測，申請攝像頭等許可權
+    QRScanner.prepare(onDone); // show the prompt
+} else {
+    alert('外掛載入失敗');
+}
 
 function onDone(err, status) {
     if (err) {
