@@ -2,7 +2,9 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> <!--icon-->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="icon/css/all.css">
 </head>
@@ -25,10 +27,42 @@
     </div>
 
   <!--------------------------------------------------body選擇紐------------------------------------------------------------->
-    <div class="time">
-        <h1 id="takeTime" style="margin: 5% auto auto;">現在時間</h1>
-        <p id="takeDay" style="margin: 5px auto; font-size: 70%;"></p>
+    <div class="time-address_fluid flex">
+        
+        <div class = "address-btn item">
+            <button type="button" id="address-btn" data-bs-toggle="modal" data-bs-target="#loginModal" style="background-color: #70a9a1;border-radius: 5px; border: none;">
+            <!-- <button id="address-btn" onclick=""  style="background-color: #70a9a1;border-radius: 5px; border: none;"> -->
+                <i class="fas fa-qrcode fa-2x"></i>
+            </button>
+            <!-- 浮動視窗-->
+            <div class = "modal fade" id = "loginModal">
+                <div class = "modal-dialog">
+                    <div class = "modal-content">
+                    <!-- header -->
+                        <div class = "modal-header">
+                            <h3>錢包地址</h3>
+                        </div>
+                    </div>
+
+                    <div class = "modal-body">
+
+                    </div>
+
+                    <div class = "modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="time item">
+            <h1 id="takeTime" style="margin: 5% auto auto;">現在時間</h1>
+            <p id="takeDay" style="margin: 5px auto; font-size: 70%;"></p>
+        </div>
+
     </div>
+
+
     <div class="container-fluid">
         <div class="user">
             <!-- <img src="img/icon1.png" class="rounded float-start" alt="..."> -->
@@ -42,7 +76,6 @@
             </div>
         </div>
     </div>
-
 
     
     <div class="btn">
@@ -77,7 +110,7 @@
             <div class="butto1">
                 <button type="button" onclick="location.href='business-status.html'" style="background:none; border: none;"> 
                     <div id="c7" class="fa-center">
-                        <i class="fas fa-hand-holding-water fa-2x"></i>
+                        <i class="fas fa-store-alt fa-2x"></i>
                         <span style="margin: 8px 0px 0px 0px;">營業狀態</span>
                     </div>
                 </button>
@@ -133,3 +166,8 @@
 
 </body>
 </html> 
+
+
+
+
+

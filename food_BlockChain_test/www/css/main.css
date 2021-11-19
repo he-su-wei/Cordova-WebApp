@@ -86,10 +86,39 @@ html, body{
 }
 
 /*----------------------------------------------body選擇紐位置-----------------------------------------*/
+.flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.item{
+    flex: 0.3;
+    margin-left: 15px;
+}
+
+.flex-2{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+.time-address_fluid{
+    display: flex;
+}
+
+.address-btn {
+    margin: 5%;
+}
+
+.address-btn button{
+    width: 50%;
+    box-shadow: 0 5px 0px 0px rgba(0, 0, 0, 0.2), 0 15px 20px 0 rgba(0, 0, 0, 0.2);
+
+}
+
 .time{
-    width: 100%;
+    width: auto;
     height: 10%;
-    position: sticky;
     margin: 0px;
     padding: 0px;
     text-align: center;
