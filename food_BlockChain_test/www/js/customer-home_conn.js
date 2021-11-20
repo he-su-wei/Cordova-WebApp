@@ -32,3 +32,24 @@ function setInfo(){
         $('#stores').append(tmp);
     }
 }
+
+
+const getAddress = document.getElementById('address');
+function scan(){
+    cordova.plugins.barcodeScanner.scan(
+        function(result){
+            if(!result.cancelled){
+                if(result.format == "QR_CODE") {
+                    var value = result.text;
+                    getAddress.innerText = value;
+                    ws.send(value);  
+                    ws.send(localStorage.address);
+                }
+            }
+        },
+        function (error) {
+            alert('Scanning Failed '+error);
+        }
+    );
+}
+
