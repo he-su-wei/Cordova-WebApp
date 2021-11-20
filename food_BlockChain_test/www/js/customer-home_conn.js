@@ -68,7 +68,7 @@ function getStore(){
     };
     ws.onmessage = function (event) {
         storeName = event.data;
-        $('#address').val(storeName);
+        $('#address').html(storeName);
     };
     ws.onclose = function(evt) {
         console.log("close");
