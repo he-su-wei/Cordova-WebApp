@@ -74,6 +74,7 @@ function getStore(){
         console.log("close");
     };
 }
+
 function transfer(){
     if(storeName != ""){
             
