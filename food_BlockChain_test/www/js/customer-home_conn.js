@@ -33,7 +33,7 @@ function setInfo(){
     }
 }
 
-
+//-------------------qrcode-------------------------//
 const getAddress = document.getElementById('address');
 function scan(){
     cordova.plugins.barcodeScanner.scan(
