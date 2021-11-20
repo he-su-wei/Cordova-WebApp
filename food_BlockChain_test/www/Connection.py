@@ -299,6 +299,12 @@ async def echo(websocket, path):
                     elif(checkUser==False):
                         await websocket.send(JSON.dumps(checkUser))
                         check.clear()
+
+        elif str["Type"] == "getStoreName":
+            address = await websocket.recv()
+            storeName = contract.getStoreName(address)
+            await websocket.send(JSON.dumps(storeName))
+            print(storeName)
         # custormer-info.js - 顧客資訊
         elif str["Type"] == "getBalance":
             # await websocket.send("check")
@@ -335,7 +341,11 @@ async def echo(websocket, path):
                 print(n)  
                 check.append(n)
                 if len(check)==3:
-                    contract.transferFrom(check[0], check[1], check[2])
+                    state = contract.approve(check[0], check[2])
+                    if(state):
+                        result = contract.transferFrom(check[0], check[1], check[2])
+                        await websocket.send(JSON.dumps(result))
+                        check.clear()
     finally:
         connected.remove(websocket)
 
