@@ -291,16 +291,19 @@ class clientContract:
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0x841505D2dCf63793434DE0780347D5F00168Eddf')
 
-    # 使用者註冊
-    def setUser(self, name, account, pw):
+    def createWallet(self, account):
         newAccount = self.w3.geth.personal.new_account(account)
         # newAddress = self.w3.geth.personal.list_accounts()
         print('address is : {}'.format(newAccount))
         
+        return newAccount
+
+    # 使用者註冊
+    def setUser(self, address, name, account, pw):
         # address = self.w3.toChecksumAddress(address)
-        estimate_gas = self.contract.functions.setUser(name, account, pw).estimateGas()
+        estimate_gas = self.contract.functions.setUser(address, name, account, pw).estimateGas()
         nonce = self.w3.eth.getTransactionCount(self.account)
-        txn = self.contract.functions.setUser(name, account, pw).buildTransaction({
+        txn = self.contract.functions.setUser(address, name, account, pw).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
             'gasPrice': self.w3.toWei('1', 'gwei'),
@@ -317,8 +320,7 @@ class clientContract:
             
         tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
         # print('0x'+bytes.hex(tx_hash))
-        # return "Success"
-        return newAccount
+        return "Success"
 
     # 取得所有使用者帳號
     def getAllAccount(self):
@@ -380,13 +382,35 @@ class asiaToken:
         return "Success"
 
     #發送測試幣
-    def transfer(self, address):
+    def transfer(self, address, coin):
         # print(self.contract.functions.totalSupply().call())
         address = self.w3.toChecksumAddress(address)
         # estimate_gas = self.contract.functions.transfer(address, 10).estimateGas({'from': address})
         nonce = self.w3.eth.getTransactionCount(self.account)
         print(nonce)
-        txn = self.contract.functions.transfer(address, 10).buildTransaction({
+        txn = self.contract.functions.transfer(address, coin).buildTransaction({
+            'chainId': 428,
+            'gas': 5000000,
+            'gasPrice': self.w3.toWei('1', 'gwei'),
+            'nonce': nonce
+            })
+        # print(txn)
+        #設定私鑰
+        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
+            encrypted_key = keyfile.read()
+            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
+            # print(bytes.hex(private_key))
+            key = bytes.hex(private_key)
+            signed_txn = self.w3.eth.account.signTransaction(txn, key)
+            
+        tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
+        print('0x'+bytes.hex(tx_hash))
+        return "Success"
+
+    def transferFrom(self, add_from, coin, add_to):
+        nonce = self.w3.eth.getTransactionCount(self.account)
+        print(nonce)
+        txn = self.contract.functions.transferFrom(add_from, coin, add_to).buildTransaction({
             'chainId': 428,
             'gas': 5000000,
             'gasPrice': self.w3.toWei('1', 'gwei'),

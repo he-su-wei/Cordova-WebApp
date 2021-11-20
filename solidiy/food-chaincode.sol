@@ -1,6 +1,8 @@
 pragma solidity >=0.5.12;
 pragma experimental ABIEncoderV2;
-contract foodChain{
+
+//foodChain_for_store
+contract storeALL{
     address[] public allStore;
     
     //食材表格
@@ -12,6 +14,7 @@ contract foodChain{
         uint clearTime; //食材清洗
         bool isVaild;
     }
+    
     //商店總表
     struct store{
         address storeAddress;
@@ -25,7 +28,7 @@ contract foodChain{
         mapping(string => foodList) foodLists;
     }
     mapping(address => store)public stores;
-
+    
     struct timeList{  //用於前端呈現
         string[] foodID;
         uint[] inputTime;
@@ -44,9 +47,9 @@ contract foodChain{
     mapping(address => allStoreInfo) public allStoreInfos;
     
     //店家註冊
-    function setStore(address _storeAddress, string memory _private_key, string memory _storeName, string memory _account, string memory _passWd, string memory _iconName) public{
+    function setStore(address _storeAddress, string memory _storeName, string memory _account, string memory _passWd, string memory _iconName) public{
         stores[_storeAddress].storeAddress = _storeAddress;
-        stores[_storeAddress].private_key = _private_key;
+        // stores[_storeAddress].private_key = _private_key;
         stores[_storeAddress].storeName = _storeName;
         stores[_storeAddress].account = _account;
         stores[_storeAddress].passWd = _passWd;
@@ -83,10 +86,10 @@ contract foodChain{
         return(stores[_storeAddress].storeName);
     }
     
-    //回傳店家私密金鑰
-    function getKey(address _storeAddress) public view returns(string memory){
-        return(stores[_storeAddress].private_key);
-    }
+    // //回傳店家私密金鑰
+    // function getKey(address _storeAddress) public view returns(string memory){
+    //     return(stores[_storeAddress].private_key);
+    // }
     
     //簡單的店家權限設置
     modifier onlyStore(address _add){
@@ -116,7 +119,7 @@ contract foodChain{
             id: _id,
             storeAddress: _storeAddress,
             status: 1,
-            inputTime: now,
+            inputTime: block.timestamp,
             clearTime: 0,
             isVaild: true
         });
@@ -127,9 +130,6 @@ contract foodChain{
         timeLists[_storeAddress].inputTime.push(stores[_storeAddress].foodLists[_id].inputTime);
     }
     
-    // function getFoodInfo(address _storeAddress, string memory _id) public view returns(foodList memory){
-    //     return(stores[_storeAddress].foodLists[_id]);
-    // }
     //取得該店家所有登錄的食材名稱
     function getAllFoodID(address _storeAddress) public view returns(string[] memory){
         return(timeLists[_storeAddress].foodID);
@@ -146,7 +146,7 @@ contract foodChain{
     function setFoodCleanTime(string memory _id, address _storeAddress) public onlyStore(_storeAddress){
         require(stores[_storeAddress].foodLists[_id].status == 1);  //已有食材進貨紀錄
         require(stores[_storeAddress].foodLists[_id].clearTime == 0); //未曾登入過食材清洗
-        stores[_storeAddress].foodLists[_id].clearTime = now;
+        stores[_storeAddress].foodLists[_id].clearTime = block.timestamp;
         
         //重新排列 timeList中食材清洗時間
         delete timeLists[_storeAddress].clearTime;
@@ -209,8 +209,8 @@ contract foodChain{
     function setlocationTime(address _storeAddress) public onlyStore(_storeAddress){
         locationTimes[_storeAddress] = locationTime({
             storeAddress: _storeAddress,
-            currentTime: now,
-            futureTime: now+6480,
+            currentTime: block.timestamp,
+            futureTime: block.timestamp+6480,
             status: true
         });
         
@@ -228,13 +228,29 @@ contract foodChain{
     
     //前端登入畫面中"繼續"呼叫的重製方法
     function refresh(address _storeAddress) public onlyStore(_storeAddress){
-        require(now >= locationTimes[_storeAddress].futureTime);
-        locationTimes[_storeAddress].currentTime = now;
+        require(block.timestamp >= locationTimes[_storeAddress].futureTime);
+        locationTimes[_storeAddress].currentTime = block.timestamp;
         locationTimes[_storeAddress].status = false;
     }
     
+    //取得所有店家地址
+    function getAllStore() public view returns(address[] memory){
+        return(allStore);
+    }
+    
+    //前端py透過上一個方法取得的店家address寫一個迴圈
+    function storeInfoForUser(address _storeAddress)public view returns(allStoreInfo memory){
+        return(allStoreInfos[_storeAddress]);
+    }
+}
+//foodChain_for_client
+contract clientALL{
+    //所有使用者帳號
+    string[] public allAccount;
+    
     //使用者
     struct user{
+        address payable wallet;
         string account;
         string userName;
         string passWd;
@@ -242,12 +258,10 @@ contract foodChain{
     mapping(string => user)public users;
     
     //使用者註冊
-    function setUser(string memory _userName, string memory _account, string memory _passWd) public{
-        users[_account] = user({
-            account: _account,
-            userName: _userName,
-            passWd: _passWd
-        });
+    function setUser(address payable _wallet, string memory _userName, string memory _account, string memory _passWd) public{
+        users[_account] = user(_wallet, _userName, _account, _passWd);
+        
+        allAccount.push(_account); //紀錄全部使用者帳號
     }
     
     //使用者登入
@@ -259,13 +273,9 @@ contract foodChain{
         }
     }
     
-    //取得所有店家地址
-    function getAllStore() public view returns(address[] memory){
-        return(allStore);
-    }
-    //前端py透過上一個方法取得的店家address寫一個迴圈
-    function storeInfoForUser(address _storeAddress)public view returns(allStoreInfo memory){
-        return(allStoreInfos[_storeAddress]);
+    //取得所有使用者帳號
+    function getAllAccount() public view returns(string[] memory){
+        return(allAccount);
     }
    
     //用戶評論

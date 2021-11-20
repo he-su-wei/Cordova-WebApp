@@ -274,9 +274,11 @@ async def echo(websocket, path):
                         await websocket.send(JSON.dumps("帳號重複"))
                         lst.clear()
                     elif(len(set_lst)==len(lst)):
-                        contract.setUser(check[0], check[1], check[2])
-                        # await websocket.send(JSON.dumps("註冊成功"))
+                        contract.createWallet(check[2])
                         address = await websocket.recv()
+
+                        contract.setUser(address, check[0], check[1], check[2])
+                        # await websocket.send(JSON.dumps("註冊成功"))
                         await websocket.send(JSON.dumps(address))
                         lst.clear()
 
@@ -309,12 +311,31 @@ async def echo(websocket, path):
         # custormer-info.js - 顧客資訊
         elif str["Type"] == "transfer":
             # await websocket.send("check")
-            address = await websocket.recv()
+            check = []
+            async for message in websocket:
+                n = f"{message}" 
+                print(n)  
+                check.append(n)
+                if len(check)==2:
+                    address = check[0]
+                    coin = check[1]
+                    # address = await websocket.recv()
+                    # coin = await websocket.recv()
             # print(address)
             
             # contract.approve(address)
-            contract.transfer(address)
-            await websocket.send(JSON.dumps("Transfer success"))
+                    contract.transfer(address, coin)
+                    await websocket.send(JSON.dumps("Transfer success"))
+                    check.clear()
+
+        elif str["Type"] == "transferFrom":
+            check = []
+            async for message in websocket:
+                n = f"{message}" 
+                print(n)  
+                check.append(n)
+                if len(check)==3:
+                    contract.transferFrom(check[0], check[1], check[2])
     finally:
         connected.remove(websocket)
 
