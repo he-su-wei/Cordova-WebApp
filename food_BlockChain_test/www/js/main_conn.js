@@ -103,3 +103,36 @@ function setTime(){
 function kit(){
     ws.send(localStorage.address);
 }
+
+// ---------small windows--------//
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 200,
+	height : 200
+});
+
+function makeCode() {		
+	// var elText = document.getElementById("text");
+    localStorage.address="0x17F6AD8Ef982297579C203069C1DbfFE4348c372";
+    var elText = localStorage.address;
+	
+	if (!elText) {
+		alert("No Adderss");
+		elText.focus();
+		return;
+	}
+	
+	// qrcode.makeCode(elText.value);
+    qrcode.makeCode(elText);
+}
+
+makeCode();
+
+$("#text").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
