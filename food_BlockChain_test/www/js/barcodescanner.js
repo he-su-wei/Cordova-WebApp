@@ -5,7 +5,7 @@ function scan(){
                 if(result.format == "QR_CODE") {
                     var value = result.text;
                     ws.send(value);  
-                    ws.send(localStorage.address);
+                    ws.send(localStorage.address);                  
                 }
             }
         },

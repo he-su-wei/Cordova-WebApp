@@ -1,122 +1,69 @@
-<html>
+<!DOCTYPE html>
 <head>
-  <title>QRScanner Library Test</title>
-  <script src="../plugins/cordova-plugin-qrscanner/dist/cordova-plugin-qrscanner-lib.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <script>
-    function prepare(){
-      QRScanner.prepare();
-    }
-    function scan(){
-      QRScanner.scan(
-      function(err, result){
-        if(err) {
-          console.log('scan error:', result);
-        } else {
-          window.alert('result: ' + result);
-        }
-      });
-    }
-    function cancelScan(){
-      QRScanner.cancelScan();
-    }
-    function frontCamera(){
-      QRScanner.useFrontCamera();
-    }
-    function backCamera(){
-      QRScanner.useBackCamera();
-    }
-    function show(){
-      QRScanner.show();
-    }
-    function hide(){
-      QRScanner.hide();
-    }
-    function pausePreview(){
-      QRScanner.pausePreview();
-    }
-    function resumePreview(){
-      QRScanner.resumePreview();
-    }
-    function destroy(){
-      QRScanner.destroy();
-    }
-    function getStatus(){
-      QRScanner.getStatus(console.log);
-    }
-    function testAll(){
-      console.log('Destroying QRScanner to test everything...');
-      QRScanner.destroy();
-      console.log('Preparing QRScanner...');
-      QRScanner.prepare(function(err, status){
-        if(err){
-          console.error(err._message);
-        } else {
-          console.log('QRScanner is initialized. Status:');
-          console.log(status);
-          console.log('Showing QRScanner...');
-          QRScanner.show(function(){
-            console.log('Starting scan...');
-            QRScanner.scan(function(err, result){
-              if(err){
-                console.log(err);
-                console.log('Scan canceled successfully.');
-                console.log('Destroying QRScanner...');
-                QRScanner.destroy(function(status){
-                  console.log('QRScanner destroyed. Status:');
-                  console.log(status);
-                });
-              }
-            });
-            window.setTimeout(function(){
-              console.log('Pausing preview...');
-              QRScanner.pausePreview(function(){
-                window.setTimeout(function(){
-                  console.log('Resuming preview...');
-                  QRScanner.resumePreview(function(){
-                    // shouldn't work if less than 2 cameras, but shouldn't break everything
-                    console.log('Switching cameras if available...');
-                    QRScanner.useFrontCamera(function(err, status){
-                      console.log('Status:');
-                      console.log(status);
-                      QRScanner.useBackCamera(function(err, status){
-                        // shouldn't work, but shouldn't break everything
-                        console.log('Making sure the lighting functions don\'t break things...');
-                        QRScanner.enableLight();
-                        QRScanner.disableLight();
-                        console.log('Get status:');
-                        QRScanner.getStatus(function(status){
-                          console.log(status);
-                          console.log('Canceling scan...');
-                          QRScanner.cancelScan(function(status){
-                            console.log('Final status:');
-                            console.log(status);
-                          });
-                        });
-
-                      });
-                    });
-                  });
-                }, 1000);
-              });
-            }, 3000);
-          });
-        }
-      });
-    }
-  </script>
+    
 </head>
+
 <body>
-  <button onclick="testAll()"><h1>testAll</h1></button>
-  <button onclick="prepare()"><h1>prepare</h1></button>
-  <button onclick="scan()"><h1>scan</h1></button>
-  <button onclick="cancelScan()"><h1>cancelScan</h1></button>
-  <button onclick="frontCamera()"><h1>useFrontCamera</h1></button>
-  <button onclick="backCamera()"><h1>useBackCamera</h1></button>
-  <button onclick="show()"><h1>show</h1></button>
-  <button onclick="hide()"><h1>hide</h1></button>
-  <button onclick="pausePreview()"><h1>pausePreview</h1></button>
-  <button onclick="resumePreview()"><h1>resumePreview</h1></button>
-  <button onclick="destroy()"><h1>destroy</h1></button>
+    <!-- Button trigger modal -->
+    <button type="button" id="btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Send</h5>
+            
+              
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <h6>address: <span id="address" style="font-size: smaller;">123</span></h6>
+              <input style="width: 100%;" id="sendCoin" placeholder="輸入要付款的亞大幣"></input>
+          </div>
+          <div class="modal-footer">
+            <button type="button" onclick="javascript:scan();" class="btn btn-danger">QR Code</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Send Coin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+
+    <script language="JavaScript" type="text/javascript">
+      const getAddress = document.getElementById('address');
+      function scan(){
+        cordova.plugins.barcodeScanner.scan(
+            function(result){
+                if(!result.cancelled){
+                    if(result.format == "QR_CODE") {
+                        var value = result.text;
+                        getAddress.innerText = value;
+                        ws.send(value);  
+                        ws.send(localStorage.address);
+                    }
+                }
+            },
+            function (error) {
+                alert('Scanning Failed '+error);
+            }
+        );
+      }
+
+    </script>
+
+    
 </body>
-</html>
