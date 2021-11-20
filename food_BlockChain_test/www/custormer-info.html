@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> <!--icon-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/custormer-info.css">
         <link rel="stylesheet" href="icon/css/all.css">
@@ -40,7 +43,7 @@
                 <span >首頁</span>
             </a>
 
-            <a  href="" class="footer__link" onclick = "javasript:scan()">
+            <a href="" class="footer__link" id="btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >
                 <i class="fas fa-dollar-sign nav__icon"></i>
                 <span>付款</span>
             </a>
@@ -51,6 +54,32 @@
             </a>
 
         </footer>
+
+     <!-- ----------------------------------------------付款彈跳視窗------------------------------------------------------------------ -->
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Send</h5>
+                    
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>address: <span id="address" style="font-size: smaller;">0x5B38Da6a701c568545dCfcB03FcB875f56beddC4</span></h6>
+                    <input style="width: 100%;" id="sendCoin" placeholder="輸入要付款的亞大幣" required pattern="[0-9]{1,}"/></input>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="javascript:scan();" class="btn btn-danger">QR Code</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send Coin</button>
+                </div>
+            </div>
+        </div>
+    </div>
         <!-------------------------------------------------------JavaScript----------------------------------------------------------->
         <script src="js/custormer-info.js"></script>
         <script src="js/setting.js"></script>
