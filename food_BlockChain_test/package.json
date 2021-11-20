@@ -31,8 +31,8 @@
       "cordova-plugin-x-toast": {}
     },
     "platforms": [
-      "android",
-      "browser"
+      "browser",
+      "android"
     ]
   },
   "dependencies": {
