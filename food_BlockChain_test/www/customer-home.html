@@ -54,26 +54,25 @@
     </footer>
 
     <!-- --------------------------------------付款彈跳視窗------------------------------------------------------------------ -->
-     <!-- Modal -->
-     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Send</h5>
-                    
                     
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h6>address: <span id="address" style="font-size: smaller;">0x5B38Da6a701c568545dCfcB03FcB875f56beddC4</span></h6>
-                    <input style="width: 100%;" id="sendCoin" placeholder="輸入要付款的亞大幣" required pattern="[0-9]{1,}"/></input>
+                    <h6>Store: <span id="address" style="font-size: smaller;"></span></h6>
+                    <input id="sendCoin" placeholder="輸入要付款的亞大幣" required pattern="[0-9]{1,}"/></input>
                 </div>
                 <div class="modal-footer">
                     <button type="button" onclick="javascript:scan();" class="btn btn-danger">QR Code</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send Coin</button>
+                    <button type="button" class="btn btn-primary" onclick="transfer();">Send Coin</button>
                 </div>
             </div>
         </div>

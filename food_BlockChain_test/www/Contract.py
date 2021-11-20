@@ -396,9 +396,9 @@ class asiaToken:
             })
         # print(txn)
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\841505d2dcf63793434de0780347d5f00168eddf') as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
+            private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
             # print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)
@@ -407,10 +407,12 @@ class asiaToken:
         print('0x'+bytes.hex(tx_hash))
         return "Success"
 
-    def transferFrom(self, add_from, coin, add_to):
+    def approve(self, add_from, coin):
+        return self.contract.functions.approve(add_from, coin).call()
+    def transferFrom(self, add_from, add_to, coin):
         nonce = self.w3.eth.getTransactionCount(self.account)
         print(nonce)
-        txn = self.contract.functions.transferFrom(add_from, coin, add_to).buildTransaction({
+        txn = self.contract.functions.transferFrom(add_from, add_to, coin).buildTransaction({
             'chainId': 428,
             'gas': 5000000,
             'gasPrice': self.w3.toWei('1', 'gwei'),
@@ -418,9 +420,9 @@ class asiaToken:
             })
         # print(txn)
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\841505d2dcf63793434de0780347d5f00168eddf') as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
+            private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
             # print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)
