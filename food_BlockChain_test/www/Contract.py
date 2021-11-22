@@ -356,7 +356,6 @@ class asiaToken:
 
     #approve
     def approve(self, add_from, coin):
-
         address = self.w3.toChecksumAddress(add_from)
         # print(type(address))
         estimate_gas = self.contract.functions.approve(address, coin).estimateGas()

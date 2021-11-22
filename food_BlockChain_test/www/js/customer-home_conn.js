@@ -1,8 +1,7 @@
 var datas = [];
 let sendData = new Object();
-var ws 
 function onload(){
-    ws = new WebSocket("ws://192.168.0.105:6012");
+    var ws = new WebSocket("ws://192.168.0.105:6012");
     
     ws.onopen = function () {
         console.log('open');
@@ -36,33 +35,33 @@ function setInfo(){
 
 var storeAddr, coin;
 var storeName="";
-// const getAddress = document.getElementById('address');
-// function scan(){
-//     cordova.plugins.barcodeScanner.scan(
-//         function(result){
-//             if(!result.cancelled){
-//                 if(result.format == "QR_CODE") {
-//                     storeAddr = result.text;
-//                     getStore();
-//                     // getAddress.innerText = value;
-//                     // ws.send(value);  
-//                     // ws.send(localStorage.address);
-//                 }
-//             }
-//         },
-//         function (error) {
-//             alert('Scanning Failed '+error);
-//         }
-//     );
-// }
-
-function scan() {
-    storeAddr = "0xDf11D1f32DAF325aa4Ce385A08c33F4D05Ab5FB9";
-    console.log(localStorage.address);
-    getStore();
-    // ws.send(storeAddr);  
-    // ws.send(localStorage.address);
+const getAddress = document.getElementById('address');
+function scan(){
+    cordova.plugins.barcodeScanner.scan(
+        function(result){
+            if(!result.cancelled){
+                if(result.format == "QR_CODE") {
+                    storeAddr = result.text;
+                    getStore();
+                    // getAddress.innerText = value;
+                    // ws.send(value);  
+                    // ws.send(localStorage.address);
+                }
+            }
+        },
+        function (error) {
+            alert('Scanning Failed '+error);
+        }
+    );
 }
+
+// function scan() {
+//     storeAddr = "0xDf11D1f32DAF325aa4Ce385A08c33F4D05Ab5FB9";
+//     console.log(localStorage.address);
+//     getStore();
+//     // ws.send(storeAddr);  
+//     // ws.send(localStorage.address);
+// }
 
 function getStore(){
     ws = new WebSocket("ws://192.168.0.105:6012");
@@ -112,5 +111,19 @@ function transfer(){
         };
     }else{
         alert("Scan QRCode!");
+    }
+}
+// -------------------------Search----------------------------//
+function runSearch(e) {     //及時搜尋會辦 "Enter"
+    if (e.keyCode === 13){
+        realSearch();
+    }
+}
+function realSearch(){
+    let temp = $("#find").val();
+    if(!temp){
+        $('#m-search').html("");
+    }else{
+        $('#m-search').html('.store:not([data-index*="' + temp + '"]) {display: none;}');
     }
 }

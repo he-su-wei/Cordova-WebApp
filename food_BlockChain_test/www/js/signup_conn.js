@@ -1,15 +1,15 @@
 let sendData = new Object();
 
-var ws = new WebSocket("ws://192.168.0.105:6012");
+// var ws = new WebSocket("ws://192.168.0.105:6012");
 function onload() {
 
-    ws.onopen = function () {
-        console.log('open');
-        sendData["Main"] = "clientContract";
-        sendData["Type"] = "signup";
-        let jsonData = JSON.stringify(sendData);
-        ws.send(jsonData);
-    };
+    // ws.onopen = function () {
+    //     console.log('open');
+    //     sendData["Main"] = "clientContract";
+    //     sendData["Type"] = "signup";
+    //     let jsonData = JSON.stringify(sendData);
+    //     ws.send(jsonData);
+    // };
 
     // ws.onmessage = function (event) {
     //   // console.log(event.data)
@@ -23,9 +23,18 @@ function check(){
     var password = document.getElementById('password').value;
     console.log(name);
 
-    ws.send(name);
-    ws.send(account);
-    ws.send(password);
+    var ws = new WebSocket("ws://192.168.0.105:6012");
+    ws.onopen = function () {
+        console.log('open');
+        sendData["Main"] = "clientContract";
+        sendData["Type"] = "signup";
+        let jsonData = JSON.stringify(sendData);
+        ws.send(jsonData);
+        ws.send(name);
+        ws.send(account);
+        ws.send(password);
+    };
+
     ws.onmessage = function (event) {
         console.log(event.data)
         var check = JSON.parse(event.data);

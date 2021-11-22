@@ -274,10 +274,8 @@ async def echo(websocket, path):
                         await websocket.send(JSON.dumps("帳號重複"))
                         lst.clear()
                     elif(len(set_lst)==len(lst)):
-                        
                         address = contract.createWallet(check[2])
                         contract.setUser(address, check[0], check[1], check[2])
-                        # await websocket.send(JSON.dumps("註冊成功"))
                         await websocket.send(JSON.dumps(address))
                         lst.clear()
 
