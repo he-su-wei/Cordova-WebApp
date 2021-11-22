@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/customer-home.css">
     <link rel="stylesheet" href="icon/css/all.css">
     <script src="JQuery/jquery-3.6.0.min.js"></script>
+    <style id="m-search"></style>
 </head>
 <body onload="onload();">
     <!--------------------------------------------------導航欄------------------------------------------------------------->
@@ -29,7 +30,7 @@
 
     <!--------------------------------------------------search------------------------------------------------------------->
     <div class="search-container">
-        <input type="text" placeholder="Search.." name="search">
+        <input id="find" type="text" placeholder="Search.." name="search" onkeyup="realSearch();" onkeypress="runSearch(event)">
         <button type="submit"><i class="fa fa-search"></i></button>
     </div>
         
