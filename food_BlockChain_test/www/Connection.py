@@ -274,9 +274,8 @@ async def echo(websocket, path):
                         await websocket.send(JSON.dumps("帳號重複"))
                         lst.clear()
                     elif(len(set_lst)==len(lst)):
-                        contract.createWallet(check[2])
-                        address = await websocket.recv()
-
+                        
+                        address = contract.createWallet(check[2])
                         contract.setUser(address, check[0], check[1], check[2])
                         # await websocket.send(JSON.dumps("註冊成功"))
                         await websocket.send(JSON.dumps(address))
@@ -302,9 +301,11 @@ async def echo(websocket, path):
 
         elif str["Type"] == "getStoreName":
             address = await websocket.recv()
+            print(address)
             storeName = contract.getStoreName(address)
-            await websocket.send(JSON.dumps(storeName))
             print(storeName)
+            await websocket.send(JSON.dumps(storeName))
+            
         # custormer-info.js - 顧客資訊
         elif str["Type"] == "getBalance":
             # await websocket.send("check")
@@ -322,15 +323,10 @@ async def echo(websocket, path):
                 n = f"{message}" 
                 print(n)  
                 check.append(n)
-                if len(check)==2:
+                if len(check)==1:
                     address = check[0]
-                    coin = check[1]
-                    # address = await websocket.recv()
-                    # coin = await websocket.recv()
-            # print(address)
-            
-            # contract.approve(address)
-                    contract.transfer(address, coin)
+                    # coin = check[1]
+                    contract.transfer(address)
                     await websocket.send(JSON.dumps("Transfer success"))
                     check.clear()
 
@@ -338,19 +334,20 @@ async def echo(websocket, path):
             check = []
             async for message in websocket:
                 n = f"{message}" 
-                print(n)  
+                # print(n)  
                 check.append(n)
+                print(check)
                 if len(check)==3:
-                    state = contract.approve(check[0], check[2])
-                    if(state):
-                        result = contract.transferFrom(check[0], check[1], check[2])
-                        await websocket.send(JSON.dumps(result))
-                        check.clear()
+                    # state = contract.approve(check[0], int(check[2]))
+                    # if(state):
+                    result = contract.transferFrom(check[0], check[1], int(check[2]))
+                    await websocket.send(JSON.dumps(result))
+                    check.clear()
     finally:
         connected.remove(websocket)
 
 async def main():
-    async with websockets.serve(echo, "192.168.0.105", 6012):
+    async with websockets.serve(echo, "192.168.68.52", 6001):
         await asyncio.Future()  # run forever
 
 if __name__ == "__main__":
