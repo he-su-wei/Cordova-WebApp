@@ -2,6 +2,11 @@ body{
     background-color: #f1e3d3;
     margin: 0px;
 }
+
+h3{
+    font-size:1.5rem ;
+    font-weight:bold ;
+}
 /*------------------------------------導航欄------------------------------*/
 .nav_bar{
     top: 0;
