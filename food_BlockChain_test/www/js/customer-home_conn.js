@@ -1,7 +1,8 @@
 var datas = [];
 let sendData = new Object();
+var ws 
 function onload(){
-    var ws = new WebSocket("ws://192.168.0.105:6012");
+    ws = new WebSocket("ws://192.168.0.105:6012");
     
     ws.onopen = function () {
         console.log('open');
@@ -35,64 +36,73 @@ function setInfo(){
 
 var storeAddr, coin;
 var storeName="";
-const getAddress = document.getElementById('address');
-function scan(){
-    cordova.plugins.barcodeScanner.scan(
-        function(result){
-            if(!result.cancelled){
-                if(result.format == "QR_CODE") {
-                    storeAddr = result.text;
-                    getStore();
-                    // getAddress.innerText = value;
-                    // ws.send(value);  
-                    // ws.send(localStorage.address);
-                }
-            }
-        },
-        function (error) {
-            alert('Scanning Failed '+error);
-        }
-    );
+// const getAddress = document.getElementById('address');
+// function scan(){
+//     cordova.plugins.barcodeScanner.scan(
+//         function(result){
+//             if(!result.cancelled){
+//                 if(result.format == "QR_CODE") {
+//                     storeAddr = result.text;
+//                     getStore();
+//                     // getAddress.innerText = value;
+//                     // ws.send(value);  
+//                     // ws.send(localStorage.address);
+//                 }
+//             }
+//         },
+//         function (error) {
+//             alert('Scanning Failed '+error);
+//         }
+//     );
+// }
+
+function scan() {
+    storeAddr = "0xDf11D1f32DAF325aa4Ce385A08c33F4D05Ab5FB9";
+    console.log(localStorage.address);
+    getStore();
+    // ws.send(storeAddr);  
+    // ws.send(localStorage.address);
 }
 
 function getStore(){
-    var ws = new WebSocket("ws://192.168.0.105:6012");
+    ws = new WebSocket("ws://192.168.0.105:6012");
     
     ws.onopen = function () {
         console.log('open');
         sendData["Main"] = "storeContract";
         sendData["Type"] = "getStoreName";
         let jsonData = JSON.stringify(sendData);
+        console.log(storeAddr);
         ws.send(jsonData);
         ws.send(storeAddr);
     };
     ws.onmessage = function (event) {
-        storeName = event.data;
+        storeName = JSON.parse(event.data);
         $('#address').html(storeName);
     };
-    ws.onclose = function(evt) {
-        console.log("close");
-    };
+    // ws.onclose = function(evt) {
+    //     console.log("close");
+    // };
 }
 
 function transfer(){
     if(storeName != ""){
             
         coin = $('#sendCoin').val();
-        var ws = new WebSocket("ws://192.168.0.105:6012");
+        ws = new WebSocket("ws://192.168.0.105:6012");
         
         ws.onopen = function () {
             console.log('open');
-            sendData["Main"] = "clientContract";
+            sendData["Main"] = "asiaToken";
             sendData["Type"] = "transferFrom";
             let jsonData = JSON.stringify(sendData);
             ws.send(jsonData);
-            ws.send(storeAddr);
             ws.send(localStorage.address);
+            ws.send(storeAddr);
             ws.send(coin);
         };
         ws.onmessage = function (event) {
-            var state = event.data;
+            var state = JSON.parse(event.data);
             if(state == "Success"){
                 console.log(state);
             }
