@@ -347,7 +347,7 @@ async def echo(websocket, path):
         connected.remove(websocket)
 
 async def main():
-    async with websockets.serve(echo, "192.168.68.52", 6001):
+    async with websockets.serve(echo, "192.168.0.105", 6012):
         await asyncio.Future()  # run forever
 
 if __name__ == "__main__":

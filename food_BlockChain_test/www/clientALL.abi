@@ -157,6 +157,11 @@
 		"constant": false,
 		"inputs": [
 			{
+				"internalType": "address payable",
+				"name": "_wallet",
+				"type": "address"
+			},
+			{
 				"internalType": "string",
 				"name": "_userName",
 				"type": "string"
@@ -189,6 +194,11 @@
 		],
 		"name": "users",
 		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "wallet",
+				"type": "address"
+			},
 			{
 				"internalType": "string",
 				"name": "account",
