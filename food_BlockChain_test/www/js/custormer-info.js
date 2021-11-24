@@ -2,8 +2,6 @@ let sendData = new Object();
 
 function onload() {
     getbalance();
-    setTimeout(getbalance(), 2000);
-    document.getElementById('balanceText'.innerText) = getbalance //me
 }
 
 function getbalance(){
