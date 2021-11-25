@@ -1,14 +1,18 @@
-body{
+html,body{
     margin: 0px;
     background-color: #f1e3d3;
+    height: 100%;
+    overflow: hidden;
 }
 
 
 .divForm{
     display: flex;
-    align-items: center;              /* 項目置中 */
-    justify-content: center;          /*水平對其置中*/
-    margin-top: 40%;                /*向下平移130px*/
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: sticky;
+    padding: 10%;
 }
 
 
@@ -16,7 +20,7 @@ body{
     border-radius: 20px;
     background-color:#70a9a1 ;
     width: 75vw;
-    height: 55vh;
+    height: auto;
     color: white;
     padding: 45px;
     box-shadow: 10px 10px 10px rgba(78, 128, 125, 0.616) ;
@@ -77,9 +81,9 @@ body{
 .loginForm button:hover{
     background-color: #2ecc71;
 }
+/*寬度小於380像素 login 做調整*/
 
-
-@media screen and (max-width: 380px) {                                 /*寬度小於380像素 login 做調整*/
+/* @media screen and (max-width: 380px) {                            
     .loginForm {width: 175px;}
     .loginForm h1{font-size:30px;}
     .loginForm input{font-size: 10px;}
@@ -91,7 +95,7 @@ body{
 @media screen and (max-height: 730px) {
     .loginForm {height: auto}
 
-}
+} */
 
 .ul_footer{
     list-style-type: none;

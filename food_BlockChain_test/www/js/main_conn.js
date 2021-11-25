@@ -61,7 +61,6 @@ function onload() {
             document.getElementById(id).innerHTML = str;
         }
         
-        
     };
     ws.onerror = function (e) {
         console.log(e);

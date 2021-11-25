@@ -4,6 +4,27 @@ function onload() {
     getbalance();
 }
 
+function getStore(){
+    ws = new WebSocket("ws://192.168.0.105:6012");
+    
+    ws.onopen = function () {
+        console.log('open');
+        sendData["Main"] = "storeContract";
+        sendData["Type"] = "getStoreName";
+        let jsonData = JSON.stringify(sendData);
+        console.log(storeAddr);
+        ws.send(jsonData);
+        ws.send(storeAddr);
+    };
+    ws.onmessage = function (event) {
+        storeName = JSON.parse(event.data);
+        $('#storeName').html(storeName);
+    };
+    // ws.onclose = function(evt) {
+    //     console.log("close");
+    // };
+}
+
 function getbalance(){
     var ws = new WebSocket("ws://192.168.0.105:6012");
 
