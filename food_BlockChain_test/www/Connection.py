@@ -289,11 +289,13 @@ async def echo(websocket, path):
                 print(check)
                 if len(check)==2:
                     checkUser = contract.checkUser(check[0], check[1])
-                    print(checkUser)  
-                    if(checkUser==True):
-                        await websocket.send(JSON.dumps(checkUser))
+                    address = contract.getUserName(check[0])
+                    tmp = checkUser+","+address
+                    print(tmp)  
+                    if(checkUser!="Fail"):
+                        await websocket.send(JSON.dumps(tmp))
                         check.clear()
-                    elif(checkUser==False):
+                    else:
                         await websocket.send(JSON.dumps(checkUser))
                         check.clear()
 

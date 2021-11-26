@@ -265,11 +265,11 @@ contract clientALL{
     }
     
     //使用者登入
-    function checkUser(string memory _account, string memory _passwd) public view returns(bool){
+    function checkUser(string memory _account, string memory _passwd) public view returns(string memory){
         if(keccak256(abi.encodePacked(users[_account].passWd)) == keccak256(abi.encodePacked(_passwd))){
-            return true;
+            return users[_account].userName;
         }else{
-            return false;
+            return "Fail";
         }
     }
     

@@ -286,7 +286,7 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x7e15266828A0a0B70793B861F112c4aFE114544d')
+        self.contract_addr = self.w3.toChecksumAddress('0x58162B2cF74D53e4A9829673181Ba0499B158E1f')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0x841505D2dCf63793434DE0780347D5F00168Eddf')
@@ -330,6 +330,9 @@ class clientContract:
     def checkUser(self, account, password):
         return self.contract.functions.checkUser(account, password).call()
 
+    def getUserName(self, account):
+        return self.contract.functions.getUserName(account).call()
+
     def setComment(self, address, name, comment):
         return self.contract.functions.setComment(address, name, comment).call()
     
@@ -360,7 +363,7 @@ class asiaToken:
         # print(type(address))
         estimate_gas = self.contract.functions.approve(address, coin).estimateGas()
         # print(estimate_gas)
-        nonce = self.w3.eth.getTransactionCount(self.account)
+        nonce = self.w3.eth.getTransactionCount(address)
         # print(nonce)
         txn = self.contract.functions.approve(address, coin).buildTransaction({
             'chainId': 428,
@@ -415,7 +418,7 @@ class asiaToken:
         ad_to = self.w3.toChecksumAddress(add_to)
         self.w3.eth.default_account = ad_from
         print(self.w3.eth.default_account)
-        nonce = self.w3.eth.getTransactionCount(self.account)
+        nonce = self.w3.eth.getTransactionCount(ad_from)
         txn = self.contract.functions.transferFrom(ad_from, ad_to, coin).buildTransaction({
             'chainId': 428,
             'gas': 5000000,

@@ -11,7 +11,6 @@ ws.onopen = function () {
 
 
 function check(){
-
     var account = document.getElementById('account').value;
     var password = document.getElementById('password').value;
 
@@ -20,12 +19,13 @@ function check(){
 
     ws.onmessage = function (event) {
         console.log(event.data)
-        var check = event.data;
-        if (check=="true"){
+        var check = event.data.split(",");
+        if (check[0]!="Fail"){
             alert("登入成功!");
+            localStorage.userName = check[0];
+            localStorage.address = check[1];
             window.location.href='customer-home.html';
-        }
-        if (check=="false"){
+        }else{
             // localStorage.address = address;
             alert('資料錯誤');
             window.location.href='customer-login.html';
