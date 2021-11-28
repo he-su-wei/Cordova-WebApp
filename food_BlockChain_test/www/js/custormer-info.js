@@ -4,27 +4,6 @@ function onload() {
     getbalance();
 }
 
-function getStore(){
-    ws = new WebSocket("ws://192.168.0.105:6012");
-    
-    ws.onopen = function () {
-        console.log('open');
-        sendData["Main"] = "storeContract";
-        sendData["Type"] = "getStoreName";
-        let jsonData = JSON.stringify(sendData);
-        console.log(storeAddr);
-        ws.send(jsonData);
-        ws.send(storeAddr);
-    };
-    ws.onmessage = function (event) {
-        storeName = JSON.parse(event.data);
-        $('#storeName').html(storeName);
-    };
-    // ws.onclose = function(evt) {
-    //     console.log("close");
-    // };
-}
-
 function getbalance(){
     var ws = new WebSocket("ws://192.168.0.105:6012");
 
@@ -67,18 +46,19 @@ function getCoin(){
     };
 }
 
-
-//-------------------qrcode-------------------------//
+var storeAddr, coin;
+var storeName="";
 const getAddress = document.getElementById('address');
 function scan(){
     cordova.plugins.barcodeScanner.scan(
         function(result){
             if(!result.cancelled){
                 if(result.format == "QR_CODE") {
-                    var value = result.text;
-                    getAddress.innerText = value;
-                    ws.send(value);  
-                    ws.send(localStorage.address);
+                    storeAddr = result.text;
+                    getStore();
+                    // getAddress.innerText = value;
+                    // ws.send(value);  
+                    // ws.send(localStorage.address);
                 }
             }
         },
@@ -87,3 +67,76 @@ function scan(){
         }
     );
 }
+
+function getStore(){
+    ws = new WebSocket("ws://192.168.0.105:6012");
+    
+    ws.onopen = function () {
+        console.log('open');
+        sendData["Main"] = "storeContract";
+        sendData["Type"] = "getStoreName";
+        let jsonData = JSON.stringify(sendData);
+        console.log(storeAddr);
+        ws.send(jsonData);
+        ws.send(storeAddr);
+    };
+    ws.onmessage = function (event) {
+        storeName = JSON.parse(event.data);
+        $('#address').html(storeName);
+    };
+    // ws.onclose = function(evt) {
+    //     console.log("close");
+    // };
+}
+
+function transfer(){
+    if(storeName != ""){
+            
+        coin = $('#sendCoin').val();
+        ws = new WebSocket("ws://192.168.0.105:6012");
+        
+        ws.onopen = function () {
+            console.log('open');
+            sendData["Main"] = "asiaToken";
+            sendData["Type"] = "transferFrom";
+            let jsonData = JSON.stringify(sendData);
+            ws.send(jsonData);
+            ws.send(localStorage.address);
+            ws.send(storeAddr);
+            ws.send(coin);
+            ws.send(localStorage.pwd);
+        };
+        ws.onmessage = function (event) {
+            var state = JSON.parse(event.data);
+            if(state == "Success"){
+                console.log(state);
+            }
+        };
+        ws.onclose = function(evt) {
+            console.log("close");
+        };
+    }else{
+        alert("Scan QRCode!");
+    }
+}
+
+
+// //-------------------qrcode-------------------------//
+// const getAddress = document.getElementById('address');
+// function scan(){
+//     cordova.plugins.barcodeScanner.scan(
+//         function(result){
+//             if(!result.cancelled){
+//                 if(result.format == "QR_CODE") {
+//                     var value = result.text;
+//                     getAddress.innerText = value;
+//                     ws.send(value);  
+//                     ws.send(localStorage.address);
+//                 }
+//             }
+//         },
+//         function (error) {
+//             alert('Scanning Failed '+error);
+//         }
+//     );
+// }
