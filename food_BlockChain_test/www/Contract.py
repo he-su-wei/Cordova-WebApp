@@ -22,7 +22,7 @@ class storeContract:
     def setDeliverTime(self, id, address, password):
         address = self.w3.toChecksumAddress(address)
         estimate_gas = self.contract.functions.setDeliverTime(id, address).estimateGas()
-        nonce = self.w3.eth.getTransactionCount(self.account)
+        nonce = self.w3.eth.getTransactionCount(address)
         txn = self.contract.functions.setDeliverTime(id, address).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
@@ -49,7 +49,7 @@ class storeContract:
     def setFoodCleanTime(self, id, address, password):
         address = self.w3.toChecksumAddress(address)
         estimate_gas = self.contract.functions.setFoodCleanTime(id, address).estimateGas()
-        nonce = self.w3.eth.getTransactionCount(self.account)
+        nonce = self.w3.eth.getTransactionCount(address)
         txn = self.contract.functions.setFoodCleanTime(id, address).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
@@ -76,7 +76,7 @@ class storeContract:
     def deleteFood(self, id, address, password):
         address = self.w3.toChecksumAddress(address)
         estimate_gas = self.contract.functions.deleteFood(id, address).estimateGas()
-        nonce = self.w3.eth.getTransactionCount(self.account)
+        nonce = self.w3.eth.getTransactionCount(address)
         txn = self.contract.functions.deleteFood(id, address).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
@@ -103,7 +103,7 @@ class storeContract:
     def setlocationTime(self, address, password):
         address = self.w3.toChecksumAddress(address)
         estimate_gas = self.contract.functions.setlocationTime(address).estimateGas()
-        nonce = self.w3.eth.getTransactionCount(self.account)
+        nonce = self.w3.eth.getTransactionCount(address)
         txn = self.contract.functions.setlocationTime(address).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
@@ -130,7 +130,7 @@ class storeContract:
     def refresh(self, address, password):
         address = self.w3.toChecksumAddress(address)
         estimate_gas = self.contract.functions.refresh(address).estimateGas()
-        nonce = self.w3.eth.getTransactionCount(self.account)
+        nonce = self.w3.eth.getTransactionCount(address)
         txn = self.contract.functions.refresh(address).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
@@ -157,7 +157,7 @@ class storeContract:
     def setStoreOpen(self, address, password):
         address = self.w3.toChecksumAddress(address)
         estimate_gas = self.contract.functions.setStoreOpen(address).estimateGas()
-        nonce = self.w3.eth.getTransactionCount(self.account)
+        nonce = self.w3.eth.getTransactionCount(address)
         txn = self.contract.functions.setStoreOpen(address).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
@@ -184,7 +184,7 @@ class storeContract:
     def setStoreClose(self, address, password):
         address = self.w3.toChecksumAddress(address)
         estimate_gas = self.contract.functions.setStoreClose(address).estimateGas()
-        nonce = self.w3.eth.getTransactionCount(self.account)
+        nonce = self.w3.eth.getTransactionCount(address)
         txn = self.contract.functions.setStoreClose(address).buildTransaction({
             'chainId': 428,
             'gas': estimate_gas,
@@ -312,7 +312,7 @@ class clientContract:
             })
         
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\841505d2dcf63793434de0780347d5f00168eddf') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0x841505d2dcf63793434de0780347d5f00168eddf') as keyfile:
             encrypted_key = keyfile.read()
             private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
             print(bytes.hex(private_key))
@@ -358,7 +358,8 @@ class asiaToken:
         return self.contract.functions.balanceOf(address).call()
 
     #approve
-    def approve(self, add_from, coin):
+    def approve(self, add_from, coin, pwd):
+
         address = self.w3.toChecksumAddress(add_from)
         # print(type(address))
         estimate_gas = self.contract.functions.approve(address, coin).estimateGas()
@@ -372,19 +373,25 @@ class asiaToken:
             'nonce': nonce
             })
         # print(txn)
+
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\841505d2dcf63793434de0780347d5f00168eddf') as keyfile:
+        path = "D:/BlockChain/node1/keystore"
+        x = os.path.join(path, address)
+        privateKey = pwd
+        with open(x) as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
-            # print(bytes.hex(private_key))
+            private_key = self.w3.eth.account.decrypt(encrypted_key, privateKey)
+            print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)
 
             
         tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
-            
-        tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
+        print(self.w3.eth.wait_for_transaction_receipt(tx_hash))
+        print()
         print('0x'+bytes.hex(tx_hash))
+        print()
+        # return '0x'+bytes.hex(tx_hash)
         return "Success"
 
     #發送測試幣
@@ -401,7 +408,7 @@ class asiaToken:
             })
         # print(txn)
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\841505d2dcf63793434de0780347d5f00168eddf') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0x841505d2dcf63793434de0780347d5f00168eddf') as keyfile:
             encrypted_key = keyfile.read()
             private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
             # print(bytes.hex(private_key))
@@ -412,12 +419,13 @@ class asiaToken:
         print('0x'+bytes.hex(tx_hash))
         return "Success"
 
-
-    def transferFrom(self, add_from, add_to, coin):
+    def transferFrom(self, add_from, add_to, coin, pwd):
+    
         ad_from = self.w3.toChecksumAddress(add_from)
         ad_to = self.w3.toChecksumAddress(add_to)
         self.w3.eth.default_account = ad_from
-        print(self.w3.eth.default_account)
+        # print(self.w3.eth.default_account)
+
         nonce = self.w3.eth.getTransactionCount(ad_from)
         txn = self.contract.functions.transferFrom(ad_from, ad_to, coin).buildTransaction({
             'chainId': 428,
@@ -427,13 +435,18 @@ class asiaToken:
             })
         # print(txn)
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\841505d2dcf63793434de0780347d5f00168eddf') as keyfile:
+        path = "D:/BlockChain/node1/keystore"
+        x = os.path.join(path, ad_from)
+        privateKey = pwd
+        with open(x) as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
-            # print(bytes.hex(private_key))
+            private_key = self.w3.eth.account.decrypt(encrypted_key, privateKey)
+            print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)
             
         tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
+        print(self.w3.eth.wait_for_transaction_receipt(tx_hash))
+        print()
         print('0x'+bytes.hex(tx_hash))
         return "Success"

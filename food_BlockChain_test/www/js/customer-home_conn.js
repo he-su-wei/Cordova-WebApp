@@ -99,6 +99,7 @@ function transfer(){
             ws.send(localStorage.address);
             ws.send(storeAddr);
             ws.send(coin);
+            ws.send(localStorage.pwd);
         };
         ws.onmessage = function (event) {
             var state = JSON.parse(event.data);

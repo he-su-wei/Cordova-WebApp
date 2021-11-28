@@ -337,10 +337,10 @@ async def echo(websocket, path):
                 # print(n)  
                 check.append(n)
                 print(check)
-                if len(check)==3:
-                    state = contract.approve(check[0], int(check[2]))
+                if len(check)==4:
+                    state = contract.approve(check[0], int(check[2]), check[3])
                     if(state=="Success"):
-                        result = contract.transferFrom(check[0], check[1], int(check[2]))
+                        result = contract.transferFrom(check[0], check[1], int(check[2]), check[3])
                         await websocket.send(JSON.dumps(result))
                         check.clear()
     finally:
