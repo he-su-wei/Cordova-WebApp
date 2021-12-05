@@ -55,6 +55,7 @@ function scan(){
     );
 }
 
+
 // function scan() {
 //     storeAddr = "0xDf11D1f32DAF325aa4Ce385A08c33F4D05Ab5FB9";
 //     console.log(localStorage.address);
