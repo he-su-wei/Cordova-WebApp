@@ -42,8 +42,9 @@ function check(){
             alert("使用者帳號已經有人使用!");
         }else{
             alert('註冊成功');
-            localStorage.address=check;
-            window.location.href='customer-login.html';
+            localStorage.address = check;
+            localStorage.pwd = password;
+            window.location.href = 'customer-login.html';
         }
     };
 };
