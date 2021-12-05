@@ -40,14 +40,13 @@ contract storeALL{
     struct allStoreInfo{
         address storeAddress;
         string storeName;
-        string iconName; //UI icon img Name
         bool isOpen;
         bool isClear;
     }
     mapping(address => allStoreInfo) public allStoreInfos;
     
     //店家註冊
-    function setStore(address _storeAddress, string memory _storeName, string memory _account, string memory _passWd, string memory _iconName) public{
+    function setStore(address _storeAddress, string memory _storeName, string memory _account, string memory _passWd) public{
         stores[_storeAddress].storeAddress = _storeAddress;
         // stores[_storeAddress].private_key = _private_key;
         stores[_storeAddress].storeName = _storeName;
@@ -59,7 +58,6 @@ contract storeALL{
         
         allStoreInfos[_storeAddress].storeAddress = _storeAddress;
         allStoreInfos[_storeAddress].storeName = _storeName;
-        allStoreInfos[_storeAddress].iconName = _iconName;
         allStoreInfos[_storeAddress].isClear = false;
 
         allStore.push(_storeAddress); //紀錄全部店家之address
@@ -74,11 +72,6 @@ contract storeALL{
         }else{
             return false;
         }
-    }
-    
-    //回傳店家圖片
-    function getStoreIconName(address _storeAddress) public view returns(string memory){
-        return(allStoreInfos[_storeAddress].iconName);
     }
     
     //回傳店家名稱
@@ -271,6 +264,10 @@ contract clientALL{
         }else{
             return "Fail";
         }
+    }
+    
+    function getUserName(string memory _account) public view returns(address){
+        return users[_account].wallet;
     }
     
     //取得所有使用者帳號
