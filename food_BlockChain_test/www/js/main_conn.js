@@ -20,7 +20,7 @@ function onload() {
   
 
 
-    ws = new WebSocket("ws://192.168.0.105:6012");
+    ws = new WebSocket("ws://192.168.68.52:6001");
     ws.onopen = function () {
         console.log('open');
         sendData["Main"] = "storeContract";
@@ -61,6 +61,7 @@ function onload() {
             document.getElementById(id).innerHTML = str;
         }
         
+        
     };
     ws.onerror = function (e) {
         console.log(e);
@@ -72,30 +73,30 @@ function onload() {
     };
 }
 
-// function scan(){
-//     cordova.plugins.barcodeScanner.scan(
-//         function(result){
-//             if(!result.cancelled){
-//                 if(result.format == "QR_CODE") {
-//                     var value = result.text;
-//                     ws.send(value);  
-//                     ws.send(localStorage.address);
-//                 }
-//             }
-//         },
-//         function (error) {
-//             alert('Scanning Failed '+error);
-//         }
-//     );
-// }
-
-
-
-function setTime(){
-    var value = "Beef004";
-    ws.send(value);  
-    ws.send(localStorage.address);
+function scan(){
+    cordova.plugins.barcodeScanner.scan(
+        function(result){
+            if(!result.cancelled){
+                if(result.format == "QR_CODE") {
+                    var value = result.text;
+                    ws.send(value);  
+                    ws.send(localStorage.address);
+                }
+            }
+        },
+        function (error) {
+            alert('Scanning Failed '+error);
+        }
+    );
 }
+
+
+
+// function setTime(){
+//     var value = "Beef004";
+//     ws.send(value);  
+//     ws.send(localStorage.address);
+// }
 
 
 
@@ -111,7 +112,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 
 function makeCode() {		
 	// var elText = document.getElementById("text");
-    localStorage.address="0x17F6AD8Ef982297579C203069C1DbfFE4348c372";
+    // localStorage.address="0x17F6AD8Ef982297579C203069C1DbfFE4348c372";
     var elText = localStorage.address;
 	
 	if (!elText) {
