@@ -57,12 +57,11 @@
 
      <!-- ----------------------------------------------付款彈跳視窗------------------------------------------------------------------ -->
      <!-- Modal -->
-     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Send</h5>
-                    
                     
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -75,7 +74,7 @@
                 <div class="modal-footer">
                     <button type="button" onclick="javascript:scan();" class="btn btn-danger">QR Code</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send Coin</button>
+                    <button type="button" class="btn btn-primary" onclick="transfer();">Send Coin</button>
                 </div>
             </div>
         </div>
