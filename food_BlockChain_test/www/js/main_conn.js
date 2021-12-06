@@ -18,56 +18,30 @@ function onload() {
     document.getElementById('takeTime').innerHTML = time ;
     document.getElementById('takeDay').innerHTML =`<b>${day}</b>`  ;
 
-    console.log(localStorage.status);
-    if(localStorage.status == "營業中"){
-        var str = "營業中";
-        genode(str, 'status');
-        function genode(str, id) {
-            document.getElementById(id).innerHTML = str;
-        }
-    }
-    else if(localStorage.status == "已打烊"){
-        var str = "已打烊";
-        genode(str, 'status');
-        function genode(str, id) {
-            document.getElementById(id).innerHTML = str;
-        }
-    }
-}
-
-function scan(){
     ws = new WebSocket("ws://192.168.0.105:6012");
     ws.onopen = function () {
         console.log('open');
         sendData["Main"] = "storeContract";
-        sendData["Type"] = "setTime";
+        sendData["Type"] = "mainLoad";
         let jsonData = JSON.stringify(sendData);
         ws.send(jsonData);
-    };
 
-    cordova.plugins.barcodeScanner.scan(
-        function(result){
-            if(!result.cancelled){
-                if(result.format == "QR_CODE") {
-                    var value = result.text;
-                    ws.send(value);  
-                    ws.send(localStorage.address);
-                }
-            }
-        },
-        function (error) {
-            alert('Scanning Failed '+error);
+        console.log(localStorage.status);
+        if(localStorage.status == "營業中"){
+            $('#status').text("營業中");
         }
-    );
+        else if(localStorage.status == "已打烊"){
+            $('#status').text("已打烊");
+        }
+    };
 
     n = [];
     ws.onmessage = function (event) {
         
         n.push(JSON.parse(event.data));
         console.log(n);
-        if(n=="check"){
+        if(n[0]=="check"){
             ws.send(localStorage.address);
-            ws.send(localStorage.pwd);
         }
         console.log(localStorage.address);
         var str = n[1];
@@ -75,6 +49,14 @@ function scan(){
         function genode(str, id) {
             document.getElementById(id).innerHTML = str;
         }
+
+        if(n[2] == true){
+            $('#status').text("營業中");
+        }
+        else if(n[2]==false){
+            $('#status').text("已打烊");
+        }
+        
         
         
     };
@@ -86,20 +68,100 @@ function scan(){
     ws.onclose = function (event) {
         console.log('close code=' + event.code);
     };
+
+    
+}
+
+function scan(){
+
+    ws = new WebSocket("ws://192.168.0.105:6012");
+    ws.onopen = function () {
+        console.log('open');
+        sendData["Main"] = "storeContract";
+        sendData["Type"] = "setTime";
+        let jsonData = JSON.stringify(sendData);
+        ws.send(jsonData);
+
+        console.log(localStorage.status);
+        if(localStorage.status == "營業中"){
+            $('#status').text("營業中");
+        }
+        else if(localStorage.status == "已打烊"){
+            $('#status').text("已打烊");
+        }
+    };
+
+    ws.onmessage = function (event) {
+        
+        var n = JSON.parse(event.data);
+        console.log(n);
+        if(n=="check"){
+            cordova.plugins.barcodeScanner.scan(
+                function(result){
+                    if(!result.cancelled){
+                        if(result.format == "QR_CODE") {
+                            var value = result.text;
+                            ws.send(value);  
+                            ws.send(localStorage.address);
+                        }
+                    }
+                },
+                function (error) {
+                    alert('Scanning Failed '+error);
+                }
+            );
+        }
+
+        
+    };
+    ws.onerror = function (e) {
+        console.log(e);
+        document.getElementById('dataID').value = 'error';
+    };
+
+    ws.onclose = function (event) {
+        console.log('close code=' + event.code);
+    };
+
 }
 
 
 
-// function setTime(){
-//     var value = "Beef004";
-//     ws.send(value);  
-//     ws.send(localStorage.address);
-// }
-
-
-
 function kit(){
-    ws.send(localStorage.address);
+    ws = new WebSocket("ws://192.168.0.105:6012");
+    ws.onopen = function () {
+        console.log('open');
+        sendData["Main"] = "storeContract";
+        sendData["Type"] = "setKitClenTime";
+        let jsonData = JSON.stringify(sendData);
+        ws.send(jsonData);
+
+        console.log(localStorage.status);
+        if(localStorage.status == "營業中"){
+            $('#status').text("營業中");
+        }
+        else if(localStorage.status == "已打烊"){
+            $('#status').text("已打烊");
+        }
+    };
+
+    ws.onmessage = function (event) {
+        var n = JSON.parse(event.data);
+        console.log(n);
+        if(n=="check"){
+            ws.send(localStorage.address);
+            ws.send(localStorage.key);
+        }
+    };
+    ws.onerror = function (e) {
+        console.log(e);
+        document.getElementById('dataID').value = 'error';
+    };
+
+    ws.onclose = function (event) {
+        console.log('close code=' + event.code);
+    };
+
 }
 
 // ---------small windows--------//

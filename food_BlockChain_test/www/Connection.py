@@ -94,6 +94,21 @@ async def echo(websocket, path):
                     await websocket.send(JSON.dumps(storeName))
                     # icon = contract.getStoreIconName(address)  
                     # await websocket.send(JSON.dumps(icon))
+
+        # main_conn.js
+        elif str["Type"] == "mainLoad":
+            await websocket.send(JSON.dumps("check"))
+            
+            ap = await websocket.recv()
+
+            address = ap
+            print(ap)
+            storeName = contract.getStoreName(address)
+            await websocket.send(JSON.dumps(storeName))
+            storeState = contract.getStoreState(address)
+            await websocket.send(JSON.dumps(storeState))
+            
+
         # main_conn.js
         elif str["Type"] == "setTime":
             await websocket.send(JSON.dumps("check"))
@@ -101,42 +116,45 @@ async def echo(websocket, path):
             ap = []
             ap.append(await websocket.recv())
             ap.append(await websocket.recv())
-            if(len(ap)==2):
+            ap.append(await websocket.recv())
+            if(len(ap)==3):
                 address = ap[0]
                 key = ap[1]
+                id = ap[2]
                 print(ap)
-                storeName = contract.getStoreName(address)
-                await websocket.send(JSON.dumps(storeName))
-            
-                lis = []
-                async for message in websocket:
-                    n = f"{message}"
-                    lis.append(n)
+    
+                # print(key)
+                # 設定進貨時間
+                if contract.getDeliverTime(id, address) == 0:
+                    print("DeliverTime")
+                    contract.setDeliverTime(id, address, key) 
+                    ap.clear()
+                # 設定清洗時間
+                elif contract.getDeliverTime(id, address) != 0 and contract.getFoodState(id, address) == 1 and contract.getFoodCleanTime(id, address) == 0:
+                    print("FoodCleanTime")
+                    contract.setFoodCleanTime(id, address, key)
+                    ap.clear()
+                # 刪除食物時間
+                elif contract.getFoodState(id, address) == 1 and contract.getFoodCleanTime(id, address) != 0:
+                    print("deleteFood")
+                    contract.deleteFood(id, address, key)
+                    ap.clear()
                     
-                    if len(lis)==2:
-                        id = lis[0]
-                        address = lis[1]
-                        print(key)
-                        # 設定進貨時間
-                        if contract.getDeliverTime(id, address) == 0:
-                            print("DeliverTime")
-                            contract.setDeliverTime(id, address, key) 
-                            lis.clear()
-                        # 設定清洗時間
-                        elif contract.getDeliverTime(id, address) != 0 and contract.getFoodState(id, address) == 1 and contract.getFoodCleanTime(id, address) == 0:
-                            print("FoodCleanTime")
-                            contract.setFoodCleanTime(id, address, key)
-                            lis.clear()
-                        # 刪除食物時間
-                        elif contract.getFoodState(id, address) == 1 and contract.getFoodCleanTime(id, address) != 0:
-                            print("deleteFood")
-                            contract.deleteFood(id, address, key)
-                            lis.clear()
-                    # 環境清理
-                    elif len(lis) == 1 and len(lis[0]) == 42:
-                        address = lis[0]
-                        contract.setlocationTime(address, key)
-                        lis.clear()
+
+        # main_conn.js
+        elif str["Type"] == "setKitClenTime":
+            
+            ap = []
+            ap.append(await websocket.recv())
+            ap.append(await websocket.recv())
+             
+            # 環境清理
+            if len(ap)==2:
+                address = ap[0]
+                key = ap[1]
+                contract.setlocationTime(address, key)
+                ap.clear()
+
         # foodin-list_conn.js - 食材進貨時間表
         elif str["Type"] == "DeliverTime":
             await websocket.send("check")
@@ -175,28 +193,40 @@ async def echo(websocket, path):
             await websocket.send(JSON.dumps(locationStatus))
             print(JSON.dumps(locationStatus))
 
+        elif str["Type"] == "StoreStateLoad":
+            await websocket.send(JSON.dumps("check"))
+            ap = await websocket.recv()
+            print(ap)
+            address = ap
+            storeState = contract.getStoreState(address)
+            await websocket.send(JSON.dumps(storeState))
+
         # business-status_conn.js
-        elif str["Type"] == "StoreState":
-            await websocket.send("check")
+        elif str["Type"] == "StoreStateOpen":
+            await websocket.send(JSON.dumps("check"))
             ap = []
             ap.append(await websocket.recv())
             ap.append(await websocket.recv())
 
+            print(ap)
             if(len(ap)==2):
                 address = ap[0]
                 key = ap[1]
-                async for message in websocket:
-                    n = f"{message}"
-                    address = n 
-                    print(n)
-                    if contract.getStoreState(address) == False:
-                        contract.setStoreOpen(address, key)
+              
+                if contract.getStoreState(address) == False:
+                    # print("open")
+
+                    state = contract.setStoreOpen(address, key)
+                    if(state=="Open"):
                         await websocket.send(JSON.dumps(contract.getStoreState(address)))
-                        print(JSON.dumps(contract.getStoreState(address)))
-                    elif contract.getStoreState(address) == True:
-                        contract.setStoreClose(address, key)
+                        print("state:" + JSON.dumps(contract.getStoreState(address)))
+                      
+                elif contract.getStoreState(address) == True:
+                    # print("close")
+                    state = contract.setStoreClose(address, key)
+                    if(state=="Close"):
                         await websocket.send(JSON.dumps(contract.getStoreState(address)))
-                        print(JSON.dumps(contract.getStoreState(address)))
+                        print("state:" + JSON.dumps(contract.getStoreState(address)))
 
         # customer-home_conn.js
         elif str["Type"] == "AllStore":
