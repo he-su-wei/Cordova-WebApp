@@ -24,6 +24,9 @@ function getbalance(){
         $('#balanceText').text(str);
     };
 }
+
+setTimeout('getbalance()',3000);
+
 function getCoin(){
     var ws = new WebSocket("ws://192.168.0.105:6012");
     ws.onopen = function () {
