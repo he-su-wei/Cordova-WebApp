@@ -286,7 +286,7 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x58162B2cF74D53e4A9829673181Ba0499B158E1f')
+        self.contract_addr = self.w3.toChecksumAddress('0x2DB6b7Dbd2c713C43F37DE836362373ACcA2448e')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0x841505D2dCf63793434DE0780347D5F00168Eddf')

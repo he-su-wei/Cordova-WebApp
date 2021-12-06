@@ -1,6 +1,7 @@
 let sendData = new Object();
 
 function onload() {
+    console.log(localStorage.address);
     getbalance();
 }
 
