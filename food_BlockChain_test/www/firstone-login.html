@@ -3,8 +3,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="icon/css/all.css">
+
+    <!-- webSocket connect -->
+    <script src="js/firstone-login_conn.js"></script>
 </head>
-<body onload="onload()">
+<body>
     <!--------------------------------------------------導航欄------------------------------------------------------------->
     <nav class="nav_bar flex">
         <div class="item"> <img src="img/csie.png" class="" alt="..." width="40"> </div>
@@ -28,7 +31,7 @@
             <input id="address" type="text" placeholder="Address 地址" required pattern="[0-9a-zA-Z]{42,42}"/>  
             <input id="account" type="text" placeholder="Account 帳號" />    
             <input id="password" type="password" placeholder="Password 密碼"/>
-            <button type="button" class="" onclick="javascript:check();">Enter</button>
+            <button type="button" class="" onclick="javascript:checkLogin();">Enter</button>
         </div>
     </div>
 
@@ -44,10 +47,8 @@
     </script>
     
     <script src="cordova.js"></script>
-    <script src="js/index.js"></script>
+    <!-- <script src="js/index.js"></script> -->
 
-    <!-- webSocket connect -->
-    <script src="js/firstone-login_conn.js"></script>
 
 </body>
 </html>

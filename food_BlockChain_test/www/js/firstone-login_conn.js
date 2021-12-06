@@ -1,6 +1,12 @@
 let sendData = new Object();
 
 function onload(){
+}
+function checkLogin(){
+    var address = document.getElementById('address').value;
+    var account = document.getElementById('account').value;
+    var password = document.getElementById('password').value;
+    
     ws = new WebSocket("ws://192.168.0.105:6012")
     ws.onopen = function () {
         console.log('open');
@@ -8,25 +14,11 @@ function onload(){
         sendData["Type"] = "firstLogin";
         let jsonData = JSON.stringify(sendData);
         ws.send(jsonData);
+        ws.send(address);
+        ws.send(account);
+        ws.send(password);
     };
 
-
-    // ws.onmessage = function (event) {
-    //   // console.log(event.data)
-    //   var str = event.data;
-    //   document.getElementById('bool').value = str;
-    // };
-}
-function check(){
-    
-    var address = document.getElementById('address').value;
-    var account = document.getElementById('account').value;
-    var password = document.getElementById('password').value;
-
-    ws.send(address);
-    ws.send(account);
-    ws.send(password);
-    
     ws.onmessage = function (event) {
         // console.log(event.data)
         var check = event.data;
@@ -40,5 +32,4 @@ function check(){
             alert('資料錯誤');
         }
     };
-    
 };
