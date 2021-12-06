@@ -43,7 +43,8 @@ function getCoin(){
 
     ws.onmessage = function (event) {
         console.log(event.data)
-        setTimeout(getbalance, 2000);
+        setTimeout(getbalance, 10000);
+        
     };
 }
 
