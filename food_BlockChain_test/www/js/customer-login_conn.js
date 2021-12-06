@@ -23,7 +23,7 @@ function check(){
         if (check[0]!="Fail"){
             alert("登入成功!");
             localStorage.userName = check[0];
-            localStorage.address = check[1];
+            localStorage.address = check[1].replace('"', '');
             window.location.href='customer-home.html';
         }else{
             // localStorage.address = address;
