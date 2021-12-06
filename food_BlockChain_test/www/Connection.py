@@ -78,22 +78,22 @@ async def echo(websocket, path):
                     storeName = contract.getStoreName(address)
                     await websocket.send(JSON.dumps(storeName))
 
-                    icon = contract.getStoreIconName(address)  
-                    await websocket.send(JSON.dumps(icon))
+                    # icon = contract.getStoreIconName(address)  
+                    # await websocket.send(JSON.dumps(icon))
 
                     contract.refresh(address, key)
                 elif locationTime == 0:
                     storeName = contract.getStoreName(address)
                     print(storeName)
                     await websocket.send(JSON.dumps(storeName))  
-                    icon = contract.getStoreIconName(address) 
-                    print(icon) 
-                    await websocket.send(JSON.dumps(icon))
+                    # icon = contract.getStoreIconName(address) 
+                    # print(icon) 
+                    # await websocket.send(JSON.dumps(icon))
                 else:
                     storeName = contract.getStoreName(address)
                     await websocket.send(JSON.dumps(storeName))
-                    icon = contract.getStoreIconName(address)  
-                    await websocket.send(JSON.dumps(icon))
+                    # icon = contract.getStoreIconName(address)  
+                    # await websocket.send(JSON.dumps(icon))
         # main_conn.js
         elif str["Type"] == "setTime":
             await websocket.send(JSON.dumps("check"))

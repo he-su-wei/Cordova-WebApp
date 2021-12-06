@@ -1,5 +1,5 @@
 let sendData = new Object();
-var ws
+var ws;
 function onload() {
 
     function appendzero(obj){
@@ -17,33 +17,48 @@ function onload() {
     let day = year + "-"　+appendzero(month)+ "-" +appendzero(date)
     document.getElementById('takeTime').innerHTML = time ;
     document.getElementById('takeDay').innerHTML =`<b>${day}</b>`  ;
-  
 
+    console.log(localStorage.status);
+    if(localStorage.status == "營業中"){
+        var str = "營業中";
+        genode(str, 'status');
+        function genode(str, id) {
+            document.getElementById(id).innerHTML = str;
+        }
+    }
+    else if(localStorage.status == "已打烊"){
+        var str = "已打烊";
+        genode(str, 'status');
+        function genode(str, id) {
+            document.getElementById(id).innerHTML = str;
+        }
+    }
+}
 
-    ws = new WebSocket("ws://192.168.68.52:6001");
+function scan(){
+    ws = new WebSocket("ws://192.168.0.105:6012");
     ws.onopen = function () {
         console.log('open');
         sendData["Main"] = "storeContract";
         sendData["Type"] = "setTime";
         let jsonData = JSON.stringify(sendData);
         ws.send(jsonData);
-
-        console.log(localStorage.status);
-        if(localStorage.status == "營業中"){
-            var str = "營業中";
-            genode(str, 'status');
-            function genode(str, id) {
-                document.getElementById(id).innerHTML = str;
-            }
-        }
-        else if(localStorage.status == "已打烊"){
-            var str = "已打烊";
-            genode(str, 'status');
-            function genode(str, id) {
-                document.getElementById(id).innerHTML = str;
-            }
-        }
     };
+
+    cordova.plugins.barcodeScanner.scan(
+        function(result){
+            if(!result.cancelled){
+                if(result.format == "QR_CODE") {
+                    var value = result.text;
+                    ws.send(value);  
+                    ws.send(localStorage.address);
+                }
+            }
+        },
+        function (error) {
+            alert('Scanning Failed '+error);
+        }
+    );
 
     n = [];
     ws.onmessage = function (event) {
@@ -71,23 +86,6 @@ function onload() {
     ws.onclose = function (event) {
         console.log('close code=' + event.code);
     };
-}
-
-function scan(){
-    cordova.plugins.barcodeScanner.scan(
-        function(result){
-            if(!result.cancelled){
-                if(result.format == "QR_CODE") {
-                    var value = result.text;
-                    ws.send(value);  
-                    ws.send(localStorage.address);
-                }
-            }
-        },
-        function (error) {
-            alert('Scanning Failed '+error);
-        }
-    );
 }
 
 

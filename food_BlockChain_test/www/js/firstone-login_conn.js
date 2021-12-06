@@ -2,7 +2,7 @@ let sendData = new Object();
 
 function onload(){
 }
-function check(){
+function checkLogin(){
     var address = document.getElementById('address').value;
     var account = document.getElementById('account').value;
     var password = document.getElementById('password').value;

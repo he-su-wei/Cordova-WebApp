@@ -13,7 +13,7 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0xEf62672cc098796455d73507A2D460904775B184')
+        self.contract_addr = self.w3.toChecksumAddress('0x213efdA6a908367A8a9EA312c88435089a76629E')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0x841505D2dCf63793434DE0780347D5F00168Eddf')
@@ -31,7 +31,7 @@ class storeContract:
             })
 
         #設定私鑰
-        path = "D:/BlockChain/node1/keystore"
+        path = "D:/BlockChain/node1/keystore/0x841505d2dcf63793434de0780347d5f00168eddf"
         x = os.path.join(path, address)
         storeKey = password
         with open(x) as keyfile:
@@ -85,7 +85,7 @@ class storeContract:
             })
         
         #設定私鑰
-        path = "D:/BlockChain/node1/keystore"
+        path = "D:/BlockChain/node1/keystore/0x841505d2dcf63793434de0780347d5f00168eddf"
         x = os.path.join(path, address)
         storeKey = password
         with open(x) as keyfile:
@@ -112,7 +112,7 @@ class storeContract:
             })
         
         #設定私鑰
-        path = "D:/BlockChain/node1/keystore"
+        path = "D:/BlockChain/node1/keystore/0x841505d2dcf63793434de0780347d5f00168eddf"
         x = os.path.join(path, address)
         storeKey = password
         with open(x) as keyfile:
@@ -139,7 +139,7 @@ class storeContract:
             })
         
         #設定私鑰
-        path = "D:/BlockChain/node1/keystore"
+        path = "D:/BlockChain/node1/keystore/0x841505d2dcf63793434de0780347d5f00168eddf"
         x = os.path.join(path, address)
         storeKey = password
         with open(x) as keyfile:
@@ -166,7 +166,7 @@ class storeContract:
             })
         
         #設定私鑰
-        path = "D:/BlockChain/node1/keystore"
+        path = "D:/BlockChain/node1/keystore/0x841505d2dcf63793434de0780347d5f00168eddf"
         x = os.path.join(path, address)
         storeKey = password
         with open(x) as keyfile:
@@ -193,7 +193,7 @@ class storeContract:
             })
         
         #設定私鑰
-        path = "D:/BlockChain/node1/keystore"
+        path = "D:/BlockChain/node1/keystore/0x841505d2dcf63793434de0780347d5f00168eddf"
         x = os.path.join(path, address)
         storeKey = password
         with open(x) as keyfile:
