@@ -25,7 +25,7 @@ function getbalance(){
     };
 }
 
-setTimeout('getbalance()',3000);
+setTimeout(getbalance(),3000);
 
 function getCoin(){
     var ws = new WebSocket("ws://192.168.0.105:6012");
