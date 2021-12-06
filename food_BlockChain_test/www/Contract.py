@@ -178,7 +178,8 @@ class storeContract:
             
         tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
         # print('0x'+bytes.hex(tx_hash))
-        return "Success"
+        print(self.w3.eth.wait_for_transaction_receipt(tx_hash))
+        return "Open"
 
     # 關閉營業
     def setStoreClose(self, address, password):
@@ -205,7 +206,8 @@ class storeContract:
             
         tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
         # print('0x'+bytes.hex(tx_hash))
-        return "Success"
+        print(self.w3.eth.wait_for_transaction_receipt(tx_hash))
+        return "Close"
 
     # 取得進貨時間
     def getDeliverTime(self, id, address):
@@ -286,7 +288,7 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x2DB6b7Dbd2c713C43F37DE836362373ACcA2448e')
+        self.contract_addr = self.w3.toChecksumAddress('0xB37F385317a20D8789a71040d446cF0C047b271D')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0x841505D2dCf63793434DE0780347D5F00168Eddf')
@@ -296,7 +298,10 @@ class clientContract:
         # newAddress = self.w3.geth.personal.list_accounts()
         print('address is : {}'.format(newAccount))
         # print(type(newAccount))
-        
+        name="UTC--..."+newAccount
+        dic = "D:\\BlockChain\\node1\\keystore\\"
+        old_file = os.path.join(dic,name)
+        os.rename(old_file, newAccount)
         return newAccount
 
     # 使用者註冊
