@@ -22,7 +22,7 @@ function onload(){
 function setInfo(){
     for(let i=0;i<datas.length;i++) {
         let tmp = "<button id='store"+i+"' data-index='"+datas[i][1]+"' class='store' onclick='javascript:window.location.href = \"customer-storeInfo.html?" + datas[i][0] + "\"'><div id='photo' class='photo'>";
-        tmp += '<img src="store_img/'+datas[i][1]+'".png /></div>';
+        tmp += '<img src="store_img/'+datas[i][1]+'.png" /></div>';
         tmp += '<div id="information" class="information"><h3>'+datas[i][1]+'</h3>';
         if(datas[i][3]==true) tmp += '<p>環境狀態: 已清潔</p>';
         else tmp += '<p>環境狀態: 未更新</p>';
