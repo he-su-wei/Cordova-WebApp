@@ -24,7 +24,7 @@ function checkLogin(){
         var check = event.data;
         if (check=="true"){
             localStorage.address = address;
-            localStorage.pwd = password;
+            localStorage.account = account;
             alert('登入成功');
             window.location.href='loginafter.html';
         }

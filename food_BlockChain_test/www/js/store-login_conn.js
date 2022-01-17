@@ -44,6 +44,7 @@ function check(){
         var check = event.data;
         if (check=="true"){
             alert('登入成功');
+            localStorage.account = account;
             window.location.href='loginafter.html';
         }
         else if (check=="false"){

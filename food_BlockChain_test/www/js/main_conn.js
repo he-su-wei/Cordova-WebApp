@@ -96,13 +96,16 @@ function scan(){
         var n = JSON.parse(event.data);
         console.log(n);
         if(n=="check"){
+            
             cordova.plugins.barcodeScanner.scan(
                 function(result){
                     if(!result.cancelled){
                         if(result.format == "QR_CODE") {
                             var value = result.text;
-                            ws.send(value);  
+                            console.log(value);
                             ws.send(localStorage.address);
+                            ws.send(localStorage.account);
+                            ws.send(value);  
                         }
                     }
                 },
@@ -111,8 +114,6 @@ function scan(){
                 }
             );
         }
-
-        
     };
     ws.onerror = function (e) {
         console.log(e);
@@ -150,7 +151,7 @@ function kit(){
         console.log(n);
         if(n=="check"){
             ws.send(localStorage.address);
-            ws.send(localStorage.key);
+            ws.send(localStorage.account);
         }
     };
     ws.onerror = function (e) {

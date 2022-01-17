@@ -66,7 +66,7 @@ function opening() {
         console.log(n)
         if(n == "check"){
             ws.send(localStorage.address);
-            ws.send(localStorage.pwd);
+            ws.send(localStorage.account);
             ws.onmessage = function (event) {
                 storeState = JSON.parse(event.data);
                 console.log(storeState);
@@ -106,7 +106,7 @@ function closed(){
         console.log(n)
         if(n == "check"){
             ws.send(localStorage.address);
-            ws.send(localStorage.pwd);
+            ws.send(localStorage.account);
             ws.onmessage = function (event) {
                 storeState = JSON.parse(event.data);
                 console.log(storeState);

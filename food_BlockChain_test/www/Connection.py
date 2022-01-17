@@ -143,11 +143,11 @@ async def echo(websocket, path):
 
         # main_conn.js
         elif str["Type"] == "setKitClenTime":
-            
+            await websocket.send(JSON.dumps("check"))
             ap = []
             ap.append(await websocket.recv())
             ap.append(await websocket.recv())
-             
+            print(ap)
             # 環境清理
             if len(ap)==2:
                 address = ap[0]
