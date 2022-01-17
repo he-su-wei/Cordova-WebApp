@@ -32,6 +32,6 @@ function onload() {
 }
 
 function setImg(){
-    let tmp = '<img class="img-size" src="store_img/'+n[2]+'" /></div>'
+    let tmp = '<img class="img-size" src="store_img/allstore.png" /></div>'
     $('#stores').append(tmp);
 }
