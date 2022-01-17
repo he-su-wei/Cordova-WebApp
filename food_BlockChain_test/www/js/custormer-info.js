@@ -6,7 +6,7 @@ function onload() {
 }
 
 function getbalance(){
-    var ws = new WebSocket("ws://192.168.0.105:6012");
+    var ws = new WebSocket("ws://192.168.0.123:6012");
 
     ws.onopen = function () {
         console.log('open');
@@ -28,7 +28,7 @@ function getbalance(){
     };
 }
 function getCoin(){
-    var ws = new WebSocket("ws://192.168.0.105:6012");
+    var ws = new WebSocket("ws://192.168.0.123:6012");
     ws.onopen = function () {
         console.log('open');
         sendData["Main"] = "asiaToken";
@@ -95,7 +95,7 @@ function transfer(){
     if(storeName != ""){
             
         coin = $('#sendCoin').val();
-        ws = new WebSocket("ws://192.168.0.105:6012");
+        ws = new WebSocket("ws://192.168.0.123:6012");
         
         ws.onopen = function () {
             console.log('open');

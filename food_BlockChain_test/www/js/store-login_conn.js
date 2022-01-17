@@ -1,7 +1,7 @@
 let sendData = new Object();
 var ws;
 function onload() {
-    ws = new WebSocket("ws://192.168.0.105:6012")
+    ws = new WebSocket("ws://192.168.0.123:6012")
     ws.onopen = function () {
         console.log('open');
         sendData["Main"] = "storeContract";

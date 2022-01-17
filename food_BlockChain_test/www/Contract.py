@@ -13,10 +13,10 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0xeE0dc37b7e8C64256bdfCdDE51F4Fa5BbBf45C9B')
+        self.contract_addr = self.w3.toChecksumAddress('0x9ca9F12828E114A913d27c06e7dDF2f81eF385b5')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress("0x682411219cb1e63866ca686cbca8014b20e7f230")
+        self.account = self.w3.toChecksumAddress("0xb93E7ba12f4D6D9AAF0974a676f992ac5EE15969")
 
     # 設定食材進貨時間
     def setDeliverTime(self, id, address, password):
@@ -288,10 +288,10 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x9d693678A8EF47DA14D840654945017461eE712A')
+        self.contract_addr = self.w3.toChecksumAddress('0x9488f5d136B61bF38A471ab3cE9CB25895c1FbF2')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0x682411219cb1e63866ca686cbca8014b20e7f230')
+        self.account = self.w3.toChecksumAddress('0xb93E7ba12f4D6D9AAF0974a676f992ac5EE15969')
 
     def createWallet(self, account):
         newAccount = self.w3.geth.personal.new_account(account)
@@ -317,7 +317,7 @@ class clientContract:
             })
         
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0xa628d6dfe7da501893abc4fa21bf7a91b6945c5') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0xb93e7ba12f4d6d9aaf0974a676f992ac5ee15969') as keyfile:
             encrypted_key = keyfile.read()
             private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
             print(bytes.hex(private_key))
@@ -353,10 +353,10 @@ class asiaToken:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x9FEC54de64756BD0bE528646Af4807e4B198042b')
+        self.contract_addr = self.w3.toChecksumAddress('0xaBDF2ddc96435aF2Fd336575B97Cda569ba0F95e')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0x682411219cb1e63866ca686cbca8014b20e7f230')
+        self.account = self.w3.toChecksumAddress('0xb93E7ba12f4D6D9AAF0974a676f992ac5EE15969')
     #取得餘額
     def balanceOf(self, address):
         address = self.w3.toChecksumAddress(address)
@@ -413,7 +413,7 @@ class asiaToken:
             })
         # print(txn)
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0xa628d6dfe7da501893abc4fa21bf7a91b6945c5') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0xb93e7ba12f4d6d9aaf0974a676f992ac5ee15969') as keyfile:
             encrypted_key = keyfile.read()
             private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
             # print(bytes.hex(private_key))
