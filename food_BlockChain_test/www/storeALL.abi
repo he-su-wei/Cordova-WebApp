@@ -42,11 +42,6 @@
 				"type": "string"
 			},
 			{
-				"internalType": "string",
-				"name": "iconName",
-				"type": "string"
-			},
-			{
 				"internalType": "bool",
 				"name": "isOpen",
 				"type": "bool"
@@ -277,27 +272,6 @@
 				"type": "address"
 			}
 		],
-		"name": "getStoreIconName",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
 		"name": "getStoreName",
 		"outputs": [
 			{
@@ -486,11 +460,6 @@
 				"internalType": "string",
 				"name": "_passWd",
 				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_iconName",
-				"type": "string"
 			}
 		],
 		"name": "setStore",
@@ -565,11 +534,6 @@
 					{
 						"internalType": "string",
 						"name": "storeName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "iconName",
 						"type": "string"
 					},
 					{
