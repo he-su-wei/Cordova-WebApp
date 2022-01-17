@@ -24,14 +24,13 @@ function onload() {
         function genode(str, id) {
             document.getElementById(id).innerHTML = str;
         }
-        
+        setImg(str);
     };
     ws.onclose = function(event) {
-        setImg()
     };
 }
 
-function setImg(){
-    let tmp = '<img class="img-size" src="store_img/allstore.png" /></div>'
-    $('#stores').append(tmp);
+function setImg(str){
+    // let tmp = '<img class="img-size" src="store_img/'+str+'.png" />';
+    $('.img-size').attr("src","store_img/"+str+".png");
 }
