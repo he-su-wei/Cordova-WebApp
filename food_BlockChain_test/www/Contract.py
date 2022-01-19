@@ -13,7 +13,7 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x9ca9F12828E114A913d27c06e7dDF2f81eF385b5')
+        self.contract_addr = self.w3.toChecksumAddress('0xc96CdE8653dd0FdcFA45C58b7e7B1eD74623D9c6')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress("0xb93E7ba12f4D6D9AAF0974a676f992ac5EE15969")
