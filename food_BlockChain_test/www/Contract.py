@@ -13,7 +13,7 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0xc96CdE8653dd0FdcFA45C58b7e7B1eD74623D9c6')
+        self.contract_addr = self.w3.toChecksumAddress('0xE5e21344Df3791ebF701c75c624edb59302A230B')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress("0xb93E7ba12f4D6D9AAF0974a676f992ac5EE15969")
@@ -114,7 +114,6 @@ class storeContract:
         #設定私鑰
         path = "D:/BlockChain/node1/keystore/"
         x = os.path.join(path, address)
-        storeKey = password
         with open(x) as keyfile:
             encrypted_key = keyfile.read()
             private_key = self.w3.eth.account.decrypt(encrypted_key,  storeKey)
