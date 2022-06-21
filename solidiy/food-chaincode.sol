@@ -215,15 +215,15 @@ contract storeALL{
         return (locationTimes[_storeAddress].currentTime);
     }
     
-    function getlocationStatus(address _storeAddress) public view returns(bool){
-        return (locationTimes[_storeAddress].status);
-    }
-    
     //前端登入畫面中"繼續"呼叫的重製方法
     function refresh(address _storeAddress) public onlyStore(_storeAddress){
         require(block.timestamp >= locationTimes[_storeAddress].futureTime);
         locationTimes[_storeAddress].currentTime = block.timestamp;
         locationTimes[_storeAddress].status = false;
+    }
+    
+    function getlocationStatus(address _storeAddress) public view returns(bool){
+        return (locationTimes[_storeAddress].status);
     }
     
     //取得所有店家地址
