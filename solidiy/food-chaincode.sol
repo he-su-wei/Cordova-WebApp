@@ -123,13 +123,13 @@ contract storeALL{
         timeLists[_storeAddress].inputTime.push(stores[_storeAddress].foodLists[_id].inputTime);
     }
     
-    //取得該店家所有登錄的食材名稱
-    function getAllFoodID(address _storeAddress) public view returns(string[] memory){
-        return(timeLists[_storeAddress].foodID);
-    }
     //取得單筆食材進貨時間
     function getDeliverTime(string memory _id, address _storeAddress) public view returns(uint){
         return (stores[_storeAddress].foodLists[_id].inputTime);
+    }
+    //取得該店家所有登錄的食材名稱
+    function getAllFoodID(address _storeAddress) public view returns(string[] memory){
+        return(timeLists[_storeAddress].foodID);
     }
     //取得該店家所有登錄的食材進貨時間
     function getAllDeliverTime(address _storeAddress) public view returns(uint[] memory){
