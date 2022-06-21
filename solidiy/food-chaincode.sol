@@ -147,13 +147,13 @@ contract storeALL{
             timeLists[_storeAddress].clearTime.push(stores[_storeAddress].foodLists[timeLists[_storeAddress].foodID[j]].clearTime);
         }
     }
-    //取得單筆食材清洗時間
-    function getFoodCleanTime(string memory _id, address _storeAddress) public view returns(uint){
-        return (stores[_storeAddress].foodLists[_id].clearTime);
-    }
     //取得單筆食材狀態
     function getFoodState(string memory _id, address _storeAddress)public view returns(uint){
         return (stores[_storeAddress].foodLists[_id].status);
+    }
+    //取得單筆食材清洗時間
+    function getFoodCleanTime(string memory _id, address _storeAddress) public view returns(uint){
+        return (stores[_storeAddress].foodLists[_id].clearTime);
     }
     //取得該店家所有登錄的食材的清洗時間
     function getAllCleanTime(address _storeAddress) public view returns(uint[] memory){
