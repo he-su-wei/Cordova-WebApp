@@ -203,7 +203,7 @@ contract storeALL{
         locationTimes[_storeAddress] = locationTime({
             storeAddress: _storeAddress,
             currentTime: block.timestamp,
-            futureTime: block.timestamp+6480,
+            futureTime: block.timestamp+86400,
             status: true
         });
         
