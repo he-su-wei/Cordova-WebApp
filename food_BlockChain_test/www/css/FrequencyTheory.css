@@ -1,0 +1,120 @@
+html, body{
+    background-color: #f1e3d3;
+    height: 100%;
+    margin: 0px;
+}
+.userImg {
+    width:40px;
+    border-radius: 50%;
+}
+
+/*------------------------------------導航欄------------------------------*/
+.nav_bar{
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height:60px ;
+    overflow: hidden;
+    position: sticky;
+    list-style-type: none;
+    color: rgb(255, 255, 255);
+    background-color: #70a9a1;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.item{
+    flex: 0.3;
+    
+    /* margin-left: 15px; */
+}
+
+.item1{
+    flex: 0.2;
+    
+}
+
+.flex-2{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+.storetext {
+    font-size: 25px;
+    font-weight:bold;
+}
+/* --------------------------- list 評論區 -------------- */
+.container {
+    width: auto;    
+    display: flex;
+    margin: 0.5em 2em 0.5em 2em;
+    align-items: center;
+}
+
+.comment {
+    align-items: center;
+}
+
+.comment img {
+    width:50px ;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.comment-content{
+    min-height: 60px;
+}
+.comment-content-name {
+    color: #6d757a;
+    font-size: 12px;
+    /* margin-bottom: 5px; */
+}
+
+.comment-content-article {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.comment-content-footer {
+   color: #6d757a;
+   font-size: 12px;
+   margin-bottom: 15px;
+}
+
+.buttom {
+    margin: 20px;
+}
+
+/*---------------------footer---------------------*/
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #70a9a1;
+    overflow-x: auto;
+}
+
+.textArea-container form input{
+    width: 80%;
+    height: 35px;
+    border: none;
+    border-radius: 20px;
+    align-items: center;
+    margin: 10px 0px;
+    font-size: 18px;
+    text-indent:12px
+}
+
+.textArea-container form button {
+    background: none;
+    border: none;
+}

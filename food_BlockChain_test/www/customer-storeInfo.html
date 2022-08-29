@@ -2,6 +2,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="JQuery/jquery-3.6.0.min.js"></script>
+    
+   
     <script> 
         $(document).ready(function(){
             $("#flip").click(function(){
@@ -41,13 +43,14 @@
 
                 <div id='rowbtn' class='rowbtn '>
 
+                    <!-- Link 到當前店家的食安查詢 -->
                     <div id='colbtn-left' class='colbtn-center'>
                         <button id='foodSafety' class='btn'><h3>食安查詢</h3></button>
                     </div>
 
-                    <!-- <div id='colbtn-center' class='colbtn-center'>
+                    <div id='colbtn-center' class='colbtn-center'>
                         <button id='comment' class='btn'><h3>評論</h3></button>
-                    </div> -->
+                    </div>
 
                     <div id='colbtn-right' class='colbtn-right'>
                         <button id='menu' class='btn'><h3>菜單查詢</h3> </button>
@@ -59,6 +62,7 @@
             
         </div>
     </div>
+    
 
     <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
     <footer class="footer">
@@ -66,22 +70,27 @@
             <i class="fa fa-home nav__icon"></i>
             <span >首頁</span>
         </a>
+<!-- 
+        <a href="" class="footer__link" id="btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >
+            <i class="fas fa-dollar-sign nav__icon"></i>
+            <span>付款</span>
+        </a> -->
   
         <a href="custormer-info.html" class="footer__link">
             <i class="far fa-user nav__icon"></i>
             <span>我的帳號</span>
         </a>
 
-        <script> 
-            function opened(){
-              $("#panel").slideToggle("slow");
-              // $("#flip").click(function(){
-              //   $("#panel").slideToggle("slow");
-              // });
-            }
-        </script>
-
     </footer>
+       
+    <script> 
+        function opened(){
+          $("#panel").slideToggle("slow");
+          // $("#flip").click(function(){
+          //   $("#panel").slideToggle("slow");
+          // });
+        }
+    </script>
     <script src="js/customer-storeInfo_conn.js"></script>
 </body>
 </html>
