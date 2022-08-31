@@ -27,8 +27,8 @@
         <!-- --------------------------- 評論區域--------------------->
         <div class="container ">
 
-            <div class="comment">
-                <img src="../img/man.png">
+            <div class="items-center">
+                <img class="userImg-margin" src="../img/man.png">
             </div>
 
             <div class="comment-content flex-2">
@@ -41,12 +41,16 @@
                 </p>
                 <hr/>
             </div>
+
+            <!-- <div class="comment">
+                <img src="../img/man.png">
+            </div> -->
             
         </div>
         <div class="container ">
 
-            <div class="comment">
-                <img src="../img/woman.jpg">
+            <div class="items-center">
+                <img class="userImg-margin" src="../img/woman.jpg">
             </div>
 
             <div class="comment-content flex-2">
@@ -59,7 +63,18 @@
                 </p>
                 <hr/>
             </div>
+
+            <div class="items-center">
+                <img class="upload-img" src="../img/logo.png">
+            </div>
             
+        </div>
+        <!-- 浮動視窗 -->
+        <div id="window-container">
+            <div class="window-content">
+                <input type="file" id="image-input" accept="image/jpeg, image/png"/>
+            </div>
+            <div id="display-image"></div>
         </div>
 
 
@@ -67,21 +82,49 @@
             <br/>
             <br/>
         </div>
-        
        
         <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
         <footer class="footer flex">
             <nav class="item1">
                 <img class="userImg" src="../img/man.png"  >
             </nav>
+
             <nav class="textArea-container item flex-2">
-                <form id="" method="GET" action="http://127.0.0.1:8888/comment">
-                    <input class="textArea" type="text" placeholder="留言...">
+                <!-- <form id="" method="" action=""> -->
+                    <input class="textArea " type="text" placeholder="留言..." maxlength="20">
+                    <button class="absolute" onclick="customizeWindowEvent()"><i class="fas fa-image icon fa-1half"></i></button>
                     <button type="submit"><i class="fas fa-paper-plane fa-1half "></i></button>
-                </form>
+                <!-- </form> -->
             </nav>
         </footer>
     </body>
+    
+    <script>
+        const image_input = document.querySelector("#image-input");
+
+        image_input.addEventListener("change", function() {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            const uploaded_image = reader.result;
+            document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+        });
+        reader.readAsDataURL(this.files[0]);
+        });
+
+        function customizeWindowEvent() {
+            var popup_window = document.getElementById("window-container");
+
+            popup_window.style.display = "block";
+
+            window.onclick = function close(e) {
+                if (e.target == popup_window) {
+                    popup_window.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+    
 </html>
 
 <!-- 參考資料來源 -->
