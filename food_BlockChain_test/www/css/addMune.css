@@ -30,6 +30,9 @@ html, body{
 .block{
     display: block;
 }
+.between{
+    justify-content: space-between;
+}
 
 .item{
     flex: 0.3;
@@ -74,7 +77,7 @@ html, body{
     flex-basis: 0%;
 }
 .info {
-    margin-left:5% ;
+    margin:0% 3% ;
     flex-grow:2;
     flex-basis: 0%;
 }
@@ -85,10 +88,6 @@ html, body{
     border-radius: 10px 0 0 10px;
 }
 
-.inline {
-    display: inline;
-}
-
 .product-name{
     font-weight: bold;
 }
@@ -96,6 +95,60 @@ html, body{
 .more {
     font-size: 1rem;
 }
+
+.width-30{
+    width:30% ;
+}
+/*------------------------upload  imgfile--------------*/
+.a-upload {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    color: #888;
+    background: #c6c3bd7b;
+    border: 1px solid #ddd;
+    border-radius: 10px 0px 0px 10px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-upload:hover {
+    color: #444;
+    /* background: #eee; */
+    border:none;
+    text-decoration: none
+}
+
+/* name price info set */
+
+.border {
+    border: none;
+}
+/* -------------submit -----------*/
+
+.div-max {
+    height: 100%;
+    width: 100%;
+}
+.btn{
+    border-radius: 0px 10px 10px 0;
+    border: none;
+    background-color:#c6c3bd7b ;
+    color: #eee;
+}
+
 
 
 /*---------------------footer---------------------*/
