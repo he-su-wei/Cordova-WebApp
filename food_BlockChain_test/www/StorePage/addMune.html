@@ -18,7 +18,7 @@
                     <i class="fas fa-chevron-left fa-2x fa-inverse"></i>
                 </a>  
             </div>
-            <div class="item flex-2 storetext"> {{店家名}} </div>
+            <div class="item flex-2 storetext"> 蟹堡王 </div>
             <div class="item">         
                 <img class="storeImg" src="../img/man.png" alt="..." >
             </div>
@@ -28,33 +28,25 @@
         <article class="menu-item">
 
             <div class="product-container">
+                <!-- add new img -->
                 <div class="item-img ">
                     <a href="javascript:;" class="a-upload">
                         <input type="file" name="" id=""><i class="fas fa-plus fa-2x fa-inverse"></i>
                     </a>
                 </div>
+                <!-- add product info -->
                 <div class="info flex-3">
-                    <div class="flex between">
-                        <input class="product-name border width-40 height-5" type="text" placeholder="產品名稱">
-                        <input class="width-15 border" type="number" value="0" min="0">
+                    <div class="flex between height-2">
+                        <input class="product-name border width-60 height-em" type="text" placeholder="產品名稱">
+                        <input class="price width-15 border height-em" type="number" value="0" min="0">
                     </div>
-                    
-                    <input class="margin-10-0 border width-100" type="text" placeholder="產品簡介" maxlength="20">
+                    <div class="flex between height-70">
+                        <input class="more border width-100 height-100 magin" type="text" placeholder="產品簡介" maxlength="50">
+                    </div>
                 </div>
+                <!-- submit button -->
                 <div>
                     <button class="div-max btn" type="submit"><i class="fas fa-paper-plane"></i></button>
-                </div>
-            </div>
-            <div class="product-container">
-                <div class="item-img">
-                    <img class="product-img" src="../img/home.jpg">
-                </div>
-                <div class="info flex-3">
-                    <div class="flex between">
-                        <p class="product-name">美味蟹堡</p>
-                        <p class="price">$79</p>
-                    </div>
-                    <p class="more" style="margin: 0 0 0.5em 0; ">皮老闆做不出來的漢堡，想要吃到海綿寶寶做的漢堡就快來比奇堡</p>
                 </div>
             </div>
 
@@ -62,12 +54,19 @@
                 <div class="item-img">
                     <img class="product-img" src="../img/home.jpg">
                 </div>
-                <div class="info">
-                    <p class="product-name">美味蟹堡</p>
-                    <p class="price">$79</p>
-                    <p class="more">皮老闆做不出來的漢堡</p>
+                <div class="info flex-3">
+                    <div class="flex between height-20" >
+                        <p class="product-name">美味蟹堡</p>
+                        <p class="price">$79</p>
+                    </div>
+                    <p class="more" style="margin: 0.5em 0; ">皮老闆做不出來的漢堡，想要吃到海綿寶寶做的漢堡嗎 就快來比奇堡</p>
+                </div>
+                <div>
+                    <button class="div-max btn" type="submit"><i class="far fa-trash-alt"></i></button>
                 </div>
             </div>
+
+            <!-- test   -->
 
         </article>
 
