@@ -157,7 +157,10 @@ html, body{
     overflow: hidden;
     display: inline-block;
     *display: inline;
-    *zoom: 1
+    *zoom: 1;
+    background-size: 100% 100%;
+    /* background-position: center; */
+    
 }
 
 .a-upload  input {

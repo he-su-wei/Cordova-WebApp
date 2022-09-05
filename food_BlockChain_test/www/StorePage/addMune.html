@@ -29,11 +29,15 @@
 
             <div class="product-container">
                 <!-- add new img -->
-                <div class="item-img ">
-                    <a href="javascript:;" class="a-upload">
-                        <input type="file" name="" id=""><i class="fas fa-plus fa-2x fa-inverse"></i>
+                <div class="item-img">
+                    <a href="javascript:;" class="a-upload"  id="display-image">
+                        <input type="file" id="image-input" accept="image/jpeg, image/png"/> 
+                        <i class="fas fa-plus fa-2x fa-inverse"></i>
                     </a>
+                    <!-- <div id="display-image"></div> -->
                 </div>
+                
+                
                 <!-- add product info -->
                 <div class="info flex-3">
                     <div class="flex between height-2">
@@ -71,17 +75,18 @@
         </article>
 
         <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
-        <!-- <footer class="footer flex">
-            <nav class="item1">
-                <img class="storeImg" src="../img/man.png"  >
-            </nav>
-            <nav class="textArea-container item flex-2">
-                <form id="" method="GET" action="http://127.0.0.1:8888/comment">
-                    <input class="textArea" type="text" placeholder="留言...">
-                    <button type="submit"><i class="fas fa-paper-plane fa-1half "></i></button>
-                </form>
-            </nav>
-        </footer> -->
+        <script>
+            const image_input = document.querySelector("#image-input");
+    
+            image_input.addEventListener("change", function() {
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                const uploaded_image = reader.result;
+                document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+            });
+            reader.readAsDataURL(this.files[0]);
+            });
+        </script>
     </body>
 </html>
 
