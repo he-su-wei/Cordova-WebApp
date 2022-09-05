@@ -36,13 +36,11 @@ html, body{
 
 .item{
     flex: 0.3;
-    
     /* margin-left: 15px; */
 }
 
 .item1{
     flex: 0.2;
-
 }
 
 .flex-2{
@@ -59,7 +57,6 @@ html, body{
 .menu-item {
     margin: 1.5em;
 }
-
 
 .product-container {
     display:flex;
@@ -103,10 +100,6 @@ html, body{
     font-size: 1rem;
 }
 
-.buttom {
-    
-}
-
 .width-60{
     width:60% ;
 }
@@ -147,8 +140,7 @@ html, body{
 .a-upload {
     height: 100%;
     width: 100%;
-    position: relative;
-    text-align: center;
+    text-align:center;
     cursor: pointer;
     color: #888;
     background: #c6c3bd7b;
@@ -162,10 +154,8 @@ html, body{
     /* background-position: center; */
     
 }
-
-.a-upload  input {
+.a-upload input {
     position: absolute;
-    font-size: 100px;
     opacity: 0;
     filter: alpha(opacity=0);
     cursor: pointer
@@ -173,7 +163,6 @@ html, body{
 
 .a-upload:hover {
     color: #444;
-    /* background: #eee; */
     border:none;
     text-decoration: none
 }
