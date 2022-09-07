@@ -1,5 +1,65 @@
 [
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_storeName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_userName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_comment",
+				"type": "string"
+			}
+		],
+		"name": "setComment",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "_wallet",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_userName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_account",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_passWd",
+				"type": "string"
+			}
+		],
+		"name": "setUser",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [
 			{
@@ -142,66 +202,6 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "_storeName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_userName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_comment",
-				"type": "string"
-			}
-		],
-		"name": "setComment",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address payable",
-				"name": "_wallet",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "_userName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_account",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_passWd",
-				"type": "string"
-			}
-		],
-		"name": "setUser",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

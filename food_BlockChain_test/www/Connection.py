@@ -231,6 +231,7 @@ async def echo(websocket, path):
         # customer-home_conn.js
         elif str["Type"] == "AllStore":
             allAddress = contract.getAllStore()
+            print(allAddress)
             for i in range(len(allAddress)):
                 sum = contract.storeInfoForUser(allAddress[i])
                 await websocket.send(JSON.dumps(sum))
@@ -331,9 +332,9 @@ async def echo(websocket, path):
 
         elif str["Type"] == "getStoreName":
             address = await websocket.recv()
-            print(address)
+            # print(address)
             storeName = contract.getStoreName(address)
-            print(storeName)
+            # print(storeName)
             await websocket.send(JSON.dumps(storeName))
             
         # custormer-info.js - 顧客資訊
@@ -373,11 +374,15 @@ async def echo(websocket, path):
                         result = contract.transferFrom(check[0], check[1], int(check[2]), check[3])
                         await websocket.send(JSON.dumps(result))
                         check.clear()
+        
+
+            
+               
     finally:
         connected.remove(websocket)
 
 async def main():
-    async with websockets.serve(echo, "192.168.0.123", 6012):
+    async with websockets.serve(echo, "192.168.68.52", 6012):
         await asyncio.Future()  # run forever
 
 if __name__ == "__main__":

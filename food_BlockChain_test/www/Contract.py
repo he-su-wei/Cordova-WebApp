@@ -13,10 +13,10 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0xE5e21344Df3791ebF701c75c624edb59302A230B')
+        self.contract_addr = self.w3.toChecksumAddress('0x0b51f710d5Ef5675717317e7b4cA5Bb7A78Efd6D')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress("0xb93E7ba12f4D6D9AAF0974a676f992ac5EE15969")
+        self.account = self.w3.toChecksumAddress("0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf")
 
     # 設定食材進貨時間
     def setDeliverTime(self, id, address, password):
@@ -114,6 +114,7 @@ class storeContract:
         #設定私鑰
         path = "D:/BlockChain/node1/keystore/"
         x = os.path.join(path, address)
+        storeKey = password
         with open(x) as keyfile:
             encrypted_key = keyfile.read()
             private_key = self.w3.eth.account.decrypt(encrypted_key,  storeKey)
@@ -287,10 +288,10 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x9488f5d136B61bF38A471ab3cE9CB25895c1FbF2')
+        self.contract_addr = self.w3.toChecksumAddress('0x70b4536136A0E9EDB6e391913d98D471dC5FBdd2')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0xb93E7ba12f4D6D9AAF0974a676f992ac5EE15969')
+        self.account = self.w3.toChecksumAddress('0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf')
 
     def createWallet(self, account):
         newAccount = self.w3.geth.personal.new_account(account)
@@ -316,9 +317,9 @@ class clientContract:
             })
         
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0xb93e7ba12f4d6d9aaf0974a676f992ac5ee15969') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
+            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
             print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)
@@ -412,9 +413,9 @@ class asiaToken:
             })
         # print(txn)
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0xb93e7ba12f4d6d9aaf0974a676f992ac5ee15969') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, '1234wxyz')
+            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
             # print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)

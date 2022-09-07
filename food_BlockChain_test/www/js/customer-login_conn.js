@@ -1,5 +1,5 @@
 let sendData = new Object();
-var ws = new WebSocket("ws://192.168.0.123:6012");
+var ws = new WebSocket("ws://192.168.68.52:6012");
 
 ws.onopen = function () {
     console.log('open');

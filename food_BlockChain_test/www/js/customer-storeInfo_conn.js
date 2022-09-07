@@ -6,7 +6,7 @@ function onload(){
     console.log(url);
     console.log(storeAddress);
 
-    var ws = new WebSocket("ws://192.168.0.123:6012"); 
+    var ws = new WebSocket("ws://192.168.68.52:6012"); 
     ws.onopen = function () {
         console.log('open');
         sendData["Main"] = "storeContract";
@@ -38,6 +38,9 @@ function setInfo() {
     $('#storeImg').attr('src','store_img/'+datas[0][2]+'');
     $('#storeName').html('<h2>'+datas[0][1]+'</h2><button id="flip" onclick="javascript:opened();" class="dropbtn">Dropdown</button>');
     $('#foodSafety').attr('onclick','javascript:window.location.href = \"customer-foodin-list.html?'+datas[0][0]+'\"');
+    $('#comment').attr('onclick','javascript:window.location.href = \"CustomerPage/FrequencyTheory.html?'+datas[0][0]+'\"');
+    $('#comment').attr('onclick','javascript:window.location.href = \"CustomerPage/menu.html?'+datas[0][0]+'\"');
+
     // $('#foodSafety').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');
     // $('#comment').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');
     // $('#menu').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');

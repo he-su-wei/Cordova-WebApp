@@ -8,46 +8,27 @@
         <link rel="stylesheet" href="../css/FrequencyTheory.css">
         <link rel="stylesheet" href="../icon/css/all.css">
         <title>店家評論</title>
+        <script src="../JQuery/jquery-3.6.0.min.js"></script>
+        <script src="./FrequencyTheory_SQLConn.js"></script>
     </head>
  
-    <body>
+    <body onload="onload()">
          <!--------------------------------------------------導航欄------------------------------------------------------------->
         <nav class="nav_bar flex">
             <div class="item"> 
-                <a href="../customer-storeInfo.html">
-                    <i class="fas fa-chevron-left fa-2x fa-inverse"></i>
-                </a>  
+                <!-- <a href="../customer-storeInfo.html"> -->
+                    <i class="fas fa-chevron-left fa-2x fa-inverse" id="backPage" onclick="setPage();"></i>
+                <!-- </a>   -->
             </div>
-            <div class="item flex-2 storetext"> {{店家名}} </div>
+            <div class="item flex-2 storetext" id="storeName"></div>
             <div class="item">         
                 <img class="userImg" src="../img/man.png" class="" alt="..." >
             </div>
         </nav>
 
         <!-- --------------------------- 評論區域--------------------->
-        <div class="container ">
-
-            <div class="items-center">
-                <img class="userImg-margin" src="../img/man.png">
-            </div>
-
-            <div class="comment-content flex-2">
-                <p class="comment-content-name">何書維</p>
-                <p class="comment-content-article">好吃</p>
-                <p class="comment-content-footer">
-                    <span class="comment-content-footer-id">B2</span>
-                    <span class="comment-content-footer-device">資工系</span>
-                    <span class="comment-content-footer-timestamp">2022-01-20 14:05</span>
-                </p>
-                <hr/>
-            </div>
-
-            <!-- <div class="comment">
-                <img src="../img/man.png">
-            </div> -->
-            
-        </div>
-        <div class="container ">
+        
+        <!-- <div class="container ">
 
             <div class="items-center">
                 <img class="userImg-margin" src="../img/woman.jpg">
@@ -68,11 +49,16 @@
                 <img class="upload-img" src="../img/logo.png">
             </div>
             
-        </div>
+        </div> -->
+
+        <!-- 評論內容 -->
+        <div id="allcomments"></div>
+        
+
         <!-- 浮動視窗 -->
         <div id="window-container">
             <div class="window-content">
-                <input type="file" id="image-input" accept="image/jpeg, image/png"/>
+                <input type="file" onclick="imagestring()" id="image-input" accept="image/jpeg, image/png"/>
             </div>
             <div id="display-image"></div>
         </div>
@@ -82,49 +68,27 @@
             <br/>
             <br/>
         </div>
+        
        
         <!--------------------------------------------------footer_快捷鍵------------------------------------------------------------->
         <footer class="footer flex">
             <nav class="nav_bar flex">
-                <div class="item"> 
+                <div class="item1">
                     <img class="userImg" src="../img/man.png"  >
                 </div>
-                <div class="item flex-2 storetext textArea-container"> <input class="textArea " type="text" placeholder="留言..." maxlength="20"> </div>
-                <div class="item textArea-container">         
+                <div class="item flex-2 storetext textArea-container"> 
+                    <input class="textArea " type="text" id="comments" placeholder="留言..." maxlength="20"> 
+                </div>
+                <div class="item textArea-container">  
+
                     <button class="absolute" onclick="customizeWindowEvent()"><i class="fas fa-image icon fa-1half"></i></button>
-                    <button type="submit"><i class="fas fa-paper-plane fa-1half "></i></button>
+                    <button type="submit" onclick="insertComment()"><i class="fas fa-paper-plane fa-1half "></i></button>
+
                 </div>
             </nav>
         </footer>
+
     </body>
-    
-    <script>
-        const image_input = document.querySelector("#image-input");
 
-        image_input.addEventListener("change", function() {
-        const reader = new FileReader();
-        reader.addEventListener("load", () => {
-            const uploaded_image = reader.result;
-            document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
-        });
-        reader.readAsDataURL(this.files[0]);
-        });
-
-        function customizeWindowEvent() {
-            var popup_window = document.getElementById("window-container");
-
-            popup_window.style.display = "block";
-
-            window.onclick = function close(e) {
-                if (e.target == popup_window) {
-                    popup_window.style.display = "none";
-                }
-            }
-        }
-    </script>
-
-    
 </html>
 
-<!-- 參考資料來源 -->
-<!-- https://www.cnblogs.com/kensporger/p/10035843.html -->
