@@ -3,7 +3,7 @@ let sendData = new Object();
 var storeName;
 function onload() {
 
-    var ws = new WebSocket("ws://192.168.68.52:6012");
+    var ws = new WebSocket("ws://120.108.111.231:6012");
 
     ws.onopen = function () {
         console.log('open');
@@ -28,7 +28,7 @@ function onload() {
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://192.168.68.52/BlockChain/menu.php",
+        url: "http://120.108.111.231:1080/menu.php",
         data:{
             "storeName": storeName
         }, 
@@ -105,7 +105,7 @@ function insertMenu() {
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://192.168.68.52/BlockChain/insertMenu.php",
+        url: "http://120.108.111.231:1080/insertMenu.php",
         data:{
             "storeName": storeName,
             "productName": productName,
@@ -150,7 +150,7 @@ function delMenu(myObj) {
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://192.168.68.52/BlockChain/delMenu.php",
+        url: "http://120.108.111.231:1080/delMenu.php",
         data:{
             "storeName": storeName,
             "id": id

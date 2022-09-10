@@ -9,7 +9,7 @@ var storeName;
 
 function onload() {
 
-    var ws = new WebSocket("ws://192.168.68.52:6012");
+    var ws = new WebSocket("ws://120.108.111.231:6012");
 
     ws.onopen = function () {
         console.log('open');
@@ -37,7 +37,7 @@ function onload() {
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://192.168.68.52/BlockChain/comment.php",
+        url: "http://120.108.111.231:1080/comment.php",
         data:{
             "storeName": storeName
         }, 
@@ -121,7 +121,7 @@ function insertComment() {
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://192.168.68.52/BlockChain/insertComment.php",
+        url: "http://120.108.111.231:1080/insertComment.php",
         data:{
             "storeName": storeName,
             "account": account,

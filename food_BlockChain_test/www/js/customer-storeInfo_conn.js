@@ -6,7 +6,7 @@ function onload(){
     console.log(url);
     console.log(storeAddress);
 
-    var ws = new WebSocket("ws://192.168.68.52:6012"); 
+    var ws = new WebSocket("ws://120.108.111.231:6012"); 
     ws.onopen = function () {
         console.log('open');
         sendData["Main"] = "storeContract";

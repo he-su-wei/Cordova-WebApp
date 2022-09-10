@@ -13,10 +13,10 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x0b51f710d5Ef5675717317e7b4cA5Bb7A78Efd6D')
+        self.contract_addr = self.w3.toChecksumAddress('0x0671c4C011f4571c64FBf3118cf392893f2Be7BB')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress("0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf")
+        self.account = self.w3.toChecksumAddress("0x72a5Df122b2eC96393183bd9f46506Eb0401f533")
 
     # 設定食材進貨時間
     def setDeliverTime(self, id, address, password):
@@ -288,10 +288,10 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x70b4536136A0E9EDB6e391913d98D471dC5FBdd2')
+        self.contract_addr = self.w3.toChecksumAddress('0x328975C0C9f0CdeD8491C8737d19AcBf1CfB0D4e')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf')
+        self.account = self.w3.toChecksumAddress('0x72a5Df122b2eC96393183bd9f46506Eb0401f533')
 
     def createWallet(self, account):
         newAccount = self.w3.geth.personal.new_account(account)
@@ -353,10 +353,10 @@ class asiaToken:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0xaBDF2ddc96435aF2Fd336575B97Cda569ba0F95e')
+        self.contract_addr = self.w3.toChecksumAddress('0x39549e16D33188E79f434fcdB00b2CeF059B4324')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
-        self.account = self.w3.toChecksumAddress('0xb93E7ba12f4D6D9AAF0974a676f992ac5EE15969')
+        self.account = self.w3.toChecksumAddress('0x72a5Df122b2eC96393183bd9f46506Eb0401f533')
     #取得餘額
     def balanceOf(self, address):
         address = self.w3.toChecksumAddress(address)
