@@ -1,160 +1,5 @@
 [
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_id",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
-		"name": "deleteFood",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
-		"name": "refresh",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_id",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
-		"name": "setDeliverTime",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_id",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
-		"name": "setFoodCleanTime",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
-		"name": "setlocationTime",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "_storeName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_account",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_passWd",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_iconName",
-				"type": "string"
-			}
-		],
-		"name": "setStore",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
-		"name": "setStoreClose",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
-		"name": "setStoreOpen",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"constant": true,
 		"inputs": [
 			{
@@ -194,11 +39,6 @@
 			{
 				"internalType": "string",
 				"name": "storeName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "iconName",
 				"type": "string"
 			},
 			{
@@ -245,6 +85,26 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_id",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "deleteFood",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -412,48 +272,6 @@
 				"type": "address"
 			}
 		],
-		"name": "getlocationStatus",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
-		"name": "getlocationTime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_storeAddress",
-				"type": "address"
-			}
-		],
 		"name": "getStoreName",
 		"outputs": [
 			{
@@ -481,6 +299,48 @@
 				"internalType": "bool",
 				"name": "",
 				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "getlocationStatus",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "getlocationTime",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -524,6 +384,136 @@
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "refresh",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_id",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "setDeliverTime",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_id",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "setFoodCleanTime",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_storeName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_account",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_passWd",
+				"type": "string"
+			}
+		],
+		"name": "setStore",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "setStoreClose",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "setStoreOpen",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_storeAddress",
+				"type": "address"
+			}
+		],
+		"name": "setlocationTime",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [
 			{
@@ -544,11 +534,6 @@
 					{
 						"internalType": "string",
 						"name": "storeName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "iconName",
 						"type": "string"
 					},
 					{

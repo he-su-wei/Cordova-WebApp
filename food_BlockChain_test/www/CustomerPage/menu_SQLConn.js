@@ -27,17 +27,23 @@ function onload() {
         $("#storeName").text(JSON.parse(event.data));
         storeName = JSON.parse(event.data) + "菜單";
         console.log(storeName);
+        conn(storeName);
     };
 
     ws.onclose = function(evt) {
         setPage();
     };
 
+    
+
+}
+
+function conn(storeName){
     //查詢資料庫資料 寫到前端
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://120.108.111.231:1080/menu.php",
+        url: "http://120.108.111.231/Blockchain/menu.php",
         data:{
             "storeName": storeName
         }, 
@@ -54,7 +60,7 @@ function onload() {
             for(let i=0; i<obj.length; i++) {
                 
                 let tmp = "<div class='product-container'>";
-                tmp += '<div class="item-img"><img class="product-img" src="http://192.168.68.52/BlockChain'+obj[i][4]+'"></div>';
+                tmp += '<div class="item-img"><img class="product-img" src="http://120.108.111.231/Blockchain'+obj[i][4]+'"></div>';
                 tmp += '<div class="info flex-3">';
                 tmp += '<div class="flex between height-20" >';
                 tmp += '<p class="product-name">'+obj[i][1]+'</p>';
@@ -71,7 +77,6 @@ function onload() {
         }
 
     });
-
 }
 
 

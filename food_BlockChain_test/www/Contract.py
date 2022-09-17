@@ -3,6 +3,7 @@ import json as JSON
 from datetime import datetime
 import os
 import numpy as np
+from os.path import join
 
 class storeContract:
     def __init__(self):
@@ -13,7 +14,7 @@ class storeContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x0671c4C011f4571c64FBf3118cf392893f2Be7BB')
+        self.contract_addr = self.w3.toChecksumAddress('0x39549e16D33188E79f434fcdB00b2CeF059B4324')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress("0x72a5Df122b2eC96393183bd9f46506Eb0401f533")
@@ -288,7 +289,7 @@ class clientContract:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x328975C0C9f0CdeD8491C8737d19AcBf1CfB0D4e')
+        self.contract_addr = self.w3.toChecksumAddress('0x1458103b747A0Cf46F3A8a3C7df6B1C1E2Cf278D')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0x72a5Df122b2eC96393183bd9f46506Eb0401f533')
@@ -317,9 +318,9 @@ class clientContract:
             })
         
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0x72a5df122b2ec96393183bd9f46506eb0401f533') as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
+            private_key = self.w3.eth.account.decrypt(encrypted_key, 'Bl0ck@here478')
             print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)
@@ -327,6 +328,17 @@ class clientContract:
         tx_hash = self.w3.eth.sendRawTransaction(signed_txn.rawTransaction)
         # print('0x'+bytes.hex(tx_hash))
         return "Success"
+
+    def changeName(newAccount):
+        path = "D:/BlackChain/node1/keystore/"
+        files = os.listdir(path)
+        for f in files:
+            fullpath = join(path, f)
+            if f.find("--")!=-1:
+                tmp = f.split("--")[2]
+                if newAccount.lower() == "0x" + tmp:
+                    newpath = join(path, "0x"+tmp)
+                    os.rename(fullpath, newpath)
 
     # 取得所有使用者帳號
     def getAllAccount(self):
@@ -353,7 +365,7 @@ class asiaToken:
             self.temp_abi = JSON.load(f)
 
         # 設定合約位址
-        self.contract_addr = self.w3.toChecksumAddress('0x39549e16D33188E79f434fcdB00b2CeF059B4324')
+        self.contract_addr = self.w3.toChecksumAddress('0x0671c4C011f4571c64FBf3118cf392893f2Be7BB')
         self.contract = self.w3.eth.contract(address=self.contract_addr, abi=self.temp_abi)
         # 設定帳號位址
         self.account = self.w3.toChecksumAddress('0x72a5Df122b2eC96393183bd9f46506Eb0401f533')
@@ -413,9 +425,9 @@ class asiaToken:
             })
         # print(txn)
         #設定私鑰
-        with open(r'D:\BlockChain\node1\keystore\0xb5b5a2f58a46d1c3813f853d844e2e8e0c2d3baf') as keyfile:
+        with open(r'D:\BlockChain\node1\keystore\0x72a5df122b2ec96393183bd9f46506eb0401f533') as keyfile:
             encrypted_key = keyfile.read()
-            private_key = self.w3.eth.account.decrypt(encrypted_key, 'passwordTwo')
+            private_key = self.w3.eth.account.decrypt(encrypted_key, 'Bl0ck@here478')
             # print(bytes.hex(private_key))
             key = bytes.hex(private_key)
             signed_txn = self.w3.eth.account.signTransaction(txn, key)

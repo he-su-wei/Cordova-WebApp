@@ -35,11 +35,11 @@ function onload(){
 }
 
 function setInfo() {
-    $('#storeImg').attr('src','store_img/'+datas[0][2]+'');
+    $('#storeImg').attr('src','store_img/'+datas[0][1]+'.png');
     $('#storeName').html('<h2>'+datas[0][1]+'</h2><button id="flip" onclick="javascript:opened();" class="dropbtn">Dropdown</button>');
     $('#foodSafety').attr('onclick','javascript:window.location.href = \"customer-foodin-list.html?'+datas[0][0]+'\"');
     $('#comment').attr('onclick','javascript:window.location.href = \"CustomerPage/FrequencyTheory.html?'+datas[0][0]+'\"');
-    $('#comment').attr('onclick','javascript:window.location.href = \"CustomerPage/menu.html?'+datas[0][0]+'\"');
+    $('#menu').attr('onclick','javascript:window.location.href = \"CustomerPage/menu.html?'+datas[0][0]+'\"');
 
     // $('#foodSafety').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');
     // $('#comment').attr('onclick','javascript:window.location.href = \"xxxx.html?'+words[0][0]+'\"">');

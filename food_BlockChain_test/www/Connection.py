@@ -1,3 +1,4 @@
+from dataclasses import replace
 import Contract as cf
 import json as JSON
 import asyncio
@@ -51,7 +52,9 @@ async def echo(websocket, path):
                 # print(check)
                 if len(check)==3:
                     print(check)
-                    checkStoreOne = contract.checkStore(check[0], check[1], check[2])
+                    ad = check[0].replace("'","")
+                    print(ad)
+                    checkStoreOne = contract.checkStore(ad, check[1], check[2])
                     print(checkStoreOne)  
                     if(checkStoreOne==True):
                         await websocket.send(JSON.dumps(checkStoreOne))
@@ -233,6 +236,7 @@ async def echo(websocket, path):
             allAddress = contract.getAllStore()
             print(allAddress)
             for i in range(len(allAddress)):
+                # print(allAddress[i])
                 sum = contract.storeInfoForUser(allAddress[i])
                 await websocket.send(JSON.dumps(sum))
 
@@ -307,6 +311,7 @@ async def echo(websocket, path):
                     elif(len(set_lst)==len(lst)):
                         address = contract.createWallet(check[2])
                         contract.setUser(address, check[0], check[1], check[2])
+                        contract.changeame(address)
                         await websocket.send(JSON.dumps(address))
                         lst.clear()
 

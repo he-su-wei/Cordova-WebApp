@@ -146,19 +146,14 @@ html, body{
     background: #c6c3bd7b;
     border: 1px solid #ddd;
     border-radius: 10px 0px 0px 10px;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: inline-block;
-    *display: inline;
-    *zoom: 1;
     background-size: 100% 100%;
     /* background-position: center; */
-    
 }
-.a-upload input {
-    position: absolute;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    cursor: pointer
+
+.wrapper {
+    display:none;
 }
 
 .a-upload:hover {

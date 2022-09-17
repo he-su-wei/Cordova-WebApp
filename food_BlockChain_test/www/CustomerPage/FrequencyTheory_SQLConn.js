@@ -27,17 +27,21 @@ function onload() {
         $("#storeName").text(JSON.parse(event.data));
         storeName = JSON.parse(event.data) + "評論";
         console.log(storeName);
+        conn(storeName);
     };
 
     ws.onclose = function(evt) {
         setPage();
     };
-    
+
+}
+
+function conn(storeName){
     //查詢資料庫資料 寫到前端
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://120.108.111.231:1080/comment.php",
+        url: "http://120.108.111.231/Blockchain/comment.php",
         data:{
             "storeName": storeName
         }, 
@@ -60,7 +64,7 @@ function onload() {
                 tmp += '<p class="comment-content-article">'+obj[i][1]+'</p>';
                 tmp += '<p class="comment-content-footer"><span class="comment-content-footer-id">'+"B"+ count +'&nbsp</span>';
                 tmp += '<span class="comment-content-footer-timestamp">'+obj[i][3]+'</span></p><hr/></div>';
-                tmp += '<div class="items-center"><img class="upload-img" src="http://192.168.68.52/BlockChain'+obj[i][2]+'"></div></div>';
+                tmp += '<div class="items-center"><img class="upload-img" src="http://120.108.111.231/Blockchain'+obj[i][2]+'"></div></div>';
                 count++;
                 $('#allcomments').append(tmp);
                
@@ -72,9 +76,7 @@ function onload() {
         }
 
     });
-
 }
-
 
 var uploaded_image;
 //圖片預覽
@@ -111,8 +113,8 @@ function customizeWindowEvent() {
 //將評論寫到資料庫
 function insertComment() {
 
-    // var account = localStorage.name;
-    var account = "asia002";
+    var account = localStorage.name;
+    // var account = "asia002";
     var comment = document.getElementById("comments").value;
     console.log(storeName);
     console.log(account);
@@ -121,7 +123,7 @@ function insertComment() {
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://120.108.111.231:1080/insertComment.php",
+        url: "http://120.108.111.231/Blockchain/insertComment.php",
         data:{
             "storeName": storeName,
             "account": account,
@@ -135,12 +137,13 @@ function insertComment() {
             var obj = JSON.parse(data);
             console.log(obj);
             if(obj.status == "success"){
+                getCoin();
                 alert("新增成功");
-                // window.location.href= "./FrequencyTheory.html?" + storeAddress;
+                window.location.href= "./FrequencyTheory.html?" + storeAddress;
             }
             else{
                 alert("新增失敗");
-                // window.location.href="./FrequencyTheory.html?" + storeAddress;
+                window.location.href="./FrequencyTheory.html?" + storeAddress;
             }
             
         },
@@ -150,6 +153,27 @@ function insertComment() {
 
     });
 
+}
+
+function getCoin(){
+    var ws = new WebSocket("ws://120.108.111.231:6012");
+    ws.onopen = function () {
+        console.log('open');
+        sendData["Main"] = "asiaToken";
+        sendData["Type"] = "transfer";
+        let jsonData = JSON.stringify(sendData);
+        ws.send(jsonData);
+
+        // var ad = "0xDf11D1f32DAF325aa4Ce385A08c33F4D05Ab5FB9";
+        // ws.send(ad);
+        ws.send(localStorage.address);
+    };
+
+    ws.onmessage = function (event) {
+        console.log(event.data)
+        setTimeout(getbalance, 10000);
+        
+    };
 }
 
 

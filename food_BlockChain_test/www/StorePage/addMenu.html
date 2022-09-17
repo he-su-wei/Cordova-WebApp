@@ -32,10 +32,14 @@
             <div class="product-container">
                 <!-- add new img -->
                 <div class="item-img">
-                    <button href="javascript:;" class="a-upload"  id="display-image">
-                        <input type="file" id="image-input" onclick="imagestring()" accept="image/jpeg, image/png"/> 
+
+                    <button class="a-upload" id="display-image" class="btn"> 
                         <i class="fas fa-plus fa-2x fa-inverse"></i>
                     </button>
+
+                    <div class="wrapper">
+                        <input type="file" id="image-input" onclick="imagestring()" accept="image/jpeg, image/png"/>
+                    </div>
                     <!-- <div id="display-image"></div> -->
                 </div>
                 
@@ -78,6 +82,12 @@
          
 
         </article>
+
+        <script>
+            $("#display-image").click(function () {
+                $("#image-input").click();
+            });
+        </script>
 
     </body>
 </html>

@@ -17,24 +17,30 @@ function onload() {
 
     //取得餐廳名字
     ws.onmessage = function (event) {
-        console.log(JSON.parse(event.data));
+        // console.log(JSON.parse(event.data));
         $("#storeName").text(JSON.parse(event.data));
         storeName = JSON.parse(event.data) + "菜單";
         console.log(storeName);
+        conn(storeName);
     };
 
-   
+}
+
+function conn(storeName){
+    // storeName = "麥當勞" + "菜單";
     //查詢資料庫資料 寫到前端
+    console.log(storeName);
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://120.108.111.231:1080/menu.php",
+        url: "http://120.108.111.231/BlockChain/menu.php",
         data:{
             "storeName": storeName
         }, 
         crossDomain: true,
         cache: false,
         success: function(data){
+            console.log(data);
             var obj = JSON.parse(data);
             console.log(obj);
             // console.log(obj.length);
@@ -45,7 +51,7 @@ function onload() {
             for(let i=0; i<obj.length; i++) {
                 
                 let tmp = "<div class='product-container'>";
-                tmp += '<div class="item-img"><img class="product-img" src="http://192.168.68.52/BlockChain'+obj[i][4]+'"></div>';
+                tmp += '<div class="item-img"><img class="product-img" src="http://120.108.111.231/BlockChain'+obj[i][4]+'"></div>';
                 tmp += '<div class="info flex-3">';
                 tmp += '<div class="flex between height-20" >';
                 tmp += '<p class="product-name">'+obj[i][1]+'</p>';
@@ -63,9 +69,7 @@ function onload() {
         }
 
     });
-
 }
-
 
 var uploaded_image;
 //圖片預覽
@@ -77,7 +81,7 @@ function imagestring() {
     reader.addEventListener("load", () => {
         uploaded_image = reader.result;
         document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
-        console.log(uploaded_image);
+        // console.log(uploaded_image);
     });
     reader.readAsDataURL(this.files[0]);
 
@@ -91,51 +95,58 @@ function imagestring() {
 //將菜單寫到資料庫
 function insertMenu() {
 
-    
+    console.log(storeName);
     var productName = document.getElementById("productName").value;
     var price = document.getElementById("price").value;
     var introduction = document.getElementById("introduction").value;
     
 
-    // console.log(productName);
-    // console.log(introduction);
-    // console.log(price);
-    // console.log(uploaded_image);
-
-    $.ajax({
-        datatype: "JSON",
-        type: "POST",
-        url: "http://120.108.111.231:1080/insertMenu.php",
-        data:{
-            "storeName": storeName,
-            "productName": productName,
-            "price": price,
-            "introduction": introduction,      
-            "imagestring": uploaded_image
-        },  
-        crossDomain: true,
-        cache: false,
-        success: function(data){
-            console.log(data);
-            var obj = JSON.parse(data);
-            console.log(obj);
-            if(obj.status == "success"){
-                alert("新增成功");
-                // window.location.href= "./FrequencyTheory.html?" + storeAddress;
-                window.location.reload();
+    console.log(productName);
+    console.log(introduction);
+    console.log(price);
+    console.log(uploaded_image);
+    
+    var checkbox = window.confirm('確認上傳餐點');
+    if (checkbox == true) {
+        alert('上傳中');
+        $.ajax({
+            datatype: "JSON",
+            type: "POST",
+            url: "http://120.108.111.231:1080/insertMenu.php",
+            data:{
+                "storeName": storeName,
+                "productName": productName,
+                "price": price,
+                "introduction": introduction,      
+                "imagestring": uploaded_image
+            },  
+            crossDomain: true,
+            cache: false,
+            success: function(data){
+                console.log(data);
+                var obj = JSON.parse(data);
+                console.log(obj);
+                if(obj.status == "success"){
+                    alert("新增成功");
+                    // window.location.href= "./FrequencyTheory.html?" + storeAddress;
+                    window.location.reload();
+                }
+                else{
+                    alert("新增失敗");
+                    // window.location.href="./FrequencyTheory.html?" + storeAddress;
+                    window.location.reload();
+                }
+                
+            },
+            error: function(data){
+                console.log(data);
+                alert(data);
             }
-            else{
-                alert("新增失敗");
-                // window.location.href="./FrequencyTheory.html?" + storeAddress;
-                window.location.reload();
-            }
-            
-        },
-        error: function(data){
-            console.log(data);
-        }
-
-    });
+    
+        });
+    } else {
+        alert('您已取消上傳');
+    }
 
 }
 
@@ -144,13 +155,13 @@ function delMenu(myObj) {
 
     var id = myObj.value;
 
-    // console.log(storeName);
-    // console.log(id);
+    console.log(storeName);
+    console.log(id);
 
     $.ajax({
         datatype: "JSON",
         type: "POST",
-        url: "http://120.108.111.231:1080/delMenu.php",
+        url: "http://120.108.111.231/BlockChain/delMenu.php",
         data:{
             "storeName": storeName,
             "id": id
