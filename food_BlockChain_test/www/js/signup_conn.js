@@ -36,9 +36,9 @@ function check(){
     };
 
     ws.onmessage = function (event) {
-        console.log(event.data)
+        console.log(event.data);
         var check = JSON.parse(event.data);
-        console.log(event.data)
+        console.log(check);
         if (check=="帳號重複"){
             alert("使用者帳號已經有人使用!");
         }else{
