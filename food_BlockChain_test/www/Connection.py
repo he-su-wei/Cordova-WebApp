@@ -311,7 +311,7 @@ async def echo(websocket, path):
                     elif(len(set_lst)==len(lst)):
                         address = contract.createWallet(check[2])
                         contract.setUser(address, check[0], check[1], check[2])
-                        contract.changeame(address)
+                        # contract.changeame(address)
                         await websocket.send(JSON.dumps(address))
                         lst.clear()
 
