@@ -112,7 +112,7 @@ function insertMenu() {
         $.ajax({
             datatype: "JSON",
             type: "POST",
-            url: "http://120.108.111.231/insertMenu.php",
+            url: "http://120.108.111.231/BlockChain/insertMenu.php",
             data:{
                 "storeName": storeName,
                 "productName": productName,
