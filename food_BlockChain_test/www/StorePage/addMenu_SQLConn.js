@@ -135,7 +135,7 @@ function insertMenu() {
                     // window.location.href="./FrequencyTheory.html?" + storeAddress;
                     window.location.reload();
                 }
-                setTimeout(SetDetail,1000);
+                // setTimeout(SetDetail,1000);
             },
             error: function(data){
                 console.log(data);
