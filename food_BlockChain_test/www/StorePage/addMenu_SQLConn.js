@@ -108,11 +108,11 @@ function insertMenu() {
     
     var checkbox = window.confirm('確認上傳餐點');
     if (checkbox == true) {
-        alert('上傳中');
+        
         $.ajax({
             datatype: "JSON",
             type: "POST",
-            url: "http://120.108.111.231:1080/insertMenu.php",
+            url: "http://120.108.111.231/insertMenu.php",
             data:{
                 "storeName": storeName,
                 "productName": productName,
