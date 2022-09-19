@@ -24,6 +24,7 @@ function check(){
             alert("登入成功!");
             localStorage.userName = check[0];
             localStorage.address = check[1].replace('"', '');
+            localStorage.pwd = password;
             window.location.href='customer-home.html';
         }else{
             // localStorage.address = address;
