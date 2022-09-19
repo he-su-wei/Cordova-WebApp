@@ -160,7 +160,8 @@ async def echo(websocket, path):
 
         # foodin-list_conn.js - 食材進貨時間表
         elif str["Type"] == "DeliverTime":
-            await websocket.send("check")
+            check = JSON.dumps("check")
+            await websocket.send(check)
             address = await websocket.recv()
             # print(address)
             dliverTime = contract.getAllDeliverTime(address)
@@ -172,7 +173,8 @@ async def echo(websocket, path):
             print(JSON.dumps(ids))
         # food-list_conn.js - 食材清洗時間表
         elif str["Type"] == "CleanTime":
-            await websocket.send("check")
+            check = JSON.dumps("check")
+            await websocket.send(check)
             address = await websocket.recv()
 
             CleanTime = contract.getAllCleanTime(address)

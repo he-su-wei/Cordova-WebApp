@@ -30,7 +30,7 @@ function onload(){
 
     var datas = [];
     ws.onmessage = function (event) {
-        datas.push(event.data);
+        datas.push(JSON.parse(event.data));
         if(datas[0] == "check"){
             ws.send(localStorage.address);
         }
