@@ -86,6 +86,7 @@ function getStore(){
 }
 
 function transfer(){
+    alert("付款中!請稍後");
     if(storeName != ""){
             
         coin = $('#sendCoin').val();
@@ -106,13 +107,14 @@ function transfer(){
             var state = JSON.parse(event.data);
             if(state == "Success"){
                 console.log(state);
+                alert("付款成功!");
             }
         };
         ws.onclose = function(evt) {
             console.log("close");
         };
     }else{
-        alert("Scan QRCode!");
+        alert("掃描失敗");
     }
 }
 // -------------------------Search----------------------------//
