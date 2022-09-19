@@ -372,7 +372,7 @@ async def echo(websocket, path):
             check = []
             async for message in websocket:
                 n = f"{message}" 
-                # print(n)  
+                print(n)  
                 check.append(n)
                 print(check)
                 if len(check)==4:
