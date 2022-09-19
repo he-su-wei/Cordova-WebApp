@@ -106,8 +106,8 @@ function insertMenu() {
     console.log(price);
     console.log(uploaded_image);
     
-    // var checkbox = window.confirm('確認上傳餐點');
-    // if (checkbox == true) {
+    var checkbox = window.confirm('確認上傳餐點');
+    if (checkbox == true) {
         $.ajax({
             datatype: "JSON",
             type: "POST",
@@ -144,10 +144,10 @@ function insertMenu() {
             }
     
         });
-    // } 
-    // else {
-    //     alert('您已取消上傳');
-    // }
+    } 
+    else {
+        alert('您已取消上傳');
+    }
 
 }
 
