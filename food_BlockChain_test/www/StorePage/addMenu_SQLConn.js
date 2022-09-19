@@ -62,7 +62,7 @@ function conn(storeName){
                 $('#allMenu').append(tmp);
                
             }   
-
+            setTimeout(SetDetail,1000);
         },
         error: function(data){
             console.log(data);
@@ -106,9 +106,8 @@ function insertMenu() {
     console.log(price);
     console.log(uploaded_image);
     
-    var checkbox = window.confirm('確認上傳餐點');
-    if (checkbox == true) {
-        
+    // var checkbox = window.confirm('確認上傳餐點');
+    // if (checkbox == true) {
         $.ajax({
             datatype: "JSON",
             type: "POST",
@@ -136,17 +135,19 @@ function insertMenu() {
                     // window.location.href="./FrequencyTheory.html?" + storeAddress;
                     window.location.reload();
                 }
-                
+                setTimeout(SetDetail,1000);
             },
             error: function(data){
                 console.log(data);
-                alert(data);
+                console.log("上傳失敗");
+                alert("上傳失敗");
             }
     
         });
-    } else {
-        alert('您已取消上傳');
-    }
+    // } 
+    // else {
+    //     alert('您已取消上傳');
+    // }
 
 }
 
